@@ -57,7 +57,7 @@ implementation
 {$R *.dfm}
 
 procedure TFrmPrincipal.SpeedButton10Click(Sender: TObject);
-begin;
+begin
   close;
 end;
 
