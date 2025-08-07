@@ -131,6 +131,11 @@
             <Form>FrmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\UDataM.pas">
+            <Form>DM</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -165,7 +170,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
-                <DeployFile LocalName="Win32\Debug\Controle_estoque.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\Exe\Controle_estoque.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Controle_estoque.exe</RemoteName>
                         <Overwrite>true</Overwrite>
