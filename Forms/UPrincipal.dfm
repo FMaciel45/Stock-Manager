@@ -7,6 +7,7 @@ object FrmPrincipal: TFrmPrincipal
   Color = clBtnFace
   ParentFont = True
   Menu = MainMenu1
+  Position = poScreenCenter
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -4797,7 +4798,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
       OnClick = SpeedButton10Click
     end
-    object SpeedButton1: TSpeedButton
+    object btUsuario: TSpeedButton
       Left = 0
       Top = 0
       Width = 90
@@ -5327,6 +5328,7 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = btUsuarioClick
     end
   end
   object StatusBar1: TStatusBar

@@ -24,6 +24,7 @@ type
     btPesquisar: TBitBtn;
     QueryPadrao: TFDQuery;
     DSPadrao: TDataSource;
+    btSair: TBitBtn;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btNovoClick(Sender: TObject);
     procedure btDeletarClick(Sender: TObject);
@@ -33,6 +34,8 @@ type
     procedure btAtualizarClick(Sender: TObject);
 
     procedure TratarBotoes();
+    procedure btSairClick(Sender: TObject);
+    procedure btPesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,9 +116,21 @@ end;
 
 procedure TFrmPadrao.btNovoClick(Sender: TObject); // Cria o formulário para um novo registro
 begin
+  QueryPadrao.Open;
+
   TratarBotoes;
 
   QueryPadrao.Append;
+end;
+
+procedure TFrmPadrao.btPesquisarClick(Sender: TObject);
+begin
+  QueryPadrao.Open;
+end;
+
+procedure TFrmPadrao.btSairClick(Sender: TObject);
+begin
+  close;
 end;
 
 procedure TFrmPadrao.FormKeyPress(Sender: TObject; var Key: Char);

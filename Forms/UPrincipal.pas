@@ -19,7 +19,7 @@ type
     SpeedButton8: TSpeedButton;
     SpeedButton9: TSpeedButton;
     SpeedButton10: TSpeedButton;
-    SpeedButton1: TSpeedButton;
+    btUsuario: TSpeedButton;
     StatusBar1: TStatusBar;
     Timer1: TTimer;
     MainMenu1: TMainMenu;
@@ -43,6 +43,9 @@ type
     Sobreosistema1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure SpeedButton10Click(Sender: TObject);
+    procedure btUsuarioClick(Sender: TObject);
+
+    procedure AbreTelaUsuario();
   private
     { Private declarations }
   public
@@ -56,9 +59,30 @@ implementation
 
 {$R *.dfm}
 
+uses UUsuario;
+
+procedure TFrmPrincipal.AbreTelaUsuario;
+begin
+  FrmUsuario:= TFrmUsuario.Create(self);
+  FrmUsuario.ShowModal;
+
+  try
+
+  finally
+    FrmUsuario.Free;
+    FrmUsuario:= nil;
+  end;
+
+end;
+
+procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
+begin
+  AbreTelaUsuario;
+end;
+
 procedure TFrmPrincipal.SpeedButton10Click(Sender: TObject);
 begin
-  close;
+  application.Terminate;
 end;
 
 procedure TFrmPrincipal.Timer1Timer(Sender: TObject);

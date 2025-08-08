@@ -12,6 +12,7 @@ object FrmPadrao: TFrmPadrao
   Font.Name = 'Segoe UI'
   Font.Style = []
   KeyPreview = True
+  Position = poScreenCenter
   OnKeyPress = FormKeyPress
   TextHeight = 15
   object Panel1: TPanel
@@ -26,7 +27,7 @@ object FrmPadrao: TFrmPadrao
     object btNovo: TBitBtn
       Left = 16
       Top = 16
-      Width = 90
+      Width = 80
       Height = 40
       Caption = '&Novo'
       Layout = blGlyphRight
@@ -34,9 +35,9 @@ object FrmPadrao: TFrmPadrao
       OnClick = btNovoClick
     end
     object btEditar: TBitBtn
-      Left = 203
+      Left = 188
       Top = 16
-      Width = 90
+      Width = 80
       Height = 40
       Caption = '&Editar'
       Layout = blGlyphRight
@@ -44,9 +45,9 @@ object FrmPadrao: TFrmPadrao
       OnClick = btEditarClick
     end
     object btDeletar: TBitBtn
-      Left = 112
+      Left = 102
       Top = 16
-      Width = 85
+      Width = 80
       Height = 40
       Caption = '&Deletar'
       Layout = blGlyphRight
@@ -54,9 +55,9 @@ object FrmPadrao: TFrmPadrao
       OnClick = btDeletarClick
     end
     object btGravar: TBitBtn
-      Left = 299
+      Left = 274
       Top = 16
-      Width = 90
+      Width = 80
       Height = 40
       Caption = '&Gravar'
       Enabled = False
@@ -65,9 +66,9 @@ object FrmPadrao: TFrmPadrao
       OnClick = btGravarClick
     end
     object btCancelar: TBitBtn
-      Left = 395
+      Left = 360
       Top = 16
-      Width = 90
+      Width = 80
       Height = 40
       Caption = '&Cancelar'
       Layout = blGlyphRight
@@ -75,9 +76,9 @@ object FrmPadrao: TFrmPadrao
       OnClick = btCancelarClick
     end
     object btAtualizar: TBitBtn
-      Left = 491
+      Left = 446
       Top = 16
-      Width = 90
+      Width = 80
       Height = 40
       Caption = '&Atualizar'
       Enabled = False
@@ -86,22 +87,33 @@ object FrmPadrao: TFrmPadrao
       OnClick = btAtualizarClick
     end
     object btPesquisar: TBitBtn
-      Left = 587
+      Left = 532
       Top = 16
-      Width = 90
+      Width = 80
       Height = 40
       Caption = '&Pesquisar'
       Layout = blGlyphRight
       TabOrder = 6
+      OnClick = btPesquisarClick
     end
     object DBNavigator1: TDBNavigator
-      Left = 728
+      Left = 736
       Top = 18
-      Width = 348
+      Width = 340
       Height = 33
       DataSource = DSPadrao
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       TabOrder = 7
+    end
+    object btSair: TBitBtn
+      Left = 618
+      Top = 16
+      Width = 80
+      Height = 40
+      Caption = '&Sair'
+      Layout = blGlyphRight
+      TabOrder = 8
+      OnClick = btSairClick
     end
   end
   object Panel2: TPanel
@@ -113,7 +125,6 @@ object FrmPadrao: TFrmPadrao
     Color = clGradientInactiveCaption
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 544
   end
   object QueryPadrao: TFDQuery
     Connection = DM.Conexao
