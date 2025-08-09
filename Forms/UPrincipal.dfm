@@ -18,7 +18,7 @@ object FrmPrincipal: TFrmPrincipal
     Color = clGradientInactiveCaption
     ParentBackground = False
     TabOrder = 0
-    object SpeedButton2: TSpeedButton
+    object btEmpresa: TSpeedButton
       Left = 118
       Top = 0
       Width = 100
@@ -548,9 +548,9 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
-      OnClick = SpeedButton2Click
+      OnClick = btEmpresaClick
     end
-    object SpeedButton3: TSpeedButton
+    object btClientes: TSpeedButton
       Left = 224
       Top = 0
       Width = 90
@@ -1080,6 +1080,7 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = btClientesClick
     end
     object SpeedButton4: TSpeedButton
       Left = 354
@@ -5368,6 +5369,7 @@ object FrmPrincipal: TFrmPrincipal
       end
       object Cliente1: TMenuItem
         Caption = '&Cliente'
+        OnClick = Cliente1Click
       end
       object Fornecedor1: TMenuItem
         Caption = '&Fornecedor'
