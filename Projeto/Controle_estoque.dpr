@@ -5,7 +5,8 @@ uses
   UPrincipal in '..\Forms\UPrincipal.pas' {FrmPrincipal},
   UDataM in '..\Forms\UDataM.pas' {DM: TDataModule},
   UPadrao in '..\Forms\UPadrao.pas' {FrmPadrao},
-  UUsuario in '..\Forms\UUsuario.pas' {FrmUsuario};
+  UUsuario in '..\Forms\UUsuario.pas' {FrmUsuario},
+  UEmpresa in '..\Forms\UEmpresa.pas' {FrmEmpresa};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -18,7 +19,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TFrmPadrao, FrmPadrao);
-  Application.CreateForm(TFrmUsuario, FrmUsuario);
   Application.Run;
 end.

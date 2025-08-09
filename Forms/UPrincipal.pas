@@ -46,6 +46,10 @@ type
     procedure btUsuarioClick(Sender: TObject);
 
     procedure AbreTelaUsuario();
+    procedure AbreTelaEmpresa();
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure Empresa1Click(Sender: TObject);
+    procedure Usurio1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,7 +63,20 @@ implementation
 
 {$R *.dfm}
 
-uses UUsuario;
+uses UUsuario, UEmpresa;
+
+procedure TFrmPrincipal.AbreTelaEmpresa;
+begin
+  FrmEmpresa:= TFrmEmpresa.Create(self);
+  FrmEmpresa.ShowModal;
+
+  try
+
+  finally
+    FrmEmpresa.Free;
+    FrmEmpresa:= nil;
+  end;
+end;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -80,9 +97,19 @@ begin
   AbreTelaUsuario;
 end;
 
+procedure TFrmPrincipal.Empresa1Click(Sender: TObject);
+begin
+  AbreTelaEmpresa;
+end;
+
 procedure TFrmPrincipal.SpeedButton10Click(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TFrmPrincipal.SpeedButton2Click(Sender: TObject);
+begin
+  AbreTelaEmpresa;
 end;
 
 procedure TFrmPrincipal.Timer1Timer(Sender: TObject);
@@ -90,6 +117,11 @@ begin
   Statusbar1.Panels[0].Text := DateToStr(now);
   Statusbar1.Panels[1].Text := TimeToStr(now);
   Statusbar1.Panels[2].Text := 'Salve salve, rapaziada!';
+end;
+
+procedure TFrmPrincipal.Usurio1Click(Sender: TObject);
+begin
+  AbreTelaUsuario;
 end;
 
 end.
