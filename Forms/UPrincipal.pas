@@ -12,24 +12,24 @@ type
     Panel1: TPanel;
     btEmpresa: TSpeedButton;
     btClientes: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
-    SpeedButton8: TSpeedButton;
-    SpeedButton9: TSpeedButton;
-    SpeedButton10: TSpeedButton;
+    btFornecedor: TSpeedButton;
+    btProduto: TSpeedButton;
+    btFormaPgto: TSpeedButton;
+    btCompra: TSpeedButton;
+    btVenda: TSpeedButton;
+    btTrocarUsuario: TSpeedButton;
+    btSair: TSpeedButton;
     btUsuario: TSpeedButton;
     StatusBar1: TStatusBar;
     Timer1: TTimer;
     MainMenu1: TMainMenu;
     Cadastro1: TMenuItem;
-    Usurio1: TMenuItem;
-    Empresa1: TMenuItem;
-    Cliente1: TMenuItem;
-    Fornecedor1: TMenuItem;
-    Produto1: TMenuItem;
-    Formasdepgto1: TMenuItem;
+    MenuUsuario: TMenuItem;
+    MenuEmpresa: TMenuItem;
+    MenuCliente: TMenuItem;
+    MenuFornecedor: TMenuItem;
+    MenuProduto: TMenuItem;
+    MenuFormasPgto: TMenuItem;
     Movimentos1: TMenuItem;
     Compras1: TMenuItem;
     Vendas1: TMenuItem;
@@ -42,18 +42,21 @@ type
     Listadevendas1: TMenuItem;
     Sobreosistema1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
-    procedure SpeedButton10Click(Sender: TObject);
+    procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
 
     procedure AbreTelaUsuario();
     procedure AbreTelaEmpresa();
     procedure AbreTelaClientes();
+    procedure AbreTelaFornecedor();
 
     procedure btEmpresaClick(Sender: TObject);
-    procedure Empresa1Click(Sender: TObject);
-    procedure Usurio1Click(Sender: TObject);
+    procedure MenuEmpresaClick(Sender: TObject);
+    procedure MenuUsuarioClick(Sender: TObject);
     procedure btClientesClick(Sender: TObject);
-    procedure Cliente1Click(Sender: TObject);
+    procedure MenuClienteClick(Sender: TObject);
+    procedure btFornecedorClick(Sender: TObject);
+    procedure MenuFornecedorClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,33 +70,7 @@ implementation
 
 {$R *.dfm}
 
-uses UUsuario, UEmpresa, UCliente;
-
-procedure TFrmPrincipal.AbreTelaClientes;
-begin
-  FrmCliente:= TFrmCliente.Create(self);
-  FrmCliente.ShowModal;
-
-  try
-
-  finally
-    FrmCliente.Free;
-    FrmCliente:= nil;
-  end;
-end;
-
-procedure TFrmPrincipal.AbreTelaEmpresa;
-begin
-  FrmEmpresa:= TFrmEmpresa.Create(self);
-  FrmEmpresa.ShowModal;
-
-  try
-
-  finally
-    FrmEmpresa.Free;
-    FrmEmpresa:= nil;
-  end;
-end;
+uses UUsuario, UEmpresa, UCliente, UFornecedor;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -109,12 +86,51 @@ begin
 
 end;
 
+procedure TFrmPrincipal.AbreTelaEmpresa;
+begin
+  FrmEmpresa:= TFrmEmpresa.Create(self);
+  FrmEmpresa.ShowModal;
+
+  try
+
+  finally
+    FrmEmpresa.Free;
+    FrmEmpresa:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.AbreTelaClientes;
+begin
+  FrmCliente:= TFrmCliente.Create(self);
+  FrmCliente.ShowModal;
+
+  try
+
+  finally
+    FrmCliente.Free;
+    FrmCliente:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.AbreTelaFornecedor;
+begin
+  FrmFornecedor:= TFrmFornecedor.Create(self);
+  FrmFornecedor.ShowModal;
+
+  try
+
+  finally
+    FrmFornecedor.Free;
+    FrmFornecedor:= nil;
+  end;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
 end;
 
-procedure TFrmPrincipal.Usurio1Click(Sender: TObject);
+procedure TFrmPrincipal.MenuUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
 end;
@@ -124,7 +140,7 @@ begin
   AbreTelaClientes;
 end;
 
-procedure TFrmPrincipal.Cliente1Click(Sender: TObject);
+procedure TFrmPrincipal.MenuClienteClick(Sender: TObject);
 begin
   AbreTelaClientes;
 end;
@@ -134,12 +150,22 @@ begin
   AbreTelaEmpresa;
 end;
 
-procedure TFrmPrincipal.Empresa1Click(Sender: TObject);
+procedure TFrmPrincipal.MenuEmpresaClick(Sender: TObject);
 begin
   AbreTelaEmpresa;
 end;
 
-procedure TFrmPrincipal.SpeedButton10Click(Sender: TObject);
+procedure TFrmPrincipal.btFornecedorClick(Sender: TObject);
+begin
+  AbreTelaFornecedor;
+end;
+
+procedure TFrmPrincipal.MenuFornecedorClick(Sender: TObject);
+begin
+  AbreTelaFornecedor
+end;
+
+procedure TFrmPrincipal.btSairClick(Sender: TObject);
 begin
   application.Terminate;
 end;

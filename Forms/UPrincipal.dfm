@@ -1082,7 +1082,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
       OnClick = btClientesClick
     end
-    object SpeedButton4: TSpeedButton
+    object btFornecedor: TSpeedButton
       Left = 354
       Top = 0
       Width = 100
@@ -1612,8 +1612,9 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = btFornecedorClick
     end
-    object SpeedButton5: TSpeedButton
+    object btProduto: TSpeedButton
       Left = 472
       Top = 0
       Width = 100
@@ -2144,7 +2145,7 @@ object FrmPrincipal: TFrmPrincipal
       Layout = blGlyphTop
       ParentFont = False
     end
-    object SpeedButton6: TSpeedButton
+    object btFormaPgto: TSpeedButton
       Left = 591
       Top = 0
       Width = 100
@@ -2675,7 +2676,7 @@ object FrmPrincipal: TFrmPrincipal
       Layout = blGlyphTop
       ParentFont = False
     end
-    object SpeedButton7: TSpeedButton
+    object btCompra: TSpeedButton
       Left = 709
       Top = 0
       Width = 100
@@ -3206,7 +3207,7 @@ object FrmPrincipal: TFrmPrincipal
       Layout = blGlyphTop
       ParentFont = False
     end
-    object SpeedButton8: TSpeedButton
+    object btVenda: TSpeedButton
       Left = 827
       Top = 0
       Width = 100
@@ -3737,7 +3738,7 @@ object FrmPrincipal: TFrmPrincipal
       Layout = blGlyphTop
       ParentFont = False
     end
-    object SpeedButton9: TSpeedButton
+    object btTrocarUsuario: TSpeedButton
       Left = 945
       Top = 0
       Width = 100
@@ -4268,7 +4269,7 @@ object FrmPrincipal: TFrmPrincipal
       Layout = blGlyphTop
       ParentFont = False
     end
-    object SpeedButton10: TSpeedButton
+    object btSair: TSpeedButton
       Left = 1064
       Top = 0
       Width = 100
@@ -4798,7 +4799,7 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
-      OnClick = SpeedButton10Click
+      OnClick = btSairClick
     end
     object btUsuario: TSpeedButton
       Left = 0
@@ -5359,25 +5360,26 @@ object FrmPrincipal: TFrmPrincipal
     Top = 168
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
-      object Usurio1: TMenuItem
+      object MenuUsuario: TMenuItem
         Caption = '&Usu'#225'rio'
-        OnClick = Usurio1Click
+        OnClick = MenuUsuarioClick
       end
-      object Empresa1: TMenuItem
+      object MenuEmpresa: TMenuItem
         Caption = '&Empresa'
-        OnClick = Empresa1Click
+        OnClick = MenuEmpresaClick
       end
-      object Cliente1: TMenuItem
+      object MenuCliente: TMenuItem
         Caption = '&Cliente'
-        OnClick = Cliente1Click
+        OnClick = MenuClienteClick
       end
-      object Fornecedor1: TMenuItem
+      object MenuFornecedor: TMenuItem
         Caption = '&Fornecedor'
+        OnClick = MenuFornecedorClick
       end
-      object Produto1: TMenuItem
+      object MenuProduto: TMenuItem
         Caption = '&Produto'
       end
-      object Formasdepgto1: TMenuItem
+      object MenuFormasPgto: TMenuItem
         Caption = '&Formas de pgto.'
       end
     end

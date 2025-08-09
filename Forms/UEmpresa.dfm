@@ -143,6 +143,7 @@
     Top = 173
     Width = 610
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'RAZAO_SOCIAL'
     DataSource = DSPadrao
     TabOrder = 1
@@ -152,6 +153,7 @@
     Top = 224
     Width = 610
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'N_FANTASIA'
     DataSource = DSPadrao
     TabOrder = 2
@@ -161,6 +163,7 @@
     Top = 280
     Width = 530
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'ENDERECO'
     DataSource = DSPadrao
     TabOrder = 3
@@ -179,6 +182,7 @@
     Top = 392
     Width = 612
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'BAIRRO'
     DataSource = DSPadrao
     TabOrder = 7
@@ -188,6 +192,7 @@
     Top = 331
     Width = 530
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'CIDADE'
     DataSource = DSPadrao
     TabOrder = 5
@@ -197,6 +202,7 @@
     Top = 331
     Width = 60
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'UF'
     DataSource = DSPadrao
     TabOrder = 6
@@ -233,6 +239,7 @@
     Top = 504
     Width = 440
     Height = 23
+    CharCase = ecUpperCase
     DataField = 'EMAIL'
     DataSource = DSPadrao
     TabOrder = 11
