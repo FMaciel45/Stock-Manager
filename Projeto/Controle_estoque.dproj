@@ -137,7 +137,7 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Forms\UPadrao.pas">
-            <Form>FrmPadrao</Form>
+            <Form>FrmPadraoCadastro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Forms\UUsuario.pas">
@@ -162,6 +162,10 @@
         </DCCReference>
         <DCCReference Include="..\Forms\UFormasPgto.pas">
             <Form>FrmFormasPgto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Forms\UFormPesquisaPadrao.pas">
+            <Form>FrmPesquisaPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

@@ -4,7 +4,7 @@ object FrmPrincipal: TFrmPrincipal
   Caption = 'Controle de Estoque'
   ClientHeight = 556
   ClientWidth = 1184
-  Color = clBtnFace
+  Color = clWhite
   ParentFont = True
   Menu = MainMenu1
   Position = poScreenCenter

@@ -1,4 +1,4 @@
-object FrmPadrao: TFrmPadrao
+object FrmPadraoCadastro: TFrmPadraoCadastro
   Left = 0
   Top = 0
   BorderStyle = bsDialog

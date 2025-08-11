@@ -4,13 +4,14 @@ uses
   Vcl.Forms,
   UPrincipal in '..\Forms\UPrincipal.pas' {FrmPrincipal},
   UDataM in '..\Forms\UDataM.pas' {DM: TDataModule},
-  UPadrao in '..\Forms\UPadrao.pas' {FrmPadrao},
+  UPadrao in '..\Forms\UPadrao.pas' {FrmPadraoCadastro},
   UUsuario in '..\Forms\UUsuario.pas' {FrmUsuario},
   UEmpresa in '..\Forms\UEmpresa.pas' {FrmEmpresa},
   UCliente in '..\Forms\UCliente.pas' {FrmCliente},
   UFornecedor in '..\Forms\UFornecedor.pas' {FrmFornecedor},
   UProduto in '..\Forms\UProduto.pas' {FrmProduto},
-  UFormasPgto in '..\Forms\UFormasPgto.pas' {FrmFormasPgto};
+  UFormasPgto in '..\Forms\UFormasPgto.pas' {FrmFormasPgto},
+  UFormPesquisaPadrao in '..\Forms\UFormPesquisaPadrao.pas' {FrmPesquisaPadrao};
 
 {$R *.res}
 {$IFDEF DEBUG}

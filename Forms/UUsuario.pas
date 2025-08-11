@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
 
 type
-  TFrmUsuario = class(TFrmPadrao)
+  TFrmUsuario = class(TFrmPadraoCadastro)
     Label1: TLabel;
     DBId: TDBEdit;
     Label2: TLabel;

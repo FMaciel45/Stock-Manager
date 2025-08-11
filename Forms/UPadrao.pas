@@ -11,7 +11,7 @@ uses
   FireDAC.Comp.Client;
 
 type
-  TFrmPadrao = class(TForm)
+  TFrmPadraoCadastro = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
     btNovo: TBitBtn;
@@ -43,7 +43,7 @@ type
   end;
 
 var
-  FrmPadrao: TFrmPadrao;
+  FrmPadraoCadastro: TFrmPadraoCadastro;
 
 implementation
 
@@ -51,7 +51,7 @@ implementation
 
 uses UDataM;
 
-procedure TFrmPadrao.btAtualizarClick(Sender: TObject); // Refresh nos registros
+procedure TFrmPadraoCadastro.btAtualizarClick(Sender: TObject); // Refresh nos registros
 begin
   TratarBotoes;
 
@@ -59,7 +59,7 @@ begin
   messageDlg('Formulário atualizado com sucesso!', mtInformation, [mbOk], 0);
 end;
 
-procedure TFrmPadrao.btCancelarClick(Sender: TObject); // Cancela a ação atual
+procedure TFrmPadraoCadastro.btCancelarClick(Sender: TObject); // Cancela a ação atual
 begin
   TratarBotoes;
 
@@ -67,7 +67,7 @@ begin
   messageDlg('Ação cancelada pelo usuário.', mtInformation, [mbOk], 0);
 end;
 
-procedure TFrmPadrao.btDeletarClick(Sender: TObject); // Deleta o registro selecionado
+procedure TFrmPadraoCadastro.btDeletarClick(Sender: TObject); // Deleta o registro selecionado
 begin
 
   TratarBotoes;
@@ -88,7 +88,7 @@ begin
 
 end;
 
-procedure TFrmPadrao.btEditarClick(Sender: TObject); // Edita o registro selecionado
+procedure TFrmPadraoCadastro.btEditarClick(Sender: TObject); // Edita o registro selecionado
 begin
 
   TratarBotoes;
@@ -106,7 +106,7 @@ begin
 
 end;
 
-procedure TFrmPadrao.btGravarClick(Sender: TObject); // Persiste no BD o registro atual
+procedure TFrmPadraoCadastro.btGravarClick(Sender: TObject); // Persiste no BD o registro atual
 begin
   TratarBotoes;
 
@@ -114,7 +114,7 @@ begin
   messageDlg('Registro salvo com sucesso!', mtInformation, [mbOk], 0);
 end;
 
-procedure TFrmPadrao.btNovoClick(Sender: TObject); // Cria o formulário para um novo registro
+procedure TFrmPadraoCadastro.btNovoClick(Sender: TObject); // Cria o formulário para um novo registro
 begin
   QueryPadrao.Open;
 
@@ -123,17 +123,17 @@ begin
   QueryPadrao.Append;
 end;
 
-procedure TFrmPadrao.btPesquisarClick(Sender: TObject);
+procedure TFrmPadraoCadastro.btPesquisarClick(Sender: TObject);
 begin
   QueryPadrao.Open;
 end;
 
-procedure TFrmPadrao.btSairClick(Sender: TObject);
+procedure TFrmPadraoCadastro.btSairClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure TFrmPadrao.FormKeyPress(Sender: TObject; var Key: Char);
+procedure TFrmPadraoCadastro.FormKeyPress(Sender: TObject; var Key: Char);
 begin
 
   // Faz com que Enter tenha a mesma função do TAB
@@ -145,7 +145,7 @@ begin
 
 end;
 
-procedure TFrmPadrao.TratarBotoes;
+procedure TFrmPadraoCadastro.TratarBotoes;
 begin
 
   btNovo.Enabled:= not btNovo.Enabled;

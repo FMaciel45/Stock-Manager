@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
 
 type
-  TFrmProduto = class(TFrmPadrao)
+  TFrmProduto = class(TFrmPadraoCadastro)
     QueryPadraoPRODUTO_DESCRICAO: TStringField;
     QueryPadraoVL_CUSTO: TFMTBCDField;
     QueryPadraoVL_VENDA: TFMTBCDField;

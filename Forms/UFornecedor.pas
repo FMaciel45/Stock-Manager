@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
 
 type
-  TFrmFornecedor = class(TFrmPadrao)
+  TFrmFornecedor = class(TFrmPadraoCadastro)
     QueryPadraoID_FORNECEDOR: TFDAutoIncField;
     QueryPadraoNOME: TStringField;
     QueryPadraoENDERECO: TStringField;

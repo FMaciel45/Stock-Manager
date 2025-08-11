@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
 
 type
-  TFrmFormasPgto = class(TFrmPadrao)
+  TFrmFormasPgto = class(TFrmPadraoCadastro)
     QueryPadraoID_FORMA_PGTO: TIntegerField;
     QueryPadraoDESCRICAO: TStringField;
     QueryPadraoCADASTRO: TDateField;

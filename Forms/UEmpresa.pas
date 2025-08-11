@@ -11,7 +11,7 @@ uses
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
 
 type
-  TFrmEmpresa = class(TFrmPadrao)
+  TFrmEmpresa = class(TFrmPadraoCadastro)
     QueryPadraoID_EMPRESA: TIntegerField;
     QueryPadraoRAZAO_SOCIAL: TStringField;
     QueryPadraoN_FANTASIA: TStringField;
