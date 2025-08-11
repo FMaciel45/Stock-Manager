@@ -10,7 +10,9 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poScreenCenter
+  OnKeyPress = FormKeyPress
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -21,8 +23,6 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -128
-    ExplicitTop = -16
     object Label1: TLabel
       Left = 16
       Top = 15
@@ -36,7 +36,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label2: TLabel
+    object lbNomePesq: TLabel
       Left = 280
       Top = 15
       Width = 45
@@ -49,7 +49,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label3: TLabel
+    object lbFimPesq: TLabel
       Left = 790
       Top = 15
       Width = 26
@@ -62,7 +62,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label4: TLabel
+    object lbInicioPesq: TLabel
       Left = 664
       Top = 15
       Width = 40
@@ -81,6 +81,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       Width = 233
       Height = 23
       TabOrder = 0
+      OnChange = cbChavePesquisaChange
       Items.Strings = (
         'C'#243'digo'
         'Nome'
@@ -161,9 +162,6 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 312
-    ExplicitTop = 448
-    ExplicitWidth = 185
   end
   object QueryPesqPadrao: TFDQuery
     Connection = DM.Conexao

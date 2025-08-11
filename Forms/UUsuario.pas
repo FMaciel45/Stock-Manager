@@ -28,6 +28,7 @@ type
     QueryPadraoTIPO: TStringField;
     QueryPadraoCADASTRO: TDateField;
     procedure btNovoClick(Sender: TObject);
+    procedure btPesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,12 +42,28 @@ implementation
 
 {$R *.dfm}
 
+uses UPesqUsuario;
+
 procedure TFrmUsuario.btNovoClick(Sender: TObject);
 begin
   inherited;
 
   DBCadastro.Text:= DateToStr(now);
   DBNome.SetFocus;
+end;
+
+procedure TFrmUsuario.btPesquisarClick(Sender: TObject);
+begin
+  FrmPesqUsuario:= TFrmPesqUsuario.Create(self);
+  FrmPesqUsuario.ShowModal;
+
+  try
+  
+  finally
+    FrmPesqUsuario.Free;
+    FrmPesqUsuario:= nil;
+  end;
+
 end;
 
 end.

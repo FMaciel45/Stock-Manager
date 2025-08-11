@@ -168,6 +168,10 @@
             <Form>FrmPesquisaPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\UPesqUsuario.pas">
+            <Form>FrmPesqUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

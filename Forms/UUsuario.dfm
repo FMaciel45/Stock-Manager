@@ -91,7 +91,7 @@ inherited FrmUsuario: TFrmUsuario
     Height = 50
     TabOrder = 6
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 374
+    ExplicitTop = 389
     ExplicitHeight = 50
   end
   object DBId: TDBEdit [7]

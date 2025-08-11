@@ -18,9 +18,9 @@ type
     edNome: TEdit;
     mkInicio: TMaskEdit;
     mkFim: TMaskEdit;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
+    lbNomePesq: TLabel;
+    lbFimPesq: TLabel;
+    lbInicioPesq: TLabel;
     DBGrid1: TDBGrid;
     Panel2: TPanel;
     btTransferir: TBitBtn;
@@ -28,6 +28,8 @@ type
     btPesquisa: TBitBtn;
     QueryPesqPadrao: TFDQuery;
     dsPesqPadrao: TDataSource;
+    procedure cbChavePesquisaChange(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -42,5 +44,88 @@ implementation
 {$R *.dfm}
 
 uses UDataM;
+
+procedure TFrmPesquisaPadrao.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+
+  // Faz com que Enter tenha a mesma função do TAB
+  if key = #13  then
+    begin
+      Key:= #0;
+      Perform(wm_nextDlgCtl,0,0);
+    end;
+
+end;
+
+procedure TFrmPesquisaPadrao.cbChavePesquisaChange(Sender: TObject);
+begin
+  case cbChavePesquisa.ItemIndex of
+    0: begin
+      edNome.Visible := true;
+      edNome.SetFocus;
+
+      mkInicio.Visible := false;
+      mkFim.Visible:= false;
+
+      lbNomePesq.Visible := true;
+      lbInicioPesq.Visible := false;
+      lbFimPesq.Visible := false;
+      lbNomePesq.Caption := 'Digite o código';
+    end;
+
+    1: begin
+      edNome.Visible := true;
+      edNome.SetFocus;
+
+      mkInicio.Visible := false;
+      mkFim.Visible := false;
+
+      lbNomePesq.Visible := true;
+      lbInicioPesq.Visible := false;
+      lbFimPesq.Visible := false;
+      lbNomePesq.Caption := 'Digite o nome';
+    end;
+
+    2: begin
+      edNome.Visible := false;
+
+      mkInicio.Visible := true;
+      mkInicio.SetFocus;
+      mkFim.Visible := false;
+
+      lbNomePesq.Visible := false;
+      lbInicioPesq.Visible := true;
+      lbFimPesq.Visible := false;
+      lbInicioPesq.Caption := 'Digite a data';
+    end;
+
+    3: begin
+      edNome.Visible := false;
+
+      mkInicio.Visible := true;
+      mkFim.Visible := true;
+      mkInicio.SetFocus;
+
+      lbNomePesq.Visible := false;
+      lbInicioPesq.Visible := true;
+      lbFimPesq.Visible := false;
+      lbInicioPesq.Caption := 'Digite o período';
+    end;
+
+    4: begin
+      edNome.Visible := false;
+
+      mkInicio.Visible := false;
+      mkFim.Visible := false;
+
+      lbNomePesq.Visible := false;
+      lbInicioPesq.Visible := true;
+      lbFimPesq.Visible := false;
+      lbInicioPesq.Caption := 'Selecione "Pesquisar"';
+    end;
+
+  end;
+
+end;
 
 end.
