@@ -137,9 +137,9 @@ procedure TFrmPadraoCadastro.FormKeyPress(Sender: TObject; var Key: Char);
 begin
 
   // Faz com que Enter tenha a mesma função do TAB
-  if key = #13  then
+  if key=#13  then
     begin
-      Key:= #0;
+      Key:=#0;
       Perform(wm_nextDlgCtl,0,0);
     end;
 

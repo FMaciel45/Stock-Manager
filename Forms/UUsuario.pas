@@ -48,20 +48,20 @@ procedure TFrmUsuario.btNovoClick(Sender: TObject);
 begin
   inherited;
 
-  DBCadastro.Text:= DateToStr(now);
+  DBCadastro.Text:=DateToStr(now);
   DBNome.SetFocus;
 end;
 
 procedure TFrmUsuario.btPesquisarClick(Sender: TObject);
 begin
-  FrmPesqUsuario:= TFrmPesqUsuario.Create(self);
+  FrmPesqUsuario:=TFrmPesqUsuario.Create(self);
   FrmPesqUsuario.ShowModal;
 
   try
   
   finally
     FrmPesqUsuario.Free;
-    FrmPesqUsuario:= nil;
+    FrmPesqUsuario:=nil;
   end;
 
 end;

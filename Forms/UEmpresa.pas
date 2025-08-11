@@ -76,7 +76,7 @@ implementation
 procedure TFrmEmpresa.btClearClick(Sender: TObject); // Limpa a imagem inserida (Logo)
 begin
   QueryPadrao.Edit;
-  QueryPadraoLOGO.AsVariant:= null;
+  QueryPadraoLOGO.AsVariant:=null;
   QueryPadrao.Refresh;
   MessageDlg('Imagem deletada!', mtInformation, [mbOk], 0);
 end;
@@ -95,7 +95,7 @@ procedure TFrmEmpresa.btNovoClick(Sender: TObject);
 begin
   inherited;
 
-  DBCadastro.Text:= DateToStr(now);
+  DBCadastro.Text:=DateToStr(now);
   DBRazaoSocial.SetFocus;
 end;
 

@@ -60,7 +60,7 @@ procedure TFrmProduto.btNovoClick(Sender: TObject);
 begin
   inherited;
 
-  DBCadastroProduto.Text:= DateToStr(now);
+  DBCadastroProduto.Text:=DateToStr(now);
   DBIdProduto.SetFocus
 end;
 

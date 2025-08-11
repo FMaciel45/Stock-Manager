@@ -39,7 +39,7 @@ procedure TFrmFormasPgto.btNovoClick(Sender: TObject);
 begin
   inherited;
 
-  DBCadastroFormaPgto.Text:= DateToStr(now);
+  DBCadastroFormaPgto.Text:=DateToStr(now);
   DBDescricaoFormaPgto.SetFocus
 end;
 

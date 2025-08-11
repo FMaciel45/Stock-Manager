@@ -66,7 +66,7 @@ procedure TFrmFornecedor.btNovoClick(Sender: TObject);
 begin
   inherited;
 
-  DBCadastroFornecedor.Text:= DateToStr(now);
+  DBCadastroFornecedor.Text:=DateToStr(now);
   DBNomeFornecedor.SetFocus;
 end;
 

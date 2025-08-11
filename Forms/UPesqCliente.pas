@@ -1,4 +1,4 @@
-unit UPesqUsuario;
+unit UPesqCliente;
 
 interface
 
@@ -11,13 +11,19 @@ uses
   Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls;
 
 type
-  TFrmPesqUsuario = class(TFrmPesquisaPadrao)
-    QueryPesqPadraoID_USUARIO: TIntegerField;
+  TFrmPesqCliente = class(TFrmPesquisaPadrao)
+    QueryPesqPadraoID_CLIENTE: TIntegerField;
     QueryPesqPadraoNOME: TStringField;
-    QueryPesqPadraoTIPO: TStringField;
+    QueryPesqPadraoENDERECO: TStringField;
+    QueryPesqPadraoNUMERO: TIntegerField;
+    QueryPesqPadraoBAIRRO: TStringField;
+    QueryPesqPadraoCIDADE: TStringField;
+    QueryPesqPadraoUF: TStringField;
+    QueryPesqPadraoCEP: TStringField;
+    QueryPesqPadraoTELEFONE: TStringField;
+    QueryPesqPadraoCPF: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
     procedure btPesquisaClick(Sender: TObject);
-
   private
     { Private declarations }
   public
@@ -25,13 +31,13 @@ type
   end;
 
 var
-  FrmPesqUsuario: TFrmPesqUsuario;
+  FrmPesqCliente: TFrmPesqCliente;
 
 implementation
 
 {$R *.dfm}
 
-procedure TFrmPesqUsuario.btPesquisaClick(Sender: TObject);
+procedure TFrmPesqCliente.btPesquisaClick(Sender: TObject);
 begin
   QueryPesqPadrao.Close;
 
@@ -39,12 +45,23 @@ begin
   QueryPesqPadrao.Params.Clear;
   QueryPesqPadrao.SQL.Clear;
 
-  QueryPesqPadrao.SQL.Add('SELECT ID_USUARIO, NOME, TIPO, CADASTRO FROM USUARIO');
+  QueryPesqPadrao.SQL.Add('SELECT ID_CLIENTE, '
+  + 'NOME, '
+  + 'ENDERECO, '
+  + 'NUMERO, '
+  + 'BAIRRO, '
+  + 'CIDADE, '
+  + 'UF, '
+  + 'CEP, '
+  + 'TELEFONE, '
+  + 'CPF, '
+  + 'CADASTRO '
+  + 'FROM CLIENTES');
 
   case cbChavePesquisa.ItemIndex of
     0: begin // Pesquisa por ID
-      QueryPesqPadrao.SQL.Add('WHERE ID_USUARIO=:PID_USUARIO');
-      QueryPesqPadrao.ParamByName('PID_USUARIO').AsString:=edNome.Text;
+      QueryPesqPadrao.SQL.Add('WHERE ID_CLIENTE=:PID_CLIENTE');
+      QueryPesqPadrao.ParamByName('PID_CLIENTE').AsString:=edNome.Text;
     end;
 
     1: begin // Pesquisa por Nome
@@ -60,11 +77,11 @@ begin
     3: begin // Pesquisa por período de tempo
       QueryPesqPadrao.SQL.Add('WHERE CADASTRO BETWEEN:PINICIO AND:PFIM');
       QueryPesqPadrao.ParamByName('PINICIO').AsDate:=StrToDate(mkInicio.Text);
-      QueryPesqPadrao.ParamByName('PFIM').AsDate:=StrToDate(mkFim.Text);
+      QueryPesqPadrao.ParamByName('PFIM').AsDate:= StrToDate(mkFim.Text);
     end;
 
     4: begin
-      QueryPesqPadrao.SQL.Add('ORDER BY ID_USUARIO');
+      QueryPesqPadrao.SQL.Add('ORDER BY ID_CLIENTE');
     end;
 
   end;
