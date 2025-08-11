@@ -49,6 +49,7 @@ type
     procedure AbreTelaEmpresa();
     procedure AbreTelaClientes();
     procedure AbreTelaFornecedor();
+    procedure AbreTelaProduto();
 
     procedure btEmpresaClick(Sender: TObject);
     procedure MenuEmpresaClick(Sender: TObject);
@@ -57,6 +58,8 @@ type
     procedure MenuClienteClick(Sender: TObject);
     procedure btFornecedorClick(Sender: TObject);
     procedure MenuFornecedorClick(Sender: TObject);
+    procedure btProdutoClick(Sender: TObject);
+    procedure MenuProdutoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,7 +73,7 @@ implementation
 
 {$R *.dfm}
 
-uses UUsuario, UEmpresa, UCliente, UFornecedor;
+uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -125,6 +128,19 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.AbreTelaProduto;
+begin
+  FrmProduto:= TFrmProduto.Create(self);
+  FrmProduto.ShowModal;
+
+  try
+
+  finally
+    FrmProduto.Free;
+    FrmProduto:= nil;
+  end;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
@@ -162,7 +178,17 @@ end;
 
 procedure TFrmPrincipal.MenuFornecedorClick(Sender: TObject);
 begin
-  AbreTelaFornecedor
+  AbreTelaFornecedor;
+end;
+
+procedure TFrmPrincipal.btProdutoClick(Sender: TObject);
+begin
+  AbreTelaProduto;
+end;
+
+procedure TFrmPrincipal.MenuProdutoClick(Sender: TObject);
+begin
+  AbreTelaProduto;
 end;
 
 procedure TFrmPrincipal.btSairClick(Sender: TObject);
