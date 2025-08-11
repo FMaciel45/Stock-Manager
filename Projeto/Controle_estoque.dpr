@@ -9,7 +9,8 @@ uses
   UEmpresa in '..\Forms\UEmpresa.pas' {FrmEmpresa},
   UCliente in '..\Forms\UCliente.pas' {FrmCliente},
   UFornecedor in '..\Forms\UFornecedor.pas' {FrmFornecedor},
-  UProduto in '..\Forms\UProduto.pas' {FrmProduto};
+  UProduto in '..\Forms\UProduto.pas' {FrmProduto},
+  UFormasPgto in '..\Forms\UFormasPgto.pas' {FrmFormasPgto};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -22,6 +23,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TFrmProduto, FrmProduto);
   Application.Run;
 end.

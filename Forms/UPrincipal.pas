@@ -50,6 +50,7 @@ type
     procedure AbreTelaClientes();
     procedure AbreTelaFornecedor();
     procedure AbreTelaProduto();
+    procedure AbreTelaFormasPgto();
 
     procedure btEmpresaClick(Sender: TObject);
     procedure MenuEmpresaClick(Sender: TObject);
@@ -60,6 +61,8 @@ type
     procedure MenuFornecedorClick(Sender: TObject);
     procedure btProdutoClick(Sender: TObject);
     procedure MenuProdutoClick(Sender: TObject);
+    procedure btFormaPgtoClick(Sender: TObject);
+    procedure MenuFormasPgtoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,7 +76,7 @@ implementation
 
 {$R *.dfm}
 
-uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto;
+uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -141,6 +144,19 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.AbreTelaFormasPgto;
+begin
+  FrmFormasPgto:= TFrmFormasPgto.Create(self);
+  FrmFormasPgto.ShowModal;
+
+  try
+
+  finally
+    FrmFormasPgto.Free;
+    FrmFormasPgto:= nil;
+  end;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
@@ -189,6 +205,16 @@ end;
 procedure TFrmPrincipal.MenuProdutoClick(Sender: TObject);
 begin
   AbreTelaProduto;
+end;
+
+procedure TFrmPrincipal.btFormaPgtoClick(Sender: TObject);
+begin
+  AbreTelaFormasPgto;
+end;
+
+procedure TFrmPrincipal.MenuFormasPgtoClick(Sender: TObject);
+begin
+  AbreTelaFormasPgto;
 end;
 
 procedure TFrmPrincipal.btSairClick(Sender: TObject);

@@ -213,7 +213,7 @@ inherited FrmProduto: TFrmProduto
     object QueryPadraoID_PRODUTO: TIntegerField
       FieldName = 'ID_PRODUTO'
       Origin = 'ID_PRODUTO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ProviderFlags = [pfInWhere, pfInKey]
       Required = True
     end
     object QueryPadraoPRODUTO_DESCRICAO: TStringField
