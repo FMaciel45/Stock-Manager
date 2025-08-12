@@ -76,6 +76,12 @@ begin
   FrmPesqCliente.ShowModal;
 
   try
+    if FrmPesqCliente.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_CLIENTE', FrmPesqCliente.codigo, []);
+      end;
+
 
   finally
     FrmPesqCliente.Free;

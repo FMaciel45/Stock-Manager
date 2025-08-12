@@ -18,6 +18,12 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
     end
     inherited cbChavePesquisa: TComboBox
       StyleElements = [seFont, seClient, seBorder]
+      Items.Strings = (
+        'C'#243'digo'
+        'Nome'
+        'Cadastro'
+        'Per'#237'odo'
+        'Todos')
     end
     inherited edNome: TEdit
       StyleElements = [seFont, seClient, seBorder]
@@ -27,6 +33,9 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
     end
     inherited mkFim: TMaskEdit
       StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited btTransferir: TBitBtn
+      OnClick = btTransferirClick
     end
     inherited btPesquisa: TBitBtn
       OnClick = btPesquisaClick

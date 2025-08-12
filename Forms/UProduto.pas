@@ -73,6 +73,11 @@ begin
   FrmPesqProduto.ShowModal;
 
   try
+    if FrmPesqProduto.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_PRODUTO', FrmPesqProduto.codigo, []);
+      end;
 
   finally
     FrmPesqProduto.Free;

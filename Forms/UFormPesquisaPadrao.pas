@@ -8,7 +8,8 @@ uses
   Data.DB, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, frxSmartMemo, frxClass, frxDBSet,
+  frCoreClasses;
 
 type
   TFrmPesquisaPadrao = class(TForm)
@@ -28,13 +29,18 @@ type
     btPesquisa: TBitBtn;
     QueryPesqPadrao: TFDQuery;
     dsPesqPadrao: TDataSource;
+    RelPesqPadrao: TfrxReport;
+    DataSetPesqPadrao: TfrxDBDataset;
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure DBGrid1DblClick(Sender: TObject);
+
   private
     { Private declarations }
   public
     { Public declarations }
+    codigo:Integer;
   end;
 
 var
@@ -45,6 +51,11 @@ implementation
 {$R *.dfm}
 
 uses UDataM;
+
+procedure TFrmPesquisaPadrao.DBGrid1DblClick(Sender: TObject);
+begin
+  btTransferir.Click;
+end;
 
 procedure TFrmPesquisaPadrao.FormClose(Sender: TObject;
   var Action: TCloseAction);

@@ -17,7 +17,7 @@ type
     QueryPesqPadraoTIPO: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
     procedure btPesquisaClick(Sender: TObject);
-
+    procedure btTransferirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,6 +79,17 @@ begin
   else
     abort;
 
+end;
+
+procedure TFrmPesqUsuario.btTransferirClick(Sender: TObject);
+begin
+  if QueryPesqPadrao.RecordCount > 0 then
+    begin
+      codigo:=QueryPesqPadraoID_USUARIO.AsInteger;
+    end
+
+  else
+    abort;
 end;
 
 end.

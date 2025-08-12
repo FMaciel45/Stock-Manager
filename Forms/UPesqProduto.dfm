@@ -35,6 +35,9 @@ inherited FrmPesqProduto: TFrmPesqProduto
     inherited mkFim: TMaskEdit
       StyleElements = [seFont, seClient, seBorder]
     end
+    inherited btTransferir: TBitBtn
+      OnClick = btTransferirClick
+    end
     inherited btPesquisa: TBitBtn
       OnClick = btPesquisaClick
     end

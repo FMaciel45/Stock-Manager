@@ -122,6 +122,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       Width = 75
       Height = 40
       Caption = '&Transferir'
+      ModalResult = 1
       TabOrder = 4
     end
     object btImprimir: TBitBtn
@@ -154,6 +155,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
   end
   object Panel2: TPanel
     Left = 0
@@ -173,6 +175,37 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
   object dsPesqPadrao: TDataSource
     DataSet = QueryPesqPadrao
     Left = 688
+    Top = 208
+  end
+  object RelPesqPadrao: TfrxReport
+    Version = '2025.2.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection, pbWatermarks]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45881.704703020830000000
+    ReportOptions.LastChange = 45881.704703020830000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 472
+    Top = 144
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    Watermarks = <>
+  end
+  object DataSetPesqPadrao: TfrxDBDataset
+    UserName = 'DataSetPesqPadrao'
+    CloseDataSource = False
+    DataSet = QueryPesqPadrao
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 472
     Top = 208
   end
 end

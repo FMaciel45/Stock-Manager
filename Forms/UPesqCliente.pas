@@ -24,6 +24,7 @@ type
     QueryPesqPadraoCPF: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
     procedure btPesquisaClick(Sender: TObject);
+    procedure btTransferirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -91,6 +92,18 @@ begin
   if QueryPesqPadrao.isEmpty then
     begin
       MessageDlg('Registro não encontrado', mtInformation, [mbOk], 0);
+    end
+
+  else
+    abort;
+
+end;
+
+procedure TFrmPesqCliente.btTransferirClick(Sender: TObject);
+begin
+  if QueryPesqPadrao.RecordCount > 0 then
+    begin
+      codigo:=QueryPesqPadraoID_CLIENTE.AsInteger;
     end
 
   else

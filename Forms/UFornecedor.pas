@@ -79,6 +79,11 @@ begin
   FrmPesqFornecedor.ShowModal;
 
   try
+    if FrmPesqFornecedor.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_FORNECEDOR', FrmPesqFornecedor.codigo, []);
+      end;
 
   finally
     FrmPesqFornecedor.Free;

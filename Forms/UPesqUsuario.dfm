@@ -38,11 +38,15 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 112
     end
+    inherited btTransferir: TBitBtn
+      OnClick = btTransferirClick
+    end
     inherited btPesquisa: TBitBtn
       OnClick = btPesquisaClick
     end
   end
   inherited DBGrid1: TDBGrid
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Expanded = False
