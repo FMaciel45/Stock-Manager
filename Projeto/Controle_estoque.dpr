@@ -13,7 +13,8 @@ uses
   UFormasPgto in '..\Forms\UFormasPgto.pas' {FrmFormasPgto},
   UFormPesquisaPadrao in '..\Forms\UFormPesquisaPadrao.pas' {FrmPesquisaPadrao},
   UPesqUsuario in '..\Forms\UPesqUsuario.pas' {FrmPesqUsuario},
-  UPesqCliente in '..\Forms\UPesqCliente.pas' {FrmPesqCliente};
+  UPesqCliente in '..\Forms\UPesqCliente.pas' {FrmPesqCliente},
+  UPesqFornecedor in '..\Forms\UPesqFornecedor.pas' {FrmPesqFornecedor};
 
 {$R *.res}
 {$IFDEF DEBUG}

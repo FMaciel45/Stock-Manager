@@ -146,6 +146,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     Width = 1197
     Height = 364
     Align = alClient
+    DataSource = dsPesqPadrao
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

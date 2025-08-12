@@ -70,6 +70,9 @@ begin
       lbNomePesq.Visible:=true;
       lbInicioPesq.Visible:=false;
       lbFimPesq.Visible:=false;
+
+      edNome.Clear;
+
       lbNomePesq.Caption:='Digite o código';
     end;
 
@@ -83,6 +86,9 @@ begin
       lbNomePesq.Visible:=true;
       lbInicioPesq.Visible:=false;
       lbFimPesq.Visible:=false;
+
+      edNome.Clear;
+
       lbNomePesq.Caption:='Digite o nome';
     end;
 
@@ -96,6 +102,9 @@ begin
       lbNomePesq.Visible:=false;
       lbInicioPesq.Visible:=true;
       lbFimPesq.Visible:=false;
+
+      mkInicio.Clear;
+
       lbInicioPesq.Caption:='Digite a data';
     end;
 
@@ -109,6 +118,10 @@ begin
       lbNomePesq.Visible:=false;
       lbInicioPesq.Visible:=true;
       lbFimPesq.Visible:=false;
+
+      mkInicio.Clear;
+      mkFim.Clear;
+
       lbInicioPesq.Caption:='Digite o período';
     end;
 
