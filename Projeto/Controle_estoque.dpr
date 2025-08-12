@@ -14,7 +14,8 @@ uses
   UFormPesquisaPadrao in '..\Forms\UFormPesquisaPadrao.pas' {FrmPesquisaPadrao},
   UPesqUsuario in '..\Forms\UPesqUsuario.pas' {FrmPesqUsuario},
   UPesqCliente in '..\Forms\UPesqCliente.pas' {FrmPesqCliente},
-  UPesqFornecedor in '..\Forms\UPesqFornecedor.pas' {FrmPesqFornecedor};
+  UPesqFornecedor in '..\Forms\UPesqFornecedor.pas' {FrmPesqFornecedor},
+  UPesqProduto in '..\Forms\UPesqProduto.pas' {FrmPesqProduto};
 
 {$R *.res}
 {$IFDEF DEBUG}

@@ -43,7 +43,6 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
     end
   end
   inherited DBGrid1: TDBGrid
-    DataSource = dsPesqPadrao
     Columns = <
       item
         Expanded = False

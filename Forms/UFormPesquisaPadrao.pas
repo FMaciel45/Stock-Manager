@@ -30,6 +30,7 @@ type
     dsPesqPadrao: TDataSource;
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -44,6 +45,12 @@ implementation
 {$R *.dfm}
 
 uses UDataM;
+
+procedure TFrmPesquisaPadrao.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  QueryPesqPadrao.Close;
+end;
 
 procedure TFrmPesquisaPadrao.FormKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -135,6 +142,22 @@ begin
       lbInicioPesq.Visible:=true;
       lbFimPesq.Visible:=false;
       lbInicioPesq.Caption:='Selecione "Pesquisar"';
+    end;
+
+    5: begin
+      edNome.Visible:=true;
+      edNome.SetFocus;
+
+      mkInicio.Visible:=false;
+      mkFim.Visible:=false;
+
+      lbNomePesq.Visible:=true;
+      lbInicioPesq.Visible:=false;
+      lbFimPesq.Visible:=false;
+
+      edNome.Clear;
+
+      lbNomePesq.Caption:='Digite o código do fornecedor';
     end;
 
   end;

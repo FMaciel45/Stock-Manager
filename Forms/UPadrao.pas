@@ -36,6 +36,7 @@ type
     procedure TratarBotoes();
     procedure btSairClick(Sender: TObject);
     procedure btPesquisarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -131,6 +132,12 @@ end;
 procedure TFrmPadraoCadastro.btSairClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TFrmPadraoCadastro.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  QueryPadrao.Close;
 end;
 
 procedure TFrmPadraoCadastro.FormKeyPress(Sender: TObject; var Key: Char);

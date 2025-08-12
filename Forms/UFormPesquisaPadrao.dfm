@@ -12,6 +12,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
   Font.Style = []
   KeyPreview = True
   Position = poScreenCenter
+  OnClose = FormClose
   OnKeyPress = FormKeyPress
   TextHeight = 15
   object Panel1: TPanel

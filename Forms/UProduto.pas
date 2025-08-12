@@ -43,6 +43,7 @@ type
     DBUnidadeProduto: TDBComboBox;
     QueryPadraoID_PRODUTO: TIntegerField;
     procedure btNovoClick(Sender: TObject);
+    procedure btPesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,12 +57,27 @@ implementation
 
 {$R *.dfm}
 
+uses UPesqProduto;
+
 procedure TFrmProduto.btNovoClick(Sender: TObject);
 begin
   inherited;
 
   DBCadastroProduto.Text:=DateToStr(now);
   DBIdProduto.SetFocus
+end;
+
+procedure TFrmProduto.btPesquisarClick(Sender: TObject);
+begin
+  FrmPesqProduto:= TFrmPesqProduto.Create(self);
+  FrmPesqProduto.ShowModal;
+
+  try
+
+  finally
+    FrmPesqProduto.Free;
+    FrmPesqProduto:= nil;
+  end;
 end;
 
 end.
