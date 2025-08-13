@@ -45,6 +45,23 @@ type
     Label8: TLabel;
     DBNome: TDBLookupComboBox;
     DBDescricao: TDBLookupComboBox;
+    QueryPadraoItemID_SEQUENCIA: TIntegerField;
+    QueryPadraoItemID_COMPRA: TIntegerField;
+    QueryPadraoItemID_PRODUTO: TIntegerField;
+    QueryPadraoItemQTDE: TFMTBCDField;
+    QueryPadraoItemVL_CUSTO: TFMTBCDField;
+    QueryPadraoItemTOTAL_ITEM: TFMTBCDField;
+    Label9: TLabel;
+    DBEdit1: TDBEdit;
+    Label10: TLabel;
+    DBEdit2: TDBEdit;
+    Label11: TLabel;
+    DBEdit3: TDBEdit;
+    Label12: TLabel;
+    DBEdit4: TDBEdit;
+    QueryPadraoItemDESCONTO: TFMTBCDField;
+    Label13: TLabel;
+    DBEdit5: TDBEdit;
     procedure btNovoClick(Sender: TObject);
   private
     { Private declarations }
