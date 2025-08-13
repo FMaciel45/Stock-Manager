@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls;
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls,
+  frxSmartMemo, frxClass, frxDBSet, frCoreClasses;
 
 type
   TFrmPesqFornecedor = class(TFrmPesquisaPadrao)
@@ -26,6 +27,7 @@ type
     QueryPesqPadraoCADASTRO: TDateField;
     procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +40,26 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmPesqFornecedor.btImprimirClick(Sender: TObject);
+var caminho: string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqFornecedor.RelPesqPadrao.LoadFromFile(caminho + 'RelFornecedor.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelFornecedor.fr3');
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
+end;
 
 procedure TFrmPesqFornecedor.btPesquisaClick(Sender: TObject);
 begin

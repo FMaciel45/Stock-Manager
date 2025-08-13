@@ -336,7 +336,7 @@ inherited FrmPesqCliente: TFrmPesqCliente
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 26.456710000000000000
+        Height = 22.677180000000000000
         Top = 139.842610000000000000
         Width = 642.520100000000000000
         object Memo2: TfrxMemoView
@@ -419,7 +419,7 @@ inherited FrmPesqCliente: TFrmPesqCliente
         FillGap.Right = 0
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 226.771800000000000000
+        Top = 222.992270000000000000
         Width = 642.520100000000000000
         DataSet = DataSetPesqPadrao
         DataSetName = 'frxDB_clientes'

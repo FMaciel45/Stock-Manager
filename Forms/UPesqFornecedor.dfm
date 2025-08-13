@@ -37,6 +37,9 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
     inherited btTransferir: TBitBtn
       OnClick = btTransferirClick
     end
+    inherited btImprimir: TBitBtn
+      OnClick = btImprimirClick
+    end
     inherited btPesquisa: TBitBtn
       OnClick = btPesquisaClick
     end
@@ -129,6 +132,7 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
     StyleElements = [seFont, seClient, seBorder]
   end
   inherited QueryPesqPadrao: TFDQuery
+    Active = True
     SQL.Strings = (
       'SELECT '
       '  ID_FORNECEDOR,'
@@ -222,5 +226,410 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
   inherited dsPesqPadrao: TDataSource
     Left = 512
     Top = 296
+  end
+  inherited RelPesqPadrao: TfrxReport
+    ReportOptions.CreateDate = 45881.704703020800000000
+    ReportOptions.LastChange = 45882.406791840300000000
+    Datasets = <
+      item
+        DataSet = DataSetPesqPadrao
+        DataSetName = 'frxDB_fornecedores'
+      end>
+    Variables = <>
+    Style = <>
+    Watermarks = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 20.000000000000000000
+      RightMargin = 20.000000000000000000
+      TopMargin = 20.000000000000000000
+      BottomMargin = 20.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 98.267716535433100000
+        Top = 18.897650000000000000
+        Width = 642.520100000000000000
+        object Memo1: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Top = 49.133889060000000000
+          Width = 642.520080566406300000
+          Height = 26.456711670000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Relat'#243'rio de Fornecedores do Sistema  ')
+          ParentFont = False
+        end
+        object MemoDate: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 442.205010000000000000
+          Top = 18.897650000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[Date]')
+          ParentFont = False
+        end
+        object MemoTime: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 525.354670000000000000
+          Top = 18.897650000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[Time]')
+          ParentFont = False
+        end
+        object MemoPage: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Top = 18.897650000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[Page]')
+          ParentFont = False
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 22.677184890000000000
+        Top = 139.842610000000000000
+        Width = 642.520100000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = -0.000000660000000000
+          Top = 3.779536610000000000
+          Width = 52.913418830000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'ID')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 52.913420770000000000
+          Top = 3.779536610000000000
+          Width = 185.196963100000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Nome')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 238.110376120000000000
+          Top = 3.779525590000000000
+          Width = 158.740260730000000000
+          Height = 18.897659300000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'CNPJ')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 396.850663050000000000
+          Top = 3.779536610000000000
+          Width = 128.503990210000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Telefone')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 525.354680350000000000
+          Top = 3.779536610000000000
+          Width = 117.165400210000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Cadastro')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 222.992270000000000000
+        Width = 642.520100000000000000
+        DataSet = DataSetPesqPadrao
+        DataSetName = 'frxDB_fornecedores'
+        RowCount = 0
+        object MemofrxDB_fornecedoresCNPJ: TfrxMemoView
+          IndexTag = 1
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 238.110390000000000000
+          Top = 3.779530000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'CNPJ'
+          DataSet = DataSetPesqPadrao
+          DataSetName = 'frxDB_fornecedores'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxDB_fornecedores."CNPJ"]')
+          ParentFont = False
+        end
+        object MemofrxDB_fornecedoresTELEFONE: TfrxMemoView
+          IndexTag = 1
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 396.850650000000000000
+          Top = 3.779530000000000000
+          Width = 128.504020000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'TELEFONE'
+          DataSet = DataSetPesqPadrao
+          DataSetName = 'frxDB_fornecedores'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxDB_fornecedores."TELEFONE"]')
+          ParentFont = False
+        end
+        object MemofrxDB_fornecedoresCADASTRO: TfrxMemoView
+          IndexTag = 1
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 525.354670000000000000
+          Top = 3.779530000000000000
+          Width = 117.165410566406300000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'CADASTRO'
+          DataSet = DataSetPesqPadrao
+          DataSetName = 'frxDB_fornecedores'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxDB_fornecedores."CADASTRO"]')
+          ParentFont = False
+        end
+        object MemofrxDB_fornecedoresNOME: TfrxMemoView
+          IndexTag = 1
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 52.913420000000000000
+          Top = 3.779530000000000000
+          Width = 185.196970000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'NOME'
+          DataSet = DataSetPesqPadrao
+          DataSetName = 'frxDB_fornecedores'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxDB_fornecedores."NOME"]')
+          ParentFont = False
+        end
+        object MemofrxDB_fornecedoresID_FORNECEDOR: TfrxMemoView
+          IndexTag = 1
+          Align = baWidth
+          AllowVectorExport = True
+          Top = 3.779530000000000000
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'ID_FORNECEDOR'
+          DataSet = DataSetPesqPadrao
+          DataSetName = 'frxDB_fornecedores'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxDB_fornecedores."ID_FORNECEDOR"]')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  inherited DataSetPesqPadrao: TfrxDBDataset
+    UserName = 'frxDB_fornecedores'
+    Left = 472
+    Top = 208
+    FieldDefs = <
+      item
+        FieldName = 'ID_FORNECEDOR'
+      end
+      item
+        FieldName = 'NOME'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'ENDERECO'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'NUMERO'
+      end
+      item
+        FieldName = 'BAIRRO'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'CIDADE'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'UF'
+        FieldType = fftString
+      end
+      item
+        FieldName = 'CEP'
+        FieldType = fftString
+        Size = 16
+      end
+      item
+        FieldName = 'TELEFONE'
+        FieldType = fftString
+        Size = 16
+      end
+      item
+        FieldName = 'CNPJ'
+        FieldType = fftString
+        Size = 20
+      end
+      item
+        FieldName = 'EMAIL'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'CADASTRO'
+        FieldType = fftDateTime
+      end>
   end
 end

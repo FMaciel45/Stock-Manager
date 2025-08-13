@@ -1,7 +1,6 @@
 inherited FrmPesqUsuario: TFrmPesqUsuario
   Caption = 'Pesquisa de Usu'#225'rios'
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitLeft = -14
   TextHeight = 15
   inherited Panel1: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -146,7 +145,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
       RightMargin = 20.000000000000000000
       TopMargin = 20.000000000000000000
       BottomMargin = 20.000000000000000000
-      Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+      Frame.Typ = []
       MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
@@ -356,7 +355,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           AllowVectorExport = True
           Left = 0.000000730000000000
           Top = 3.779534080000000000
-          Width = 94.488250730000000000
+          Width = 143.622140730000000000
           Height = 18.897644040000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -365,7 +364,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          Frame.Typ = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
             'C'#243'digo ')
           ParentFont = False
@@ -374,7 +373,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           AllowVectorExport = True
           Left = 143.622139880000000000
           Top = 3.779525590000000000
-          Width = 94.488243100000000000
+          Width = 166.299313100000000000
           Height = 18.897659300000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -383,7 +382,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          Frame.Typ = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
             'Nome')
           ParentFont = False
@@ -392,7 +391,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           AllowVectorExport = True
           Left = 309.921463990000000000
           Top = 3.779525590000000000
-          Width = 94.488250730000000000
+          Width = 162.519790730000000000
           Height = 18.897659300000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -401,7 +400,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          Frame.Typ = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
             'Tipo')
           ParentFont = False
@@ -410,7 +409,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           AllowVectorExport = True
           Left = 472.441235220000000000
           Top = 3.779525590000000000
-          Width = 117.165430730000000000
+          Width = 170.078850730000000000
           Height = 18.897659300000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -419,7 +418,7 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          Frame.Typ = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
             'Data de cadastro')
           ParentFont = False
