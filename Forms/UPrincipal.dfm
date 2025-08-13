@@ -3208,6 +3208,7 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = btCompraClick
     end
     object btVenda: TSpeedButton
       Left = 827
@@ -5391,6 +5392,7 @@ object FrmPrincipal: TFrmPrincipal
       Caption = 'Movimentos'
       object Compras1: TMenuItem
         Caption = 'C&ompras'
+        OnClick = Compras1Click
       end
       object Vendas1: TMenuItem
         Caption = '&Vendas'
