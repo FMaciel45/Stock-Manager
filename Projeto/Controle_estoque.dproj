@@ -184,6 +184,10 @@
             <Form>FrmPesqProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\UMovimentoPadrao.pas">
+            <Form>FrmPadraoMovimento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

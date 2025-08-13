@@ -15,7 +15,8 @@ uses
   UPesqUsuario in '..\Forms\UPesqUsuario.pas' {FrmPesqUsuario},
   UPesqCliente in '..\Forms\UPesqCliente.pas' {FrmPesqCliente},
   UPesqFornecedor in '..\Forms\UPesqFornecedor.pas' {FrmPesqFornecedor},
-  UPesqProduto in '..\Forms\UPesqProduto.pas' {FrmPesqProduto};
+  UPesqProduto in '..\Forms\UPesqProduto.pas' {FrmPesqProduto},
+  UMovimentoPadrao in '..\Forms\UMovimentoPadrao.pas' {FrmPadraoMovimento};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -28,5 +29,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmPadraoMovimento, FrmPadraoMovimento);
   Application.Run;
 end.
