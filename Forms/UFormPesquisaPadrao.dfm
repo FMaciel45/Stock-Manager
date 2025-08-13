@@ -14,6 +14,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
   Position = poScreenCenter
   OnClose = FormClose
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   TextHeight = 15
   object Panel1: TPanel
     Left = 0

@@ -229,7 +229,7 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
-    ReportOptions.LastChange = 45882.406791840300000000
+    ReportOptions.LastChange = 45882.431260937500000000
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -284,7 +284,7 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
         object MemoDate: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 442.205010000000000000
+          Left = 480.000310000000000000
           Top = 18.897650000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -304,7 +304,7 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
         object MemoTime: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 525.354670000000000000
+          Left = 563.149970000000000000
           Top = 18.897650000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000

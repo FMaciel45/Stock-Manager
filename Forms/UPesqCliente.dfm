@@ -272,7 +272,7 @@ inherited FrmPesqCliente: TFrmPesqCliente
         object MemoDate: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 442.205010000000000000
+          Left = 480.000310000000000000
           Top = 18.897650000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -292,7 +292,7 @@ inherited FrmPesqCliente: TFrmPesqCliente
         object MemoTime: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 525.354670000000000000
+          Left = 563.149970000000000000
           Top = 18.897650000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000

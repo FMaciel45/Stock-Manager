@@ -36,6 +36,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
 
   private
     { Private declarations }
@@ -74,6 +75,11 @@ begin
       Perform(wm_nextDlgCtl,0,0);
     end;
 
+end;
+
+procedure TFrmPesquisaPadrao.FormShow(Sender: TObject);
+begin
+  QueryPesqPadrao.Close;
 end;
 
 procedure TFrmPesquisaPadrao.cbChavePesquisaChange(Sender: TObject);

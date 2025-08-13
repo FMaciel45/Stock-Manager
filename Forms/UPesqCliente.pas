@@ -9,7 +9,8 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, Vcl.ExtCtrls,
-  frxSmartMemo, frxClass, frxDBSet, frCoreClasses;
+  frxSmartMemo, frxClass, frxDBSet, frCoreClasses, frxExportBaseDialog,
+  frxExportPDF;
 
 type
   TFrmPesqCliente = class(TFrmPesquisaPadrao)
