@@ -52,17 +52,24 @@ type
     QueryPadraoItemVL_CUSTO: TFMTBCDField;
     QueryPadraoItemTOTAL_ITEM: TFMTBCDField;
     Label9: TLabel;
-    DBEdit1: TDBEdit;
+    DBIdProduto: TDBEdit;
     Label10: TLabel;
-    DBEdit2: TDBEdit;
+    DBQuantidade: TDBEdit;
     Label11: TLabel;
-    DBEdit3: TDBEdit;
+    DBCusto: TDBEdit;
     Label12: TLabel;
-    DBEdit4: TDBEdit;
+    DBTotalItem: TDBEdit;
     QueryPadraoItemDESCONTO: TFMTBCDField;
     Label13: TLabel;
-    DBEdit5: TDBEdit;
+    DBDesconto: TDBEdit;
+    QueryProduto: TFDQuery;
+    QueryPadraoItemDESCRICAO: TStringField;
+    QueryPadraoItemSUBOTAL: TAggregateField;
+    DBEdit1: TDBEdit;
     procedure btNovoClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure DBIdProdutoExit(Sender: TObject);
+    procedure btOkClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +85,20 @@ implementation
 
 uses UDataM;
 
+procedure TFrmCompra1.BitBtn1Click(Sender: TObject);
+var proximo:integer;
+
+begin
+  QueryPadraoItem.Open;
+  QueryPadraoItem.Last;
+
+  proximo:=QueryPadraoItemID_SEQUENCIA.AsInteger + 1;
+  QueryPadraoItem.Append;
+  QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
+
+  DBIdProduto.SetFocus;
+end;
+
 procedure TFrmCompra1.btNovoClick(Sender: TObject);
 begin
   inherited;
@@ -86,6 +107,37 @@ begin
   QueryPadraoUSUARIO.AsString:='batata';
   QueryPadraoVALOR.AsCurrency:=0;
   DBIdFornecedor.SetFocus;
+end;
+
+procedure TFrmCompra1.btOkClick(Sender: TObject);
+begin
+  QueryPadrao .Edit;
+  QueryPadraoVALOR.AsFloat:=QueryPadraoItem.AggFields.FieldByName('SUBTOTAL').Value;
+  QueryPadrao.Post;
+end;
+
+procedure TFrmCompra1.DBIdProdutoExit(Sender: TObject);
+begin
+  if QueryPadraoItemID_PRODUTO.AsInteger > 0 then
+    if QueryProduto.locate('ID_PRODUTO', QueryPadraoItem.FieldByName('ID_PRODUTO').AsInteger, []) then
+      begin
+        QueryPadraoItemQTDE.AsFloat:=1;
+        QueryPadraoItemDESCONTO.AsFloat:=0;
+
+        QueryPadraoItemVL_CUSTO.AsFloat:=QueryProduto.FieldByName('VL_CUSTO').AsFloat;
+
+        QueryPadraoItemTOTAL_ITEM.AsFloat:=
+        (QueryPadraoItemQTDE.AsFloat * QueryPadraoItemVL_CUSTO.AsFloat) - (QueryPadraoItemDESCONTO.AsFloat);
+
+        QueryPadraoItem.Post;
+        btItem.SetFocus;
+      end
+
+  else
+    MessageDlg('Produto não encontrado!', mtInformation, [mbOk], 0);
+    QueryPadraoItem.Cancel;
+    btItem.SetFocus;
+
 end;
 
 end.

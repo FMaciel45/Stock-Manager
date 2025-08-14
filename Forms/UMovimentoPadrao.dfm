@@ -16,7 +16,7 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 456
     ExplicitHeight = 55
-    object BitBtn1: TBitBtn
+    object btItem: TBitBtn
       Left = 16
       Top = 14
       Width = 75
@@ -24,7 +24,7 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
       Caption = '&Item'
       TabOrder = 0
     end
-    object BitBtn2: TBitBtn
+    object btOk: TBitBtn
       Left = 97
       Top = 14
       Width = 75
@@ -32,7 +32,7 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
       Caption = '&Ok'
       TabOrder = 1
     end
-    object BitBtn3: TBitBtn
+    object btExcluir: TBitBtn
       Left = 178
       Top = 14
       Width = 75
@@ -40,7 +40,7 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
       Caption = '&Excluir'
       TabOrder = 2
     end
-    object BitBtn4: TBitBtn
+    object btImprimir: TBitBtn
       Left = 259
       Top = 14
       Width = 75
@@ -58,7 +58,6 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
     Color = clGradientInactiveCaption
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 76
   end
   object Panel4: TPanel [3]
     Left = 0
@@ -69,7 +68,6 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
     Color = clGradientInactiveCaption
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 430
   end
   object DBGrid1: TDBGrid [4]
     Left = 0

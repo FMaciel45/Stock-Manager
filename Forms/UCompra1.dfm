@@ -14,11 +14,16 @@ inherited FrmCompra1: TFrmCompra1
     Top = 556
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 556
+    inherited btItem: TBitBtn
+      OnClick = BitBtn1Click
+    end
+    inherited btOk: TBitBtn
+      OnClick = btOkClick
+    end
   end
   inherited Panel3: TPanel
     Height = 155
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 70
     ExplicitHeight = 155
     object Label1: TLabel
       Left = 16
@@ -155,6 +160,15 @@ inherited FrmCompra1: TFrmCompra1
       DataSource = DSPadrao
       TabOrder = 7
     end
+    object DBEdit1: TDBEdit
+      Left = 228
+      Top = 98
+      Width = 250
+      Height = 23
+      DataField = 'SUBOTAL'
+      DataSource = DSPadraoItem
+      TabOrder = 8
+    end
   end
   inherited Panel4: TPanel
     Top = 498
@@ -168,7 +182,7 @@ inherited FrmCompra1: TFrmCompra1
       Width = 73
       Height = 15
       Caption = 'Id do Produto'
-      FocusControl = DBEdit1
+      FocusControl = DBIdProduto
     end
     object Label10: TLabel
       Left = 141
@@ -176,7 +190,7 @@ inherited FrmCompra1: TFrmCompra1
       Width = 62
       Height = 15
       Caption = 'Quantidade'
-      FocusControl = DBEdit2
+      FocusControl = DBQuantidade
     end
     object Label11: TLabel
       Left = 267
@@ -184,7 +198,7 @@ inherited FrmCompra1: TFrmCompra1
       Width = 31
       Height = 15
       Caption = 'Custo'
-      FocusControl = DBEdit3
+      FocusControl = DBCusto
     end
     object Label12: TLabel
       Left = 519
@@ -192,7 +206,7 @@ inherited FrmCompra1: TFrmCompra1
       Width = 70
       Height = 15
       Caption = 'Total do Item'
-      FocusControl = DBEdit4
+      FocusControl = DBTotalItem
     end
     object Label13: TLabel
       Left = 393
@@ -200,9 +214,9 @@ inherited FrmCompra1: TFrmCompra1
       Width = 50
       Height = 15
       Caption = 'Desconto'
-      FocusControl = DBEdit5
+      FocusControl = DBDesconto
     end
-    object DBEdit1: TDBEdit
+    object DBIdProduto: TDBEdit
       Left = 15
       Top = 29
       Width = 120
@@ -210,8 +224,9 @@ inherited FrmCompra1: TFrmCompra1
       DataField = 'ID_PRODUTO'
       DataSource = DSPadraoItem
       TabOrder = 0
+      OnExit = DBIdProdutoExit
     end
-    object DBEdit2: TDBEdit
+    object DBQuantidade: TDBEdit
       Left = 141
       Top = 29
       Width = 120
@@ -220,7 +235,7 @@ inherited FrmCompra1: TFrmCompra1
       DataSource = DSPadraoItem
       TabOrder = 1
     end
-    object DBEdit3: TDBEdit
+    object DBCusto: TDBEdit
       Left = 267
       Top = 29
       Width = 120
@@ -229,7 +244,7 @@ inherited FrmCompra1: TFrmCompra1
       DataSource = DSPadraoItem
       TabOrder = 2
     end
-    object DBEdit4: TDBEdit
+    object DBTotalItem: TDBEdit
       Left = 519
       Top = 29
       Width = 150
@@ -238,7 +253,7 @@ inherited FrmCompra1: TFrmCompra1
       DataSource = DSPadraoItem
       TabOrder = 3
     end
-    object DBEdit5: TDBEdit
+    object DBDesconto: TDBEdit
       Left = 393
       Top = 29
       Width = 120
@@ -256,31 +271,57 @@ inherited FrmCompra1: TFrmCompra1
       item
         Expanded = False
         FieldName = 'ID_SEQUENCIA'
+        Title.Caption = 'Id da Sequ'#234'ncia'
+        Width = 104
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ID_COMPRA'
+        Title.Caption = 'Id da Compra'
+        Width = 98
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ID_PRODUTO'
+        Title.Caption = 'Id do Produto'
+        Width = 94
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DESCRICAO'
+        Title.Caption = 'Descri'#231#227'o'
+        Width = 393
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'QTDE'
+        Title.Caption = 'Qtde'
+        Width = 67
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VL_CUSTO'
+        Title.Caption = 'Custo'
+        Width = 91
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DESCONTO'
+        Title.Caption = 'Desconto'
+        Width = 94
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'TOTAL_ITEM'
+        Title.Caption = 'Total do item'
+        Width = 107
         Visible = True
       end>
   end
@@ -362,6 +403,7 @@ inherited FrmCompra1: TFrmCompra1
   end
   inherited QueryPadraoItem: TFDQuery
     IndexFieldNames = 'ID_COMPRA'
+    AggregatesActive = True
     MasterFields = 'ID_COMPRA'
     DetailFields = 'ID_COMPRA'
     Connection = DM.Conexao
@@ -432,6 +474,23 @@ inherited FrmCompra1: TFrmCompra1
       Precision = 18
       Size = 2
     end
+    object QueryPadraoItemDESCRICAO: TStringField
+      FieldKind = fkLookup
+      FieldName = 'DESCRICAO'
+      LookupDataSet = QueryProduto
+      LookupKeyFields = 'ID_PRODUTO'
+      LookupResultField = 'PRODUTO_DESCRICAO'
+      KeyFields = 'ID_PRODUTO'
+      Size = 100
+      Lookup = True
+    end
+    object QueryPadraoItemSUBOTAL: TAggregateField
+      FieldName = 'SUBOTAL'
+      Active = True
+      currency = True
+      DisplayName = ''
+      Expression = 'SUM(TOTAL_ITEM)'
+    end
   end
   inherited DSPadraoItem: TDataSource
     Left = 624
@@ -492,5 +551,19 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryFormaPgto
     Left = 1008
     Top = 558
+  end
+  object QueryProduto: TFDQuery
+    Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  ID_PRODUTO,'
+      '  PRODUTO_DESCRICAO,'
+      '  ESTOQUE,'
+      '  ESTOQUE_MIN,'
+      '  VL_CUSTO'
+      'FROM PRODUTO'
+      'ORDER BY ID_PRODUTO;')
+    Left = 1008
+    Top = 504
   end
 end

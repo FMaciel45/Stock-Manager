@@ -15,10 +15,10 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     DBGrid1: TDBGrid;
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
-    BitBtn3: TBitBtn;
-    BitBtn4: TBitBtn;
+    btItem: TBitBtn;
+    btOk: TBitBtn;
+    btExcluir: TBitBtn;
+    btImprimir: TBitBtn;
     QueryPadraoItem: TFDQuery;
     DSPadraoItem: TDataSource;
   private
