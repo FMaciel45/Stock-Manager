@@ -156,10 +156,11 @@ begin
       mkInicio.Visible:=false;
       mkFim.Visible:=false;
 
-      lbNomePesq.Visible:=false;
-      lbInicioPesq.Visible:=true;
+      lbNomePesq.Visible:=true;
+      lbInicioPesq.Visible:=false;
       lbFimPesq.Visible:=false;
-      lbInicioPesq.Caption:='Selecione "Pesquisar"';
+
+      lbNomePesq.Caption:='Selecione "Pesquisar"';
     end;
 
     5: begin

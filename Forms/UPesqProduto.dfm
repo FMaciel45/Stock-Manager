@@ -1,5 +1,7 @@
 inherited FrmPesqProduto: TFrmPesqProduto
   Caption = 'Consulta de Produtos'
+  Color = clWindow
+  Ctl3D = False
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited Panel1: TPanel
@@ -27,13 +29,19 @@ inherited FrmPesqProduto: TFrmPesqProduto
         'Fornecedor')
     end
     inherited edNome: TEdit
+      Height = 21
       StyleElements = [seFont, seClient, seBorder]
+      ExplicitHeight = 21
     end
     inherited mkInicio: TMaskEdit
+      Height = 21
       StyleElements = [seFont, seClient, seBorder]
+      ExplicitHeight = 21
     end
     inherited mkFim: TMaskEdit
+      Height = 21
       StyleElements = [seFont, seClient, seBorder]
+      ExplicitHeight = 21
     end
     inherited btTransferir: TBitBtn
       OnClick = btTransferirClick

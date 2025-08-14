@@ -77,7 +77,7 @@ begin
                          'A.UNIDADE, ' +
                          'A.ID_FORNECEDOR, ' +
                          'A.CADASTRO, ' +
-                         'B.NOME ' + // Adicionei o campo NOME que estava na definição mas não na consulta
+                         'B.NOME ' +
                          'FROM PRODUTO A ' +
                          'INNER JOIN FORNECEDOR B ON B.ID_FORNECEDOR = A.ID_FORNECEDOR');
 
@@ -98,7 +98,7 @@ begin
     end;
 
     3: begin // Pesquisa por período de tempo
-      QueryPesqPadrao.SQL.Add('WHERE A.CADASTRO BETWEEN:PINICIO AND:PFIM');
+      QueryPesqPadrao.SQL.Add('WHERE A.CADASTRO BETWEEN :PINICIO AND :PFIM');
       QueryPesqPadrao.ParamByName('PINICIO').AsDate:=StrToDate(mkInicio.Text);
       QueryPesqPadrao.ParamByName('PFIM').AsDate:= StrToDate(mkFim.Text);
     end;

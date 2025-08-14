@@ -17,7 +17,8 @@ uses
   UPesqFornecedor in '..\Forms\UPesqFornecedor.pas' {FrmPesqFornecedor},
   UPesqProduto in '..\Forms\UPesqProduto.pas' {FrmPesqProduto},
   UMovimentoPadrao in '..\Forms\UMovimentoPadrao.pas' {FrmPadraoMovimento},
-  UCompra1 in '..\Forms\UCompra1.pas' {FrmCompra1};
+  UCompra1 in '..\Forms\UCompra1.pas' {FrmCompra1},
+  UPesqCompra in '..\Forms\UPesqCompra.pas' {FrmPesqCompra};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -32,5 +33,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmPadraoMovimento, FrmPadraoMovimento);
   Application.CreateForm(TFrmCompra1, FrmCompra1);
+  Application.CreateForm(TFrmPesqCompra, FrmPesqCompra);
   Application.Run;
 end.

@@ -70,6 +70,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure DBIdProdutoExit(Sender: TObject);
     procedure btOkClick(Sender: TObject);
+    procedure btPesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,7 +84,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataM;
+uses UDataM, UPesqCompra;
 
 procedure TFrmCompra1.BitBtn1Click(Sender: TObject);
 var proximo:integer;
@@ -133,6 +134,24 @@ begin
 
     QueryProduto.Refresh;
     MessageDlg('Estoque atualizado!', mtInformation, [mbOk], 0);
+end;
+
+procedure TFrmCompra1.btPesquisarClick(Sender: TObject);
+begin
+  FrmPesqCompra:= TFrmPesqCompra.Create(self);
+  FrmPesqCompra.ShowModal;
+
+  try
+    if FrmPesqCompra.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_COMPRA', FrmPesqCompra.codigo, []);
+      end;
+
+  finally
+    FrmPesqCompra.Free;
+    FrmPesqCompra:= nil;
+  end;
 end;
 
 procedure TFrmCompra1.DBIdProdutoExit(Sender: TObject);

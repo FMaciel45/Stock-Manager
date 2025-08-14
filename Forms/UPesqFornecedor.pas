@@ -101,7 +101,7 @@ begin
     end;
 
     3: begin // Pesquisa por período de tempo
-      QueryPesqPadrao.SQL.Add('WHERE CADASTRO BETWEEN:PINICIO AND:PFIM');
+      QueryPesqPadrao.SQL.Add('WHERE CADASTRO BETWEEN :PINICIO AND :PFIM');
       QueryPesqPadrao.ParamByName('PINICIO').AsDate:=StrToDate(mkInicio.Text);
       QueryPesqPadrao.ParamByName('PFIM').AsDate:= StrToDate(mkFim.Text);
     end;
