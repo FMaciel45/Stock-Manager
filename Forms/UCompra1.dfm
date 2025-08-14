@@ -165,7 +165,7 @@ inherited FrmCompra1: TFrmCompra1
       Top = 98
       Width = 250
       Height = 23
-      DataField = 'SUBOTAL'
+      DataField = 'SUBTOTAL'
       DataSource = DSPadraoItem
       TabOrder = 8
     end
@@ -484,8 +484,8 @@ inherited FrmCompra1: TFrmCompra1
       Size = 100
       Lookup = True
     end
-    object QueryPadraoItemSUBOTAL: TAggregateField
-      FieldName = 'SUBOTAL'
+    object QueryPadraoItemSUBTOTAL: TAggregateField
+      FieldName = 'SUBTOTAL'
       Active = True
       currency = True
       DisplayName = ''

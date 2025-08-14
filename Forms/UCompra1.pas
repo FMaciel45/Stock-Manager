@@ -64,8 +64,8 @@ type
     DBDesconto: TDBEdit;
     QueryProduto: TFDQuery;
     QueryPadraoItemDESCRICAO: TStringField;
-    QueryPadraoItemSUBOTAL: TAggregateField;
     DBEdit1: TDBEdit;
+    QueryPadraoItemSUBTOTAL: TAggregateField;
     procedure btNovoClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure DBIdProdutoExit(Sender: TObject);
@@ -119,7 +119,7 @@ begin
 
   while not QueryPadraoItem.Eof do
     begin
-      if QueryProduto.Locate('ID_PROUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
+      if QueryProduto.Locate('ID_PRODUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
         begin
           QueryProduto.Edit;
         
