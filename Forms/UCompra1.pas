@@ -114,6 +114,25 @@ begin
   QueryPadrao .Edit;
   QueryPadraoVALOR.AsFloat:=QueryPadraoItem.AggFields.FieldByName('SUBTOTAL').Value;
   QueryPadrao.Post;
+
+  QueryPadraoItem.First;
+
+  while not QueryPadraoItem.Eof do
+    begin
+      if QueryProduto.Locate('ID_PROUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
+        begin
+          QueryProduto.Edit;
+        
+          QueryProduto.FieldByName('ESTOQUE').AsFloat:=
+          QueryProduto.FieldByName('ESTOQUE').AsFloat +
+          QueryPadraoItemQTDE.AsFloat;
+          
+          QueryPadraoItem.Next;
+        end;
+    end;
+
+    QueryProduto.Refresh;
+    MessageDlg('Estoque atualizado!', mtInformation, [mbOk], 0);
 end;
 
 procedure TFrmCompra1.DBIdProdutoExit(Sender: TObject);

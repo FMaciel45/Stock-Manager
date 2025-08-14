@@ -2,7 +2,7 @@ object FrmPrincipal: TFrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Controle de Estoque'
-  ClientHeight = 556
+  ClientHeight = 561
   ClientWidth = 1184
   Color = clWhite
   ParentFont = True
@@ -5339,7 +5339,7 @@ object FrmPrincipal: TFrmPrincipal
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 537
+    Top = 542
     Width = 1184
     Height = 19
     Panels = <
@@ -5352,6 +5352,7 @@ object FrmPrincipal: TFrmPrincipal
       item
         Width = 150
       end>
+    ExplicitTop = 537
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

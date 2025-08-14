@@ -497,6 +497,7 @@ inherited FrmCompra1: TFrmCompra1
     Top = 560
   end
   object QueryFornecedor: TFDQuery
+    Active = True
     Connection = DM.Conexao
     SQL.Strings = (
       'SELECT '
@@ -520,6 +521,7 @@ inherited FrmCompra1: TFrmCompra1
     end
   end
   object QueryFormaPgto: TFDQuery
+    Active = True
     Connection = DM.Conexao
     SQL.Strings = (
       'SELECT '
@@ -553,6 +555,7 @@ inherited FrmCompra1: TFrmCompra1
     Top = 558
   end
   object QueryProduto: TFDQuery
+    Active = True
     Connection = DM.Conexao
     SQL.Strings = (
       'SELECT '
