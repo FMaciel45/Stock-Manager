@@ -91,6 +91,7 @@ type
     procedure DBIdProdutoExit(Sender: TObject);
     procedure btOkClick(Sender: TObject);
     procedure btPesquisarClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -118,6 +119,55 @@ begin
   QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
 
   DBIdProduto.SetFocus;
+end;
+
+procedure TFrmCompra1.btImprimirClick(Sender: TObject);
+var caminho: string;
+var codigoCompra: integer;
+
+begin
+  codigoCompra:=QueryPadraoItemID_COMPRA.AsInteger;
+
+  QueryPadrao.Close;
+  QueryPadraoItem.Open;
+
+  QueryPadrao.SQL.Add('');
+  QueryPadrao.Params.Clear;
+  QueryPadrao.SQL.Clear;
+
+  QueryPadrao.SQL.Add('SELECT A.ID_COMPRA, '
+                      +'A.ID_FORNECEDOR, '
+                      +'B.NOME, '
+                      +'A.ID_FORMA_PGTO, '
+                      +'C.DESCRICAO, '
+                      +'A.USUARIO, '
+                      +'A.VALOR, '
+                      +'A.CADASTRO '
+                  + 'FROM COMPRA A, FORNECEDOR B, FORMA_PGTO C '
+                  +'WHERE A.ID_FORNECEDOR=B.ID_FORNECEDOR '
+                  +'AND C.ID_FORMA_PGTO=A.ID_FORMA_PGTO ');
+
+  QueryPadrao.SQL.Add('AND A.ID_COMPRA =:ID_COMPRA');
+  QueryPadrao.Params.ParamByName('ID_COMPRA').AsInteger:=codigoCompra;
+
+  QueryPadrao.Open;
+  QueryPadraoItem.Open;
+
+  FrmCompra1.Close;
+
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmCompra1.RelReciboCompra.LoadFromFile(caminho + 'RelReciboCompra.fr3') then
+    begin
+      RelReciboCompra.Clear;
+      RelReciboCompra.LoadFromFile(extractfilepath(application.ExeName) + 'RelReciboCompra.fr3');
+      RelReciboCompra.PrepareReport(true);
+      RelReciboCompra.ShowPreparedReport;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
 end;
 
 procedure TFrmCompra1.btNovoClick(Sender: TObject);
