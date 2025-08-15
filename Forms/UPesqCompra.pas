@@ -25,6 +25,7 @@ type
     procedure btPesquisaClick(Sender: TObject);
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +38,26 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmPesqCompra.btImprimirClick(Sender: TObject);
+var caminho: string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqCompra.RelPesqPadrao.LoadFromFile(caminho + 'RelCompra.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompra.fr3');
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
+end;
 
 procedure TFrmPesqCompra.btPesquisaClick(Sender: TObject);
 begin

@@ -132,8 +132,8 @@ inherited FrmPesqCliente: TFrmPesqCliente
       'FROM CLIENTES'
       'ORDER BY ID_CLIENTE;'
       '')
-    Left = 496
-    Top = 328
+    Left = 424
+    Top = 360
     object QueryPesqPadraoID_CLIENTE: TIntegerField
       DisplayWidth = 11
       FieldName = 'ID_CLIENTE'
@@ -212,12 +212,14 @@ inherited FrmPesqCliente: TFrmPesqCliente
     end
   end
   inherited dsPesqPadrao: TDataSource
-    Left = 608
-    Top = 328
+    Left = 520
+    Top = 360
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
     ReportOptions.LastChange = 45881.704703020800000000
+    Left = 32
+    Top = 360
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -515,8 +517,8 @@ inherited FrmPesqCliente: TFrmPesqCliente
   end
   inherited DataSetPesqPadrao: TfrxDBDataset
     UserName = 'frxDB_clientes'
-    Left = 472
-    Top = 208
+    Left = 144
+    Top = 360
     FieldDefs = <
       item
         FieldName = 'ID_CLIENTE'
@@ -567,5 +569,9 @@ inherited FrmPesqCliente: TFrmPesqCliente
         FieldName = 'CADASTRO'
         FieldType = fftDateTime
       end>
+  end
+  inherited frxPDFExport1: TfrxPDFExport
+    Left = 256
+    Top = 360
   end
 end

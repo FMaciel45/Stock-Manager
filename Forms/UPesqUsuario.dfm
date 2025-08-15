@@ -92,8 +92,8 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
       '  CADASTRO'
       'FROM USUARIO'
       'ORDER BY ID_USUARIO;')
-    Left = 744
-    Top = 168
+    Left = 392
+    Top = 368
     object QueryPesqPadraoID_USUARIO: TIntegerField
       FieldName = 'ID_USUARIO'
       Origin = 'ID_USUARIO'
@@ -119,12 +119,14 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
     end
   end
   inherited dsPesqPadrao: TDataSource
-    Left = 848
-    Top = 168
+    Left = 488
+    Top = 368
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
     ReportOptions.LastChange = 45881.737946226900000000
+    Left = 48
+    Top = 368
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -428,8 +430,8 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
   end
   inherited DataSetPesqPadrao: TfrxDBDataset
     UserName = 'frxDB_usuarios'
-    Left = 472
-    Top = 208
+    Left = 160
+    Top = 368
     FieldDefs = <
       item
         FieldName = 'ID_USUARIO'
@@ -448,5 +450,9 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
         FieldName = 'CADASTRO'
         FieldType = fftDateTime
       end>
+  end
+  inherited frxPDFExport1: TfrxPDFExport
+    Left = 264
+    Top = 368
   end
 end
