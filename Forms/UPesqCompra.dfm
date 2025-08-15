@@ -75,8 +75,8 @@ inherited FrmPesqCompra: TFrmPesqCompra
       'ORDER BY A.ID_COMPRA;'
       '  '
       '  ')
-    Left = 384
-    Top = 392
+    Left = 344
+    Top = 376
     object QueryPesqPadraoID_COMPRA: TIntegerField
       FieldName = 'ID_COMPRA'
       Origin = 'ID_COMPRA'
@@ -128,14 +128,14 @@ inherited FrmPesqCompra: TFrmPesqCompra
     end
   end
   inherited dsPesqPadrao: TDataSource
-    Left = 488
-    Top = 392
+    Left = 440
+    Top = 376
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
-    ReportOptions.LastChange = 45884.395110960650000000
+    ReportOptions.LastChange = 45884.404560416670000000
     Left = 40
-    Top = 392
+    Top = 376
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -473,12 +473,60 @@ inherited FrmPesqCompra: TFrmPesqCompra
           ParentFont = False
         end
       end
+      object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 34.015782310000000000
+        Top = 306.141930000000000000
+        Width = 718.110700000000000000
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Top = 15.118107750000000000
+          Width = 151.181200730000000000
+          Height = 18.897674560000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'TOTAL DE COMPRAS: ')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 151.181204890000000000
+          Top = 15.118107750000000000
+          Width = 94.488250730000000000
+          Height = 18.897674560000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SUM(<frxDB_compra."VALOR">,MasterData1,2)]')
+          ParentFont = False
+        end
+      end
     end
   end
   inherited DataSetPesqPadrao: TfrxDBDataset
     UserName = 'frxDB_compra'
     Left = 144
-    Top = 392
+    Top = 376
     FieldDefs = <
       item
         FieldName = 'ID_COMPRA'
@@ -514,6 +562,6 @@ inherited FrmPesqCompra: TFrmPesqCompra
   end
   inherited frxPDFExport1: TfrxPDFExport
     Left = 248
-    Top = 392
+    Top = 376
   end
 end
