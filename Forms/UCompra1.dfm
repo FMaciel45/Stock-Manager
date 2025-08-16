@@ -38,7 +38,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label2: TLabel
       Left = 16
-      Top = 56
+      Top = 54
       Width = 90
       Height = 15
       Caption = 'Id do Fornecedor'
@@ -46,7 +46,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label3: TLabel
       Left = 15
-      Top = 102
+      Top = 100
       Width = 143
       Height = 15
       Caption = 'Id da Forma de Pagamento'
@@ -62,7 +62,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label5: TLabel
       Left = 527
-      Top = 56
+      Top = 54
       Width = 47
       Height = 15
       Caption = 'Cadastro'
@@ -70,7 +70,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label6: TLabel
       Left = 228
-      Top = 56
+      Top = 54
       Width = 88
       Height = 15
       Caption = 'Valor da Compra'
@@ -85,10 +85,18 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label8: TLabel
       Left = 826
-      Top = 56
+      Top = 54
       Width = 51
       Height = 15
       Caption = 'Descri'#231#227'o'
+    end
+    object Label14: TLabel
+      Left = 228
+      Top = 100
+      Width = 131
+      Height = 15
+      Caption = 'Condi'#231#227'o de Pagamento'
+      FocusControl = DBCondPgto
     end
     object DBIdCompra: TDBEdit
       Left = 16
@@ -116,6 +124,7 @@ inherited FrmCompra1: TFrmCompra1
       DataField = 'ID_FORMA_PGTO'
       DataSource = DSPadrao
       TabOrder = 2
+      OnExit = DBIdFormaPgtoExit
     end
     object DBUsuario: TDBEdit
       Left = 228
@@ -163,13 +172,13 @@ inherited FrmCompra1: TFrmCompra1
       DataSource = DSPadrao
       TabOrder = 7
     end
-    object DBEdit1: TDBEdit
+    object DBCondPgto: TDBEdit
       Left = 228
-      Top = 98
+      Top = 115
       Width = 250
       Height = 23
-      DataField = 'SUBTOTAL'
-      DataSource = DSPadraoItem
+      DataField = 'COND_PGTO'
+      DataSource = DSPadrao
       TabOrder = 8
     end
   end
@@ -266,69 +275,146 @@ inherited FrmCompra1: TFrmCompra1
       TabOrder = 4
     end
   end
-  inherited DBGrid1: TDBGrid
+  inherited PageControl1: TPageControl
     Top = 225
     Height = 273
-    DataSource = DSPadraoItem
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'ID_SEQUENCIA'
-        Title.Caption = 'Id da Sequ'#234'ncia'
-        Width = 104
-        Visible = True
+    ExplicitTop = 225
+    ExplicitHeight = 273
+    inherited ItemCompra: TTabSheet
+      ExplicitHeight = 243
+      inherited DBGrid1: TDBGrid
+        Height = 243
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_SEQUENCIA'
+            Title.Caption = 'ID Sequ'#234'ncia'
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_COMPRA'
+            Title.Caption = 'ID Compra'
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_PRODUTO'
+            Title.Caption = 'ID Produto'
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRICAO'
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 250
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'QTDE'
+            Title.Caption = 'Quantidade'
+            Width = 77
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VL_CUSTO'
+            Title.Caption = 'Custo'
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCONTO'
+            Title.Caption = 'Desconto'
+            Width = 136
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TOTAL_ITEM'
+            Title.Caption = 'Total Item'
+            Width = 130
+            Visible = True
+          end>
       end
-      item
-        Expanded = False
-        FieldName = 'ID_COMPRA'
-        Title.Caption = 'Id da Compra'
-        Width = 98
-        Visible = True
+    end
+    inherited ContasPagar: TTabSheet
+      ExplicitHeight = 243
+      inherited DBGrid2: TDBGrid
+        Height = 243
+        DataSource = DSContaPagar
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_SEQUENCIA'
+            Title.Caption = 'ID Sequ'#234'ncia'
+            Width = 106
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_COMPRA'
+            Title.Caption = 'ID Compra'
+            Width = 98
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VALOR_PARCELA'
+            Title.Caption = 'Valor Parcela'
+            Width = 127
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DT_VENCIMENTO'
+            Title.Caption = 'Data Vencimento'
+            Width = 131
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DT_PAGAMENTO'
+            Title.Caption = 'Data Pagamento'
+            Width = 123
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ATRASO'
+            Title.Caption = 'Atraso'
+            Width = 98
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'JUROS'
+            Title.Caption = 'Juros'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VL_JUROS'
+            Title.Caption = 'Valor Juros'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TOTAL_PAGAR'
+            Title.Caption = 'Total a Pagar'
+            Width = 120
+            Visible = True
+          end>
       end
-      item
-        Expanded = False
-        FieldName = 'ID_PRODUTO'
-        Title.Caption = 'Id do Produto'
-        Width = 94
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Width = 393
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'QTDE'
-        Title.Caption = 'Qtde'
-        Width = 67
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VL_CUSTO'
-        Title.Caption = 'Custo'
-        Width = 91
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCONTO'
-        Title.Caption = 'Desconto'
-        Width = 94
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL_ITEM'
-        Title.Caption = 'Total do item'
-        Width = 107
-        Visible = True
-      end>
+    end
   end
   inherited QueryPadrao: TFDQuery
+    Active = True
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpImmediate
     UpdateOptions.GeneratorName = 'GEN_ID_COMPRA'
@@ -338,6 +424,7 @@ inherited FrmCompra1: TFrmCompra1
       '  A.ID_FORNECEDOR,'
       '  B.NOME,'
       '  A.ID_FORMA_PGTO,'
+      '  A.COND_PGTO,'
       '  C.DESCRICAO,'
       '  A.USUARIO,'
       '  A.VALOR,'
@@ -403,6 +490,10 @@ inherited FrmCompra1: TFrmCompra1
       Size = 60
       Lookup = True
     end
+    object QueryPadraoCOND_PGTO: TIntegerField
+      FieldName = 'COND_PGTO'
+      Origin = 'COND_PGTO'
+    end
   end
   inherited DSPadrao: TDataSource
     Left = 440
@@ -433,7 +524,7 @@ inherited FrmCompra1: TFrmCompra1
         Name = 'ID_COMPRA'
         DataType = ftAutoInc
         ParamType = ptInput
-        Value = 3
+        Value = 1
       end>
     object QueryPadraoItemID_SEQUENCIA: TIntegerField
       FieldName = 'ID_SEQUENCIA'
@@ -1468,38 +1559,6 @@ inherited FrmCompra1: TFrmCompra1
     DataSetOptions = []
     Left = 640
     Top = 170
-    FieldDefs = <
-      item
-        FieldName = 'ID_COMPRA'
-      end
-      item
-        FieldName = 'ID_FORNECEDOR'
-      end
-      item
-        FieldName = 'ID_FORMA_PGTO'
-      end
-      item
-        FieldName = 'USUARIO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'CADASTRO'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'VALOR'
-      end
-      item
-        FieldName = 'NOME'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'DESCRICAO'
-        FieldType = fftString
-        Size = 60
-      end>
   end
   object QueryFdEmpresa: TFDQuery
     Active = True
@@ -1617,69 +1676,6 @@ inherited FrmCompra1: TFrmCompra1
     DataSetOptions = []
     Left = 752
     Top = 166
-    FieldDefs = <
-      item
-        FieldName = 'ID_EMPRESA'
-      end
-      item
-        FieldName = 'RAZAO_SOCIAL'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'N_FANTASIA'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'ENDERECO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'NUMERO'
-      end
-      item
-        FieldName = 'BAIRRO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'CIDADE'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'UF'
-        FieldType = fftString
-      end
-      item
-        FieldName = 'CEP'
-        FieldType = fftString
-        Size = 14
-      end
-      item
-        FieldName = 'TELEFONE'
-        FieldType = fftString
-        Size = 15
-      end
-      item
-        FieldName = 'CNPJ'
-        FieldType = fftString
-        Size = 20
-      end
-      item
-        FieldName = 'EMAIL'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'LOGO'
-      end
-      item
-        FieldName = 'CADASTRO'
-        FieldType = fftDateTime
-      end>
   end
   object frxDBPadraoItem: TfrxDBDataset
     UserName = 'frxDBPadraoItem'
@@ -1689,35 +1685,90 @@ inherited FrmCompra1: TFrmCompra1
     DataSetOptions = []
     Left = 848
     Top = 166
-    FieldDefs = <
+  end
+  object QueryContaPagar: TFDQuery
+    IndexFieldNames = 'ID_COMPRA'
+    MasterSource = DSPadrao
+    MasterFields = 'ID_COMPRA'
+    DetailFields = 'ID_COMPRA'
+    Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT  '
+      '  ID_SEQUENCIA,'
+      '  ID_COMPRA,'
+      '  VALOR_PARCELA,'
+      '  DT_VENCIMENTO,'
+      '  DT_PAGAMENTO,'
+      '  ATRASO,'
+      '  JUROS,'
+      '  VL_JUROS,'
+      '  TOTAL_PAGAR'
+      'FROM CONTAS_PAGAR'
+      'WHERE ID_COMPRA=:ID_COMPRA;')
+    Left = 728
+    Top = 506
+    ParamData = <
       item
-        FieldName = 'ID_SEQUENCIA'
-      end
-      item
-        FieldName = 'ID_COMPRA'
-      end
-      item
-        FieldName = 'ID_PRODUTO'
-      end
-      item
-        FieldName = 'QTDE'
-      end
-      item
-        FieldName = 'VL_CUSTO'
-      end
-      item
-        FieldName = 'TOTAL_ITEM'
-      end
-      item
-        FieldName = 'DESCONTO'
-      end
-      item
-        FieldName = 'DESCRICAO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'SUBTOTAL'
+        Name = 'ID_COMPRA'
+        DataType = ftAutoInc
+        ParamType = ptInput
+        Value = 1
       end>
+    object QueryContaPagarID_SEQUENCIA: TIntegerField
+      FieldName = 'ID_SEQUENCIA'
+      Origin = 'ID_SEQUENCIA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryContaPagarID_COMPRA: TIntegerField
+      FieldName = 'ID_COMPRA'
+      Origin = 'ID_COMPRA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryContaPagarVALOR_PARCELA: TFMTBCDField
+      FieldName = 'VALOR_PARCELA'
+      Origin = 'VALOR_PARCELA'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaPagarDT_VENCIMENTO: TDateField
+      FieldName = 'DT_VENCIMENTO'
+      Origin = 'DT_VENCIMENTO'
+      Required = True
+    end
+    object QueryContaPagarDT_PAGAMENTO: TDateField
+      FieldName = 'DT_PAGAMENTO'
+      Origin = 'DT_PAGAMENTO'
+    end
+    object QueryContaPagarATRASO: TIntegerField
+      FieldName = 'ATRASO'
+      Origin = 'ATRASO'
+    end
+    object QueryContaPagarJUROS: TFMTBCDField
+      FieldName = 'JUROS'
+      Origin = 'JUROS'
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaPagarVL_JUROS: TFMTBCDField
+      FieldName = 'VL_JUROS'
+      Origin = 'VL_JUROS'
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaPagarTOTAL_PAGAR: TFMTBCDField
+      FieldName = 'TOTAL_PAGAR'
+      Origin = 'TOTAL_PAGAR'
+      Precision = 18
+      Size = 2
+    end
+  end
+  object DSContaPagar: TDataSource
+    DataSet = QueryContaPagar
+    Left = 668
+    Top = 475
   end
 end

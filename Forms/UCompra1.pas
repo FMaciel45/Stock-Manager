@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Mask, frxSmartMemo, frxClass, frxDBSet, frCoreClasses;
+  Vcl.Mask, frxSmartMemo, frxClass, frxDBSet, frCoreClasses, Vcl.ComCtrls;
 
 type
   TFrmCompra1 = class(TFrmPadraoMovimento)
@@ -64,7 +64,6 @@ type
     DBDesconto: TDBEdit;
     QueryProduto: TFDQuery;
     QueryPadraoItemDESCRICAO: TStringField;
-    DBEdit1: TDBEdit;
     QueryPadraoItemSUBTOTAL: TAggregateField;
     RelReciboCompra: TfrxReport;
     frxDBQueryPadrao: TfrxDBDataset;
@@ -86,12 +85,28 @@ type
     QueryFdEmpresaCADASTRO: TDateField;
     frxDBEmpresa: TfrxDBDataset;
     frxDBPadraoItem: TfrxDBDataset;
+    QueryPadraoCOND_PGTO: TIntegerField;
+    Label14: TLabel;
+    DBCondPgto: TDBEdit;
+    QueryContaPagar: TFDQuery;
+    DSContaPagar: TDataSource;
+    QueryContaPagarID_SEQUENCIA: TIntegerField;
+    QueryContaPagarID_COMPRA: TIntegerField;
+    QueryContaPagarVALOR_PARCELA: TFMTBCDField;
+    QueryContaPagarDT_VENCIMENTO: TDateField;
+    QueryContaPagarDT_PAGAMENTO: TDateField;
+    QueryContaPagarATRASO: TIntegerField;
+    QueryContaPagarJUROS: TFMTBCDField;
+    QueryContaPagarVL_JUROS: TFMTBCDField;
+    QueryContaPagarTOTAL_PAGAR: TFMTBCDField;
     procedure btNovoClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure DBIdProdutoExit(Sender: TObject);
     procedure btOkClick(Sender: TObject);
     procedure btPesquisarClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+    procedure DBIdFormaPgtoExit(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -139,6 +154,7 @@ begin
                       +'A.ID_FORNECEDOR, '
                       +'B.NOME, '
                       +'A.ID_FORMA_PGTO, '
+                      +'A.COND_PGTO, '
                       +'C.DESCRICAO, '
                       +'A.USUARIO, '
                       +'A.VALOR, '
@@ -181,8 +197,10 @@ begin
 end;
 
 procedure TFrmCompra1.btOkClick(Sender: TObject);
+var parcela:integer;
+
 begin
-  QueryPadrao .Edit;
+  QueryPadrao.Edit;
   QueryPadraoVALOR.AsFloat:=QueryPadraoItem.AggFields.FieldByName('SUBTOTAL').Value;
   QueryPadrao.Post;
 
@@ -202,8 +220,54 @@ begin
         end;
     end;
 
-    QueryProduto.Refresh;
-    MessageDlg('Estoque atualizado!', mtInformation, [mbOk], 0);
+  QueryProduto.Refresh;
+  MessageDlg('Estoque atualizado!', mtInformation, [mbOk], 0);
+
+  QueryContaPagar.Open;
+
+  parcela:=1;
+  if (QueryPadraoID_FORMA_PGTO.Value=1) or (QueryPadraoID_FORMA_PGTO.Value=2) then
+    begin
+      while parcela <= QueryPadraoCOND_PGTO.AsInteger do
+        begin
+          QueryContaPagar.Insert;
+
+          QueryContaPagarID_SEQUENCIA.AsInteger:=parcela;
+
+          QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat:=QueryPadraoVALOR.AsFloat/QueryPadraoCOND_PGTO.Value;
+          QueryContaPagar.FieldByName('DT_VENCIMENTO').Value:=date;
+          QueryContaPagar.FieldByName('DT_PAGAMENTO').Value:=date;
+          QueryContaPagar.FieldByName('ATRASO').AsFloat:=0;
+          QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
+          QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
+          QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VL_PARCELA').AsFloat;
+
+          QueryContaPagar.Post;
+          inc(parcela);
+        end;
+
+    end
+
+    else
+      while parcela <= QueryPadraoCOND_PGTO.AsInteger do
+        begin
+          QueryContaPagar.Insert;
+
+          QueryContaPagarID_SEQUENCIA.AsInteger:=parcela;
+
+          QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat:=QueryPadraoVALOR.AsFloat/QueryPadraoCOND_PGTO.Value;
+          QueryContaPagar.FieldByName('DT_VENCIMENTO').Value:=date+(parcela*30);
+          QueryContaPagar.FieldByName('ATRASO').AsFloat:=0;
+          QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
+          QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
+          QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VL_PARCELA').AsFloat;
+
+          QueryContaPagar.Post;
+          inc(parcela);
+        end;
+
+      MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
+
 end;
 
 procedure TFrmCompra1.btPesquisarClick(Sender: TObject);
@@ -222,6 +286,19 @@ begin
     FrmPesqCompra.Free;
     FrmPesqCompra:= nil;
   end;
+
+end;
+
+procedure TFrmCompra1.DBIdFormaPgtoExit(Sender: TObject);
+begin
+  if (DBIdFormaPgto.Text=IntToStr(1)) or (DBIdFormaPgto.Text=IntToStr(2)) then
+    begin
+      DBCondPgto.Text:=IntToStr(1);
+    end
+
+  else
+    DBCondPgto.SetFocus;
+
 end;
 
 procedure TFrmCompra1.DBIdProdutoExit(Sender: TObject);

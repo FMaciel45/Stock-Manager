@@ -69,18 +69,48 @@ inherited FrmPadraoMovimento: TFrmPadraoMovimento
     ParentBackground = False
     TabOrder = 3
   end
-  object DBGrid1: TDBGrid [4]
+  object PageControl1: TPageControl [4]
     Left = 0
     Top = 180
     Width = 1090
     Height = 206
+    ActivePage = ContasPagar
     Align = alClient
     TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Segoe UI'
-    TitleFont.Style = []
+    object ItemCompra: TTabSheet
+      Caption = 'Item Compra'
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1082
+        Height = 176
+        Align = alClient
+        DataSource = DSPadraoItem
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+      end
+    end
+    object ContasPagar: TTabSheet
+      Caption = 'Contas Pagar'
+      ImageIndex = 1
+      object DBGrid2: TDBGrid
+        Left = 0
+        Top = 0
+        Width = 1082
+        Height = 176
+        Align = alClient
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+      end
+    end
   end
   inherited QueryPadrao: TFDQuery
     Left = 720
