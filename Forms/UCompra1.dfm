@@ -353,28 +353,28 @@ inherited FrmCompra1: TFrmCompra1
             Expanded = False
             FieldName = 'ID_SEQUENCIA'
             Title.Caption = 'ID Sequ'#234'ncia'
-            Width = 106
+            Width = 87
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ID_COMPRA'
             Title.Caption = 'ID Compra'
-            Width = 98
+            Width = 78
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'VALOR_PARCELA'
             Title.Caption = 'Valor Parcela'
-            Width = 127
+            Width = 102
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DT_VENCIMENTO'
             Title.Caption = 'Data Vencimento'
-            Width = 131
+            Width = 118
             Visible = True
           end
           item
@@ -388,19 +388,21 @@ inherited FrmCompra1: TFrmCompra1
             Expanded = False
             FieldName = 'ATRASO'
             Title.Caption = 'Atraso'
-            Width = 98
+            Width = 90
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'JUROS'
             Title.Caption = 'Juros'
+            Width = 73
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'VL_JUROS'
             Title.Caption = 'Valor Juros'
+            Width = 102
             Visible = True
           end
           item
@@ -408,6 +410,13 @@ inherited FrmCompra1: TFrmCompra1
             FieldName = 'TOTAL_PAGAR'
             Title.Caption = 'Total a Pagar'
             Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'STATUS'
+            Title.Caption = 'Status'
+            Width = 148
             Visible = True
           end>
       end
@@ -1687,6 +1696,7 @@ inherited FrmCompra1: TFrmCompra1
     Top = 166
   end
   object QueryContaPagar: TFDQuery
+    Active = True
     IndexFieldNames = 'ID_COMPRA'
     MasterSource = DSPadrao
     MasterFields = 'ID_COMPRA'
@@ -1702,7 +1712,8 @@ inherited FrmCompra1: TFrmCompra1
       '  ATRASO,'
       '  JUROS,'
       '  VL_JUROS,'
-      '  TOTAL_PAGAR'
+      '  TOTAL_PAGAR,'
+      '  STATUS'
       'FROM CONTAS_PAGAR'
       'WHERE ID_COMPRA=:ID_COMPRA;')
     Left = 728
@@ -1764,6 +1775,11 @@ inherited FrmCompra1: TFrmCompra1
       Origin = 'TOTAL_PAGAR'
       Precision = 18
       Size = 2
+    end
+    object QueryContaPagarSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+      Size = 30
     end
   end
   object DSContaPagar: TDataSource

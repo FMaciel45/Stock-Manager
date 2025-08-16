@@ -99,6 +99,7 @@ type
     QueryContaPagarJUROS: TFMTBCDField;
     QueryContaPagarVL_JUROS: TFMTBCDField;
     QueryContaPagarTOTAL_PAGAR: TFMTBCDField;
+    QueryContaPagarSTATUS: TStringField;
     procedure btNovoClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure DBIdProdutoExit(Sender: TObject);
@@ -198,6 +199,7 @@ end;
 
 procedure TFrmCompra1.btOkClick(Sender: TObject);
 var parcela:integer;
+var diferenca, soma:Real;
 
 begin
   QueryPadrao.Edit;
@@ -226,7 +228,8 @@ begin
   QueryContaPagar.Open;
 
   parcela:=1;
-  if (QueryPadraoID_FORMA_PGTO.Value=1) or (QueryPadraoID_FORMA_PGTO.Value=2) then
+
+  if (QueryPadraoID_FORMA_PGTO.Value=1) or (QueryPadraoID_FORMA_PGTO.Value=2) then // À vista
     begin
       while parcela <= QueryPadraoCOND_PGTO.AsInteger do
         begin
@@ -241,14 +244,18 @@ begin
           QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VL_PARCELA').AsFloat;
+          QueryContaPagar.FieldByName('STATUS').AsString:='Recebido';
 
           QueryContaPagar.Post;
           inc(parcela);
+          QueryContaPagar.Next;
         end;
 
     end
 
-    else
+    else // Parcelado
+      QueryContaPagar.First;
+
       while parcela <= QueryPadraoCOND_PGTO.AsInteger do
         begin
           QueryContaPagar.Insert;
@@ -261,10 +268,26 @@ begin
           QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VL_PARCELA').AsFloat;
+          QueryContaPagar.FieldByName('STATUS').AsString:='Em aberto';
 
           QueryContaPagar.Post;
           inc(parcela);
         end;
+
+      // Tratamento de diferença entre valores quando pagamento é parcelado
+      soma:=soma+QueryPadraoCOND_PGTO.Value*QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat;
+      if soma > QueryPadraoVALOR.AsFloat then
+        begin
+          diferenca:=soma-QueryPadraoVALOR.AsFloat;
+
+          QueryContaPagar.Last;
+          QueryContaPagar.Edit;
+
+          QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat:=QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat-diferenca;
+
+          QueryContaPagar.Refresh;
+        end;
+
 
       MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
 
