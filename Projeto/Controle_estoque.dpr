@@ -18,7 +18,8 @@ uses
   UPesqProduto in '..\Forms\UPesqProduto.pas' {FrmPesqProduto},
   UMovimentoPadrao in '..\Forms\UMovimentoPadrao.pas' {FrmPadraoMovimento},
   UCompra1 in '..\Forms\UCompra1.pas' {FrmCompra1},
-  UPesqCompra in '..\Forms\UPesqCompra.pas' {FrmPesqCompra};
+  UPesqCompra in '..\Forms\UPesqCompra.pas' {FrmPesqCompra},
+  UAbout in '..\Forms\UAbout.pas' {FrmAboutBox};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -31,8 +32,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TFrmPadraoMovimento, FrmPadraoMovimento);
-  Application.CreateForm(TFrmCompra1, FrmCompra1);
-  Application.CreateForm(TFrmPesqCompra, FrmPesqCompra);
   Application.Run;
 end.

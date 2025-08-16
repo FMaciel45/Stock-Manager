@@ -5352,7 +5352,6 @@ object FrmPrincipal: TFrmPrincipal
       item
         Width = 150
       end>
-    ExplicitTop = 537
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
@@ -5401,27 +5400,33 @@ object FrmPrincipal: TFrmPrincipal
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'
-      object Listadeusurios1: TMenuItem
+      object ListaUsuario: TMenuItem
         Caption = 'Lista de usu'#225'rios'
+        OnClick = ListaUsuarioClick
       end
-      object Listadefornecedores1: TMenuItem
+      object ListaFornecedor: TMenuItem
         Caption = 'Lista de fornecedores'
+        OnClick = ListaFornecedorClick
       end
-      object Listadefornecedores2: TMenuItem
+      object ListaCliente: TMenuItem
         Caption = 'Lista de clientes'
+        OnClick = ListaClienteClick
       end
-      object Listadeprodutos1: TMenuItem
+      object ListaProduto: TMenuItem
         Caption = 'Lista de produtos'
+        OnClick = ListaProdutoClick
       end
-      object Listadeprodutos2: TMenuItem
+      object ListaCompra: TMenuItem
         Caption = 'Lista de compras'
+        OnClick = ListaCompraClick
       end
-      object Listadevendas1: TMenuItem
+      object ListaVenda: TMenuItem
         Caption = 'Lista de vendas'
       end
     end
     object Sobreosistema1: TMenuItem
       Caption = 'Sobre o sistema'
+      OnClick = Sobreosistema1Click
     end
   end
 end

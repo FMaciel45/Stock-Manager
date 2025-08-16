@@ -34,12 +34,12 @@ type
     Compras1: TMenuItem;
     Vendas1: TMenuItem;
     Relatrios1: TMenuItem;
-    Listadeusurios1: TMenuItem;
-    Listadefornecedores1: TMenuItem;
-    Listadefornecedores2: TMenuItem;
-    Listadeprodutos1: TMenuItem;
-    Listadeprodutos2: TMenuItem;
-    Listadevendas1: TMenuItem;
+    ListaUsuario: TMenuItem;
+    ListaFornecedor: TMenuItem;
+    ListaCliente: TMenuItem;
+    ListaProduto: TMenuItem;
+    ListaCompra: TMenuItem;
+    ListaVenda: TMenuItem;
     Sobreosistema1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
@@ -67,6 +67,12 @@ type
     procedure AbreTelaCompra1();
     procedure btCompraClick(Sender: TObject);
     procedure Compras1Click(Sender: TObject);
+    procedure ListaUsuarioClick(Sender: TObject);
+    procedure ListaFornecedorClick(Sender: TObject);
+    procedure ListaClienteClick(Sender: TObject);
+    procedure ListaProdutoClick(Sender: TObject);
+    procedure ListaCompraClick(Sender: TObject);
+    procedure Sobreosistema1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,7 +86,9 @@ implementation
 
 {$R *.dfm}
 
-uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1;
+uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
+  UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
+  UAbout;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -242,6 +250,84 @@ end;
 procedure TFrmPrincipal.Compras1Click(Sender: TObject);
 begin
   AbreTelaCompra1;
+end;
+
+procedure TFrmPrincipal.ListaUsuarioClick(Sender: TObject);
+begin
+  FrmPesqUsuario:= TFrmPesqUsuario.Create(self);
+  FrmPesqUsuario.ShowModal;
+
+  try
+
+  finally
+    FrmPesqUsuario.Free;
+    FrmPesqUsuario:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.ListaFornecedorClick(Sender: TObject);
+begin
+  FrmPesqFornecedor:= TFrmPesqFornecedor.Create(self);
+  FrmPesqFornecedor.ShowModal;
+
+  try
+
+  finally
+    FrmPesqFornecedor.Free;
+    FrmPesqFornecedor:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.ListaClienteClick(Sender: TObject);
+begin
+  FrmPesqCliente:= TFrmPesqCliente.Create(self);
+  FrmPesqCliente.ShowModal;
+
+  try
+
+  finally
+    FrmPesqCliente.Free;
+    FrmPesqCliente:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.ListaProdutoClick(Sender: TObject);
+begin
+  FrmPesqProduto:= TFrmPesqProduto.Create(self);
+  FrmPesqProduto.ShowModal;
+
+  try
+
+  finally
+    FrmPesqProduto.Free;
+    FrmPesqProduto:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.ListaCompraClick(Sender: TObject);
+begin
+  FrmPesqCompra:= TFrmPesqCompra.Create(self);
+  FrmPesqCompra.ShowModal;
+
+  try
+
+  finally
+    FrmPesqCompra.Free;
+    FrmPesqCompra:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.Sobreosistema1Click(Sender: TObject);
+begin
+  FrmAboutBox:= TFrmAboutBox.Create(self);
+  FrmAboutBox.ShowModal;
+
+  try
+
+  finally
+    FrmAboutBox.Free;
+    FrmAboutBox:= nil;
+  end;
 end;
 
 procedure TFrmPrincipal.btSairClick(Sender: TObject);

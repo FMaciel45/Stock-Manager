@@ -107,6 +107,7 @@ type
     procedure btPesquisarClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
     procedure DBIdFormaPgtoExit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -346,6 +347,15 @@ begin
     QueryPadraoItem.Cancel;
     btItem.SetFocus;
 
+end;
+
+procedure TFrmCompra1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  QueryFornecedor.Close;
+  QueryFormaPgto.Close;
+  QueryContaPagar.Close;
+  QueryPadrao.Close;
+  QueryPadraoItem.Close;
 end;
 
 end.
