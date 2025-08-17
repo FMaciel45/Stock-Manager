@@ -1,0 +1,107 @@
+object FrmLogin: TFrmLogin
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Login do Usu'#225'rio'
+  ClientHeight = 325
+  ClientWidth = 670
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  KeyPreview = True
+  Position = poScreenCenter
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 56
+    Top = 36
+    Width = 37
+    Height = 17
+    Caption = 'Nome'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 56
+    Top = 164
+    Width = 26
+    Height = 17
+    Caption = 'Tipo'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 56
+    Top = 100
+    Width = 37
+    Height = 17
+    Caption = 'Senha'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Image1: TImage
+    Left = 440
+    Top = 55
+    Width = 150
+    Height = 150
+    Stretch = True
+  end
+  object EDNome: TEdit
+    Left = 56
+    Top = 54
+    Width = 300
+    Height = 23
+    CharCase = ecUpperCase
+    TabOrder = 0
+  end
+  object EDSenha: TEdit
+    Left = 56
+    Top = 118
+    Width = 300
+    Height = 23
+    CharCase = ecUpperCase
+    TabOrder = 1
+  end
+  object CBTipo: TComboBox
+    Left = 56
+    Top = 182
+    Width = 300
+    Height = 23
+    CharCase = ecUpperCase
+    TabOrder = 2
+    Items.Strings = (
+      'ADMINISTRADOR'
+      'APOIO'
+      '')
+  end
+  object btLogin: TBitBtn
+    Left = 56
+    Top = 237
+    Width = 90
+    Height = 30
+    Caption = '&Login'
+    TabOrder = 3
+  end
+  object btCancelar: TBitBtn
+    Left = 176
+    Top = 237
+    Width = 90
+    Height = 30
+    Caption = '&Cancelar'
+    TabOrder = 4
+  end
+end

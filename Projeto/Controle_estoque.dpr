@@ -19,7 +19,8 @@ uses
   UMovimentoPadrao in '..\Forms\UMovimentoPadrao.pas' {FrmPadraoMovimento},
   UCompra1 in '..\Forms\UCompra1.pas' {FrmCompra1},
   UPesqCompra in '..\Forms\UPesqCompra.pas' {FrmPesqCompra},
-  UAbout in '..\Forms\UAbout.pas' {FrmAboutBox};
+  UAbout in '..\Forms\UAbout.pas' {FrmAboutBox},
+  ULogin in '..\Forms\ULogin.pas' {FrmLogin};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -30,7 +31,7 @@ begin
 
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmLogin, FrmLogin);
   Application.Run;
 end.
