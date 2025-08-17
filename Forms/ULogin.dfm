@@ -13,6 +13,8 @@ object FrmLogin: TFrmLogin
   Font.Style = []
   KeyPreview = True
   Position = poScreenCenter
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel
     Left = 56
@@ -74,6 +76,7 @@ object FrmLogin: TFrmLogin
     Width = 300
     Height = 23
     CharCase = ecUpperCase
+    PasswordChar = '*'
     TabOrder = 1
   end
   object CBTipo: TComboBox
@@ -95,6 +98,7 @@ object FrmLogin: TFrmLogin
     Height = 30
     Caption = '&Login'
     TabOrder = 3
+    OnClick = btLoginClick
   end
   object btCancelar: TBitBtn
     Left = 176
@@ -103,5 +107,6 @@ object FrmLogin: TFrmLogin
     Height = 30
     Caption = '&Cancelar'
     TabOrder = 4
+    OnClick = btCancelarClick
   end
 end

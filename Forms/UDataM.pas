@@ -25,6 +25,8 @@ type
     { Private declarations }
   public
     { Public declarations }
+
+    var usuario, tipoUsuario:string;
   end;
 
 var

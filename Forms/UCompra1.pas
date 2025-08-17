@@ -193,7 +193,7 @@ begin
   inherited;
 
   QueryPadraoCADASTRO.AsDateTime:=Date;
-  QueryPadraoUSUARIO.AsString:='batata';
+  QueryPadraoUSUARIO.AsString:=DM.usuario;
   QueryPadraoVALOR.AsCurrency:=0;
   DBIdFornecedor.SetFocus;
 end;

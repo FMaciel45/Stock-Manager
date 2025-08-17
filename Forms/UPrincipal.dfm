@@ -5350,7 +5350,10 @@ object FrmPrincipal: TFrmPrincipal
         Width = 150
       end
       item
-        Width = 150
+        Width = 350
+      end
+      item
+        Width = 250
       end>
   end
   object Timer1: TTimer

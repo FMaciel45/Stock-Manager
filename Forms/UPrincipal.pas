@@ -88,7 +88,7 @@ implementation
 
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
-  UAbout;
+  UAbout, UDataM;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -339,7 +339,8 @@ procedure TFrmPrincipal.Timer1Timer(Sender: TObject);
 begin
   Statusbar1.Panels[0].Text := DateToStr(now);
   Statusbar1.Panels[1].Text := TimeToStr(now);
-  Statusbar1.Panels[2].Text := 'Salve salve, rapaziada!';
+  Statusbar1.Panels[2].Text := 'Salve salve, ' + DM.usuario + '!';
+  Statusbar1.Panels[3].Text := 'Tipo de usuário: ' + DM.tipoUsuario + '';
 end;
 
 end.
