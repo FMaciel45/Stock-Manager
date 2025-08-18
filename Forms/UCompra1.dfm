@@ -20,6 +20,9 @@ inherited FrmCompra1: TFrmCompra1
     inherited btOk: TBitBtn
       OnClick = btOkClick
     end
+    inherited btExcluir: TBitBtn
+      OnClick = btExcluirClick
+    end
     inherited btImprimir: TBitBtn
       OnClick = btImprimirClick
     end
@@ -191,7 +194,7 @@ inherited FrmCompra1: TFrmCompra1
     ExplicitHeight = 58
     object Label9: TLabel
       Left = 15
-      Top = 6
+      Top = 8
       Width = 73
       Height = 15
       Caption = 'Id do Produto'
@@ -199,7 +202,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label10: TLabel
       Left = 141
-      Top = 6
+      Top = 8
       Width = 62
       Height = 15
       Caption = 'Quantidade'
@@ -207,7 +210,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object Label11: TLabel
       Left = 267
-      Top = 6
+      Top = 8
       Width = 31
       Height = 15
       Caption = 'Custo'
@@ -231,7 +234,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object DBIdProduto: TDBEdit
       Left = 15
-      Top = 29
+      Top = 24
       Width = 120
       Height = 23
       DataField = 'ID_PRODUTO'
@@ -241,7 +244,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object DBQuantidade: TDBEdit
       Left = 141
-      Top = 29
+      Top = 24
       Width = 120
       Height = 23
       DataField = 'QTDE'
@@ -250,7 +253,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object DBCusto: TDBEdit
       Left = 267
-      Top = 29
+      Top = 24
       Width = 120
       Height = 23
       DataField = 'VL_CUSTO'
@@ -259,7 +262,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object DBTotalItem: TDBEdit
       Left = 519
-      Top = 29
+      Top = 24
       Width = 150
       Height = 23
       DataField = 'TOTAL_ITEM'
@@ -268,7 +271,7 @@ inherited FrmCompra1: TFrmCompra1
     end
     object DBDesconto: TDBEdit
       Left = 393
-      Top = 29
+      Top = 24
       Width = 120
       Height = 23
       DataField = 'DESCONTO'

@@ -108,6 +108,7 @@ type
     procedure btImprimirClick(Sender: TObject);
     procedure DBIdFormaPgtoExit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btExcluirClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -136,6 +137,30 @@ begin
   QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
 
   DBIdProduto.SetFocus;
+end;
+
+procedure TFrmCompra1.btExcluirClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja excluir esse item?', mtInformation, [mbOk, mbNo], 0) = mrOk then
+    begin
+      if QueryProduto.Locate('ID_PRODUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
+        begin
+          QueryProduto.Edit;
+
+          QueryProduto.FieldByName('ESTOQUE').AsFloat:=
+          QueryProduto.FieldByName('ESTOQUE').AsFloat -
+          QueryPadraoItemQTDE.AsFloat;
+
+          QueryProduto.Refresh;
+          QueryPadraoItem.Delete;
+
+          MessageDlg('Item excluido com sucesso!', mtInformation, [mbOk], 0);
+        end;
+    end
+
+  else
+    Abort;
+
 end;
 
 procedure TFrmCompra1.btImprimirClick(Sender: TObject);
@@ -288,7 +313,6 @@ begin
 
           QueryContaPagar.Refresh;
         end;
-
 
       MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
 
