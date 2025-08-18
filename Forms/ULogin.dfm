@@ -109,4 +109,15 @@ object FrmLogin: TFrmLogin
     TabOrder = 4
     OnClick = btCancelarClick
   end
+  object SBContagem: TStatusBar
+    Left = 0
+    Top = 300
+    Width = 670
+    Height = 25
+    Panels = <
+      item
+        Width = 50
+      end>
+    ExplicitTop = 306
+  end
 end

@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.ComCtrls;
 
 type
   TFrmLogin = class(TForm)
@@ -17,6 +18,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Image1: TImage;
+    SBContagem: TStatusBar;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
@@ -29,6 +31,7 @@ type
 
 var
   FrmLogin: TFrmLogin;
+  contagem:integer;
 
 implementation
 
@@ -52,6 +55,8 @@ end;
 
 procedure TFrmLogin.btLoginClick(Sender: TObject);
 begin
+  inc(contagem);
+
   DM.QueryLogin.Close;
 
   DM.QueryLogin.SQL.Add('');
@@ -66,13 +71,7 @@ begin
 
   DM.QueryLogin.Open;
 
-  if DM.QueryLogin.RecordCount = 0 then
-    begin
-      MessageDlg('Nome, senha e/ou tipo incorretos!', mtInformation, [mbOk], 0);
-      Abort;
-    end
-
-  else
+  if DM.QueryLogin.RecordCount > 0 then
     begin
       ShowMessage('Seja Bem-vindo(a), ' + EDNome.Text + '!');
 
@@ -83,7 +82,26 @@ begin
       FrmPrincipal.ShowModal;
 
       FrmLogin.Hide;
+
+      contagem:=0;
+    end
+
+  else
+    begin
+      MessageDlg('Nome, senha e/ou tipo incorretos!', mtInformation, [mbOk], 0);
+
+      EDNome.SetFocus;
+
+      if contagem >=3 then
+        begin
+          MessageDlg('Você ultrapassou o limite de 3 tentativas!', mtInformation, [mbOk], 0);
+
+          Application.Terminate;
+        end;
+
+      SBContagem.Panels[0].Text:= 'Tentativas: ' + IntToStr(contagem) + '/3';
     end;
+
 end;
 
 procedure TFrmLogin.btCancelarClick(Sender: TObject);
