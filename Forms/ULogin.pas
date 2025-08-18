@@ -19,10 +19,12 @@ type
     Label3: TLabel;
     Image1: TImage;
     SBContagem: TStatusBar;
+    btTrocarSenha: TBitBtn;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
     procedure btLoginClick(Sender: TObject);
+    procedure btTrocarSenhaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +39,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataM, UPrincipal;
+uses UDataM, UPrincipal, UTrocaSenha;
 
 procedure TFrmLogin.FormKeyPress(Sender: TObject; var Key: Char);
 begin // Enter = TAB
@@ -103,6 +105,19 @@ begin
       SBContagem.Panels[0].Text:= 'Tentativas: ' + IntToStr(contagem) + '/3';
     end;
 
+end;
+
+procedure TFrmLogin.btTrocarSenhaClick(Sender: TObject);
+begin
+  FrmTrocaSenha:= TFrmTrocaSenha.Create(self);
+  FrmTrocaSenha.ShowModal;
+
+  try
+
+  finally
+    FrmTrocaSenha.Free;
+    FrmTrocaSenha:= nil;
+  end;
 end;
 
 procedure TFrmLogin.btCancelarClick(Sender: TObject);

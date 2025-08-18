@@ -1,10 +1,10 @@
-object FrmLogin: TFrmLogin
+object FrmTrocaSenha: TFrmTrocaSenha
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
-  Caption = 'Login do Usu'#225'rio'
-  ClientHeight = 325
-  ClientWidth = 670
+  Hint = 'Cancelar a troca da senha'
+  Caption = 'Trocar Senha'
+  ClientHeight = 351
+  ClientWidth = 753
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,10 +14,9 @@ object FrmLogin: TFrmLogin
   KeyPreview = True
   Position = poScreenCenter
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel
-    Left = 56
+    Left = 64
     Top = 36
     Width = 37
     Height = 17
@@ -29,22 +28,9 @@ object FrmLogin: TFrmLogin
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label2: TLabel
-    Left = 56
-    Top = 164
-    Width = 26
-    Height = 17
-    Caption = 'Tipo'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Segoe UI Semibold'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object Label3: TLabel
-    Left = 56
-    Top = 100
+    Left = 64
+    Top = 89
     Width = 37
     Height = 17
     Caption = 'Senha'
@@ -55,15 +41,41 @@ object FrmLogin: TFrmLogin
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label2: TLabel
+    Left = 64
+    Top = 145
+    Width = 73
+    Height = 17
+    Caption = 'Nova Senha'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 64
+    Top = 201
+    Width = 101
+    Height = 17
+    Caption = 'Confirmar Senha'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Image1: TImage
-    Left = 440
-    Top = 55
-    Width = 150
-    Height = 150
+    Left = 480
+    Top = 54
+    Width = 185
+    Height = 185
     Stretch = True
   end
   object EDNome: TEdit
-    Left = 56
+    Left = 64
     Top = 54
     Width = 300
     Height = 23
@@ -71,62 +83,54 @@ object FrmLogin: TFrmLogin
     TabOrder = 0
   end
   object EDSenha: TEdit
-    Left = 56
-    Top = 118
+    Left = 64
+    Top = 107
     Width = 300
     Height = 23
     CharCase = ecUpperCase
     PasswordChar = '*'
     TabOrder = 1
   end
-  object CBTipo: TComboBox
-    Left = 56
-    Top = 182
-    Width = 300
-    Height = 23
-    CharCase = ecUpperCase
-    TabOrder = 2
-    Items.Strings = (
-      'ADMINISTRADOR'
-      'APOIO'
-      '')
-  end
-  object btLogin: TBitBtn
-    Left = 56
-    Top = 229
-    Width = 90
-    Height = 35
-    Caption = '&Login'
-    TabOrder = 3
-    OnClick = btLoginClick
-  end
   object btCancelar: TBitBtn
-    Left = 163
-    Top = 229
+    Left = 168
+    Top = 271
     Width = 90
     Height = 35
+    Hint = 'Cancelar a troca da senha'
     Caption = '&Cancelar'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
     OnClick = btCancelarClick
   end
-  object SBContagem: TStatusBar
-    Left = 0
-    Top = 300
-    Width = 670
-    Height = 25
-    Panels = <
-      item
-        Width = 50
-      end>
-    ExplicitTop = 306
-  end
   object btTrocarSenha: TBitBtn
-    Left = 266
-    Top = 229
+    Left = 64
+    Top = 271
     Width = 90
     Height = 35
+    Hint = 'Confirmar a troca da senha'
     Caption = '&Trocar Senha'
-    TabOrder = 6
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
     OnClick = btTrocarSenhaClick
+  end
+  object EDNovaSenha: TEdit
+    Left = 64
+    Top = 163
+    Width = 300
+    Height = 23
+    CharCase = ecUpperCase
+    PasswordChar = '*'
+    TabOrder = 2
+  end
+  object EDConfirmarSenha: TEdit
+    Left = 64
+    Top = 219
+    Width = 300
+    Height = 23
+    CharCase = ecUpperCase
+    PasswordChar = '*'
+    TabOrder = 3
   end
 end
