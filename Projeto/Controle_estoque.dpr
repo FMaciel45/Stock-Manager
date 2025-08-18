@@ -21,7 +21,8 @@ uses
   UPesqCompra in '..\Forms\UPesqCompra.pas' {FrmPesqCompra},
   UAbout in '..\Forms\UAbout.pas' {FrmAboutBox},
   ULogin in '..\Forms\ULogin.pas' {FrmLogin},
-  UTrocaSenha in '..\Forms\UTrocaSenha.pas' {FrmTrocaSenha};
+  UTrocaSenha in '..\Forms\UTrocaSenha.pas' {FrmTrocaSenha},
+  UVenda in '..\UVenda.pas' {FrmVenda};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -35,5 +36,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TFrmTrocaSenha, FrmTrocaSenha);
+  Application.CreateForm(TFrmVenda, FrmVenda);
   Application.Run;
 end.

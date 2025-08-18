@@ -27,6 +27,7 @@ inherited FrmCompra1: TFrmCompra1
   inherited Panel3: TPanel
     Height = 155
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 76
     ExplicitHeight = 155
     object Label1: TLabel
       Left = 16
@@ -61,15 +62,15 @@ inherited FrmCompra1: TFrmCompra1
       FocusControl = DBUsuario
     end
     object Label5: TLabel
-      Left = 527
-      Top = 54
+      Left = 826
+      Top = 11
       Width = 47
       Height = 15
       Caption = 'Cadastro'
       FocusControl = DBCadastro
     end
     object Label6: TLabel
-      Left = 228
+      Left = 560
       Top = 54
       Width = 88
       Height = 15
@@ -77,22 +78,22 @@ inherited FrmCompra1: TFrmCompra1
       FocusControl = DBValorCompra
     end
     object Label7: TLabel
-      Left = 826
-      Top = 11
+      Left = 228
+      Top = 54
       Width = 113
       Height = 15
       Caption = 'Nome do Fornecedor'
     end
     object Label8: TLabel
-      Left = 826
-      Top = 54
-      Width = 51
+      Left = 228
+      Top = 98
+      Width = 151
       Height = 15
-      Caption = 'Descri'#231#227'o'
+      Caption = 'Descri'#231#227'o da Forma de Pgto.'
     end
     object Label14: TLabel
-      Left = 228
-      Top = 100
+      Left = 560
+      Top = 98
       Width = 131
       Height = 15
       Caption = 'Condi'#231#227'o de Pagamento'
@@ -137,8 +138,8 @@ inherited FrmCompra1: TFrmCompra1
       TabOrder = 3
     end
     object DBCadastro: TDBEdit
-      Left = 527
-      Top = 69
+      Left = 826
+      Top = 27
       Width = 250
       Height = 23
       DataField = 'CADASTRO'
@@ -146,36 +147,36 @@ inherited FrmCompra1: TFrmCompra1
       TabOrder = 5
     end
     object DBValorCompra: TDBEdit
-      Left = 228
+      Left = 560
       Top = 69
-      Width = 250
+      Width = 217
       Height = 23
       DataField = 'VALOR'
       DataSource = DSPadrao
       TabOrder = 4
     end
     object DBNome: TDBLookupComboBox
-      Left = 826
-      Top = 27
-      Width = 250
+      Left = 228
+      Top = 69
+      Width = 300
       Height = 23
       DataField = 'NOME'
       DataSource = DSPadrao
       TabOrder = 6
     end
     object DBDescricao: TDBLookupComboBox
-      Left = 826
-      Top = 69
-      Width = 250
+      Left = 228
+      Top = 115
+      Width = 300
       Height = 23
       DataField = 'DESCRICAO'
       DataSource = DSPadrao
       TabOrder = 7
     end
     object DBCondPgto: TDBEdit
-      Left = 228
+      Left = 560
       Top = 115
-      Width = 250
+      Width = 217
       Height = 23
       DataField = 'COND_PGTO'
       DataSource = DSPadrao
@@ -692,8 +693,8 @@ inherited FrmCompra1: TFrmCompra1
       'begin'
       ''
       'end.')
-    Left = 520
-    Top = 168
+    Left = 816
+    Top = 179
     Datasets = <
       item
         DataSet = frxDBQueryPadrao
@@ -1566,8 +1567,8 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryPadrao
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 640
-    Top = 170
+    Left = 1011
+    Top = 126
   end
   object QueryFdEmpresa: TFDQuery
     Active = True
@@ -1683,8 +1684,8 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryFdEmpresa
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 752
-    Top = 166
+    Left = 912
+    Top = 126
   end
   object frxDBPadraoItem: TfrxDBDataset
     UserName = 'frxDBPadraoItem'
@@ -1692,8 +1693,8 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryPadraoItem
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 848
-    Top = 166
+    Left = 816
+    Top = 126
   end
   object QueryContaPagar: TFDQuery
     Active = True

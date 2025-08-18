@@ -208,6 +208,10 @@
             <Form>FrmTrocaSenha</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\UVenda.pas">
+            <Form>FrmVenda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

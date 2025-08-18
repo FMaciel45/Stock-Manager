@@ -5,6 +5,7 @@ object FrmPrincipal: TFrmPrincipal
   ClientHeight = 561
   ClientWidth = 1184
   Color = clWhite
+  Ctl3D = False
   ParentFont = True
   Menu = MainMenu1
   Position = poScreenCenter
@@ -3741,6 +3742,7 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = btVendaClick
     end
     object btTrocarUsuario: TSpeedButton
       Left = 945
@@ -5401,6 +5403,7 @@ object FrmPrincipal: TFrmPrincipal
       end
       object Vendas1: TMenuItem
         Caption = '&Vendas'
+        OnClick = Vendas1Click
       end
     end
     object Relatrios1: TMenuItem

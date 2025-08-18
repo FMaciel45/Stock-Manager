@@ -51,6 +51,8 @@ type
     procedure AbreTelaFornecedor();
     procedure AbreTelaProduto();
     procedure AbreTelaFormasPgto();
+    procedure AbreTelaCompra1();
+    procedure AbreTelaVenda();
 
     procedure btEmpresaClick(Sender: TObject);
     procedure MenuEmpresaClick(Sender: TObject);
@@ -64,7 +66,6 @@ type
     procedure btFormaPgtoClick(Sender: TObject);
     procedure MenuFormasPgtoClick(Sender: TObject);
 
-    procedure AbreTelaCompra1();
     procedure btCompraClick(Sender: TObject);
     procedure Compras1Click(Sender: TObject);
     procedure ListaUsuarioClick(Sender: TObject);
@@ -75,6 +76,8 @@ type
     procedure Sobreosistema1Click(Sender: TObject);
     procedure btTrocarUsuarioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btVendaClick(Sender: TObject);
+    procedure Vendas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,7 +93,7 @@ implementation
 
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
-  UAbout, UDataM, ULogin;
+  UAbout, UDataM, ULogin, UVenda;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -184,6 +187,19 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.AbreTelaVenda;
+begin
+  FrmVenda:= TFrmVenda.Create(self);
+  FrmVenda.ShowModal;
+
+  try
+
+  finally
+    FrmVenda.Free;
+    FrmVenda:= nil;
+  end;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
@@ -252,6 +268,16 @@ end;
 procedure TFrmPrincipal.Compras1Click(Sender: TObject);
 begin
   AbreTelaCompra1;
+end;
+
+procedure TFrmPrincipal.btVendaClick(Sender: TObject);
+begin
+  AbreTelaVenda;
+end;
+
+procedure TFrmPrincipal.Vendas1Click(Sender: TObject);
+begin
+  AbreTelaVenda;
 end;
 
 procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);
@@ -363,7 +389,7 @@ procedure TFrmPrincipal.Timer1Timer(Sender: TObject);
 begin
   Statusbar1.Panels[0].Text := DateToStr(now);
   Statusbar1.Panels[1].Text := TimeToStr(now);
-  Statusbar1.Panels[2].Text := 'Salve salve, ' + DM.usuario + '!';
+  Statusbar1.Panels[2].Text := 'Olá, ' + DM.usuario + '!';
   Statusbar1.Panels[3].Text := 'Tipo de usuário: ' + DM.tipoUsuario + '';
 end;
 
