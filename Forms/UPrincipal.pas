@@ -73,6 +73,8 @@ type
     procedure ListaProdutoClick(Sender: TObject);
     procedure ListaCompraClick(Sender: TObject);
     procedure Sobreosistema1Click(Sender: TObject);
+    procedure btTrocarUsuarioClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,7 +90,7 @@ implementation
 
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
-  UAbout, UDataM;
+  UAbout, UDataM, ULogin;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -252,6 +254,16 @@ begin
   AbreTelaCompra1;
 end;
 
+procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);
+begin
+  FrmPrincipal.Hide;
+
+  FrmLogin.EDNome.Clear;
+  FrmLogin.EDSenha.Clear;
+  FrmLogin.EDNome.SetFocus;
+end;
+
+
 procedure TFrmPrincipal.ListaUsuarioClick(Sender: TObject);
 begin
   FrmPesqUsuario:= TFrmPesqUsuario.Create(self);
@@ -333,6 +345,18 @@ end;
 procedure TFrmPrincipal.btSairClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+  if DM.tipoUsuario='APOIO' then
+    begin
+      btEmpresa.Enabled:=false;
+      btUsuario.Enabled:=false;
+      MenuUsuario.Enabled:=false;
+      MenuEmpresa.Enabled:=false;
+      ListaUsuario.Enabled:=false;
+    end;
 end;
 
 procedure TFrmPrincipal.Timer1Timer(Sender: TObject);

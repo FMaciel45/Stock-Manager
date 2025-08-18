@@ -8,6 +8,7 @@ object FrmPrincipal: TFrmPrincipal
   ParentFont = True
   Menu = MainMenu1
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -4271,6 +4272,7 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = btTrocarUsuarioClick
     end
     object btSair: TSpeedButton
       Left = 1064

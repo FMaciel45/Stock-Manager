@@ -51,6 +51,8 @@ end;
 procedure TFrmLogin.FormShow(Sender: TObject);
 begin
   EDNome.SetFocus;
+
+  SBContagem.Panels[0].Text:= 'Tentativas: ' + IntToStr(contagem) + '/3';
 end;
 
 procedure TFrmLogin.btLoginClick(Sender: TObject);
@@ -81,8 +83,6 @@ begin
       FrmPrincipal:=TFrmPrincipal.Create(self);
       FrmPrincipal.ShowModal;
 
-      FrmLogin.Hide;
-
       contagem:=0;
     end
 
@@ -94,6 +94,7 @@ begin
 
       if contagem >=3 then
         begin
+          SBContagem.Panels[0].Text:= 'Tentativas: ' + IntToStr(contagem) + '/3';
           MessageDlg('Você ultrapassou o limite de 3 tentativas!', mtInformation, [mbOk], 0);
 
           Application.Terminate;
