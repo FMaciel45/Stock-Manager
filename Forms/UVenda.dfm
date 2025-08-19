@@ -279,6 +279,8 @@ inherited FrmVenda: TFrmVenda
       DataField = 'DESCONTO'
       DataSource = DSPadraoItem
       TabOrder = 3
+      OnClick = DBDescontoClick
+      OnExit = DBDescontoExit
     end
     object DBTotalItem: TDBEdit
       Left = 519

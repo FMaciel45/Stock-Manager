@@ -276,6 +276,8 @@ inherited FrmCompra1: TFrmCompra1
       DataField = 'DESCONTO'
       DataSource = DSPadraoItem
       TabOrder = 4
+      OnClick = DBDescontoClick
+      OnExit = DBDescontoExit
     end
   end
   inherited PageControl1: TPageControl
