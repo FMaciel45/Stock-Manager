@@ -41,6 +41,7 @@ type
     ListaCompra: TMenuItem;
     ListaVenda: TMenuItem;
     Sobreosistema1: TMenuItem;
+    Fechar1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
@@ -79,6 +80,7 @@ type
     procedure btVendaClick(Sender: TObject);
     procedure Vendas1Click(Sender: TObject);
     procedure ListaVendaClick(Sender: TObject);
+    procedure Fechar1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -385,6 +387,11 @@ end;
 procedure TFrmPrincipal.btSairClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TFrmPrincipal.Fechar1Click(Sender: TObject);
+begin
+  btSair.Click;
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);

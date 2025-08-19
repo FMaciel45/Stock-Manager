@@ -66,7 +66,7 @@ inherited FrmPesqVenda: TFrmPesqVenda
         Expanded = False
         FieldName = 'NOME'
         Title.Caption = 'Nome'
-        Width = 347
+        Width = 343
         Visible = True
       end
       item

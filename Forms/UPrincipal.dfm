@@ -2153,7 +2153,7 @@ object FrmPrincipal: TFrmPrincipal
       Top = 0
       Width = 100
       Height = 90
-      Caption = '&Forma Pgto.'
+      Caption = 'Fo&rma Pgto.'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -5372,37 +5372,50 @@ object FrmPrincipal: TFrmPrincipal
       Caption = 'Cadastro'
       object MenuUsuario: TMenuItem
         Caption = '&Usu'#225'rio'
+        ShortCut = 16449
         OnClick = MenuUsuarioClick
       end
       object MenuEmpresa: TMenuItem
         Caption = '&Empresa'
+        ShortCut = 16450
         OnClick = MenuEmpresaClick
       end
       object MenuCliente: TMenuItem
         Caption = '&Cliente'
+        ShortCut = 16451
         OnClick = MenuClienteClick
       end
       object MenuFornecedor: TMenuItem
         Caption = '&Fornecedor'
+        ShortCut = 16452
         OnClick = MenuFornecedorClick
       end
       object MenuProduto: TMenuItem
         Caption = '&Produto'
+        ShortCut = 16453
         OnClick = MenuProdutoClick
       end
       object MenuFormasPgto: TMenuItem
         Caption = '&Formas de pgto.'
+        ShortCut = 16454
         OnClick = MenuFormasPgtoClick
+      end
+      object Fechar1: TMenuItem
+        Caption = '&Fechar'
+        ShortCut = 16455
+        OnClick = Fechar1Click
       end
     end
     object Movimentos1: TMenuItem
       Caption = 'Movimentos'
       object Compras1: TMenuItem
         Caption = 'C&ompras'
+        ShortCut = 16456
         OnClick = Compras1Click
       end
       object Vendas1: TMenuItem
         Caption = '&Vendas'
+        ShortCut = 16457
         OnClick = Vendas1Click
       end
     end
@@ -5410,31 +5423,38 @@ object FrmPrincipal: TFrmPrincipal
       Caption = 'Relat'#243'rios'
       object ListaUsuario: TMenuItem
         Caption = 'Lista de usu'#225'rios'
+        ShortCut = 16458
         OnClick = ListaUsuarioClick
       end
       object ListaFornecedor: TMenuItem
         Caption = 'Lista de fornecedores'
+        ShortCut = 16459
         OnClick = ListaFornecedorClick
       end
       object ListaCliente: TMenuItem
         Caption = 'Lista de clientes'
+        ShortCut = 16460
         OnClick = ListaClienteClick
       end
       object ListaProduto: TMenuItem
         Caption = 'Lista de produtos'
+        ShortCut = 16461
         OnClick = ListaProdutoClick
       end
       object ListaCompra: TMenuItem
         Caption = 'Lista de compras'
+        ShortCut = 16462
         OnClick = ListaCompraClick
       end
       object ListaVenda: TMenuItem
         Caption = 'Lista de vendas'
+        ShortCut = 16463
         OnClick = ListaVendaClick
       end
     end
     object Sobreosistema1: TMenuItem
       Caption = 'Sobre o sistema'
+      ShortCut = 16464
       OnClick = Sobreosistema1Click
     end
   end
