@@ -112,6 +112,8 @@ type
     procedure btDeletarClick(Sender: TObject);
     procedure DBDescontoClick(Sender: TObject);
     procedure DBDescontoExit(Sender: TObject);
+    procedure DBQuantidadeClick(Sender: TObject);
+    procedure DBQuantidadeExit(Sender: TObject);
 
   private
     { Private declarations }
@@ -412,6 +414,19 @@ begin
     QueryPadraoItem.Cancel;
     btItem.SetFocus;
 
+end;
+
+procedure TFrmCompra1.DBQuantidadeClick(Sender: TObject);
+begin
+  QueryPadraoItem.Edit;
+end;
+
+procedure TFrmCompra1.DBQuantidadeExit(Sender: TObject);
+begin
+  QueryPadraoItemTOTAL_ITEM.AsFloat:=
+  (QueryPadraoItemQTDE.AsFloat * QueryPadraoItemVL_CUSTO.AsFloat) + (QueryPadraoItemDESCONTO.AsFloat);
+
+  QueryPadraoItem.Refresh;
 end;
 
 procedure TFrmCompra1.DBDescontoClick(Sender: TObject);

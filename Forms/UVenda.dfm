@@ -186,6 +186,7 @@ inherited FrmVenda: TFrmVenda
       DataField = 'PARCELA'
       DataSource = DSPadrao
       TabOrder = 8
+      OnExit = DBParcelaExit
     end
     object DBEdit3: TDBEdit
       Left = 821
@@ -261,6 +262,8 @@ inherited FrmVenda: TFrmVenda
       DataField = 'QTDE'
       DataSource = DSPadraoItem
       TabOrder = 1
+      OnClick = DBQuantidadeClick
+      OnExit = DBQuantidadeExit
     end
     object DBCusto: TDBEdit
       Left = 267
@@ -578,6 +581,7 @@ inherited FrmVenda: TFrmVenda
       FieldName = 'QTDE'
       Origin = 'QTDE'
       Required = True
+      OnValidate = QueryPadraoItemQTDEValidate
       Precision = 18
       Size = 2
     end

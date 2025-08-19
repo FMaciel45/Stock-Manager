@@ -249,6 +249,8 @@ inherited FrmCompra1: TFrmCompra1
       DataField = 'QTDE'
       DataSource = DSPadraoItem
       TabOrder = 1
+      OnClick = DBQuantidadeClick
+      OnExit = DBQuantidadeExit
     end
     object DBCusto: TDBEdit
       Left = 267

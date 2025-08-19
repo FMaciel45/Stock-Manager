@@ -100,6 +100,10 @@ type
     procedure btPesquisarClick(Sender: TObject);
     procedure DBDescontoClick(Sender: TObject);
     procedure DBDescontoExit(Sender: TObject);
+    procedure DBQuantidadeClick(Sender: TObject);
+    procedure DBQuantidadeExit(Sender: TObject);
+    procedure DBParcelaExit(Sender: TObject);
+    procedure QueryPadraoItemQTDEValidate(Sender: TField);
   private
     { Private declarations }
   public
@@ -369,7 +373,7 @@ begin
         (QueryPadraoItemQTDE.AsFloat * QueryPadraoItemVL_VENDA.AsFloat) + (QueryPadraoItemDESCONTO.AsFloat);
 
         QueryPadraoItem.Post;
-        btItem.SetFocus;
+        DBQuantidade.SetFocus;
       end
 
   else
@@ -377,6 +381,36 @@ begin
     QueryPadraoItem.Cancel;
     btItem.SetFocus;
 
+end;
+
+procedure TFrmVenda.DBParcelaExit(Sender: TObject);
+begin
+  btGravar.SetFocus;
+end;
+
+procedure TFrmVenda.DBQuantidadeClick(Sender: TObject);
+begin
+  QueryPadraoItem.Edit;
+end;
+
+procedure TFrmVenda.DBQuantidadeExit(Sender: TObject);
+begin
+  if QueryPadraoItemQTDE.AsFloat > QueryProdutoESTOQUE.AsFloat then
+    begin
+      ShowMessage('A quantidade inserida é maior que o estoque disponível de ' +
+      QueryProdutoESTOQUE.AsString + ' unidades!');
+
+      DBQuantidade.SetFocus;
+      Abort;
+    end
+
+  else
+    begin
+      QueryPadraoItemTOTAL_ITEM.AsFloat:=
+      (QueryPadraoItemQTDE.AsFloat * QueryPadraoItemVL_VENDA.AsFloat) + (QueryPadraoItemDESCONTO.AsFloat);
+
+      QueryPadraoItem.Refresh;
+    end;
 end;
 
 procedure TFrmVenda.DBDescontoClick(Sender: TObject);
@@ -387,7 +421,7 @@ end;
 procedure TFrmVenda.DBDescontoExit(Sender: TObject);
 begin
   QueryPadraoItemTOTAL_ITEM.AsFloat:=
-  (QueryPadraoItemQTDE.AsFloat * QueryPadraoItemVL_VENDA.AsFloat) + (QueryPadraoItemDESCONTO.AsFloat);
+  (QueryPadraoItemQTDE.AsFloat * QueryPadraoItemVL_VENDA.AsFloat) - (QueryPadraoItemDESCONTO.AsFloat);
 
   QueryPadraoItem.Refresh;
 end;
@@ -399,6 +433,29 @@ begin
   QueryCliente.Close;
   QueryProduto.Close;
   QueryFormaPgto.Close;
+end;
+
+procedure TFrmVenda.QueryPadraoItemQTDEValidate(Sender: TField);
+begin
+  if QueryProdutoESTOQUE.AsFloat = 0 then
+    begin
+      MessageDlg('Produto em falta no estoque!', mtInformation, [mbOk], 0); // Concatenar o nome do produto
+
+      btItem.SetFocus;
+      QueryPadraoItem.Delete;
+
+      Abort;
+    end
+
+  else
+    begin
+      if QueryProdutoESTOQUE.AsFloat < QueryProdutoESTOQUE_MIN.AsFloat then
+        begin
+          ShowMessage('Estoque do produto (' + QueryProdutoESTOQUE.AsString + ' unidades) está abaixo do mínimo!');
+          btItem.SetFocus;
+        end;
+
+    end;
 end;
 
 end.
