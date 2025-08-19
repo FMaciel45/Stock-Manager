@@ -54,6 +54,65 @@ inherited FrmPesqCompra: TFrmPesqCompra
       OnClick = btPesquisaClick
     end
   end
+  inherited DBGrid1: TDBGrid
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID_COMPRA'
+        Title.Caption = 'ID Compra'
+        Width = 77
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID_FORNECEDOR'
+        Title.Caption = 'ID Fornecedor'
+        Width = 96
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Title.Caption = 'Nome'
+        Width = 347
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID_FORMA_PGTO'
+        Title.Caption = 'ID Forma Pgto.'
+        Width = 95
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DESCRICAO'
+        Title.Caption = 'Descri'#231#227'o'
+        Width = 209
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'USUARIO'
+        Title.Caption = 'Usu'#225'rio'
+        Width = 168
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CADASTRO'
+        Title.Caption = 'Cadastro'
+        Width = 98
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VALOR'
+        Title.Caption = 'Valor'
+        Width = 68
+        Visible = True
+      end>
+  end
   inherited Panel2: TPanel
     StyleElements = [seFont, seClient, seBorder]
   end
@@ -76,7 +135,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
       '  '
       '  ')
     Left = 344
-    Top = 376
+    Top = 392
     object QueryPesqPadraoID_COMPRA: TIntegerField
       FieldName = 'ID_COMPRA'
       Origin = 'ID_COMPRA'
@@ -129,13 +188,13 @@ inherited FrmPesqCompra: TFrmPesqCompra
   end
   inherited dsPesqPadrao: TDataSource
     Left = 440
-    Top = 376
+    Top = 392
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
     ReportOptions.LastChange = 45884.404560416670000000
     Left = 40
-    Top = 376
+    Top = 392
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -526,7 +585,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
   inherited DataSetPesqPadrao: TfrxDBDataset
     UserName = 'frxDB_compra'
     Left = 144
-    Top = 376
+    Top = 392
     FieldDefs = <
       item
         FieldName = 'ID_COMPRA'
@@ -562,6 +621,6 @@ inherited FrmPesqCompra: TFrmPesqCompra
   end
   inherited frxPDFExport1: TfrxPDFExport
     Left = 248
-    Top = 376
+    Top = 392
   end
 end

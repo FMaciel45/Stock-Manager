@@ -97,6 +97,7 @@ type
     procedure DBIdProdutoExit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btDeletarClick(Sender: TObject);
+    procedure btPesquisarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -110,7 +111,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataM;
+uses UDataM, UPesqVenda;
 
 procedure TFrmVenda.btNovoClick(Sender: TObject);
 begin
@@ -223,6 +224,25 @@ begin
 
           QueryContaReceber.Refresh;
         end;
+
+end;
+
+procedure TFrmVenda.btPesquisarClick(Sender: TObject);
+begin
+  FrmPesqVenda:= TFrmPesqVenda.Create(self);
+  FrmPesqVenda.ShowModal;
+
+  try
+    if FrmPesqVenda.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_VENDA', FrmPesqVenda.codigo, []);
+      end;
+
+  finally
+    FrmPesqVenda.Free;
+    FrmPesqVenda:= nil;
+  end;
 
 end;
 

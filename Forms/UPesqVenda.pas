@@ -1,4 +1,4 @@
-unit UPesqCompra;
+unit UPesqVenda;
 
 interface
 
@@ -13,19 +13,18 @@ uses
   Vcl.Mask, Vcl.ExtCtrls;
 
 type
-  TFrmPesqCompra = class(TFrmPesquisaPadrao)
-    QueryPesqPadraoID_COMPRA: TIntegerField;
-    QueryPesqPadraoID_FORNECEDOR: TIntegerField;
+  TFrmPesqVenda = class(TFrmPesquisaPadrao)
+    QueryPesqPadraoID_VENDA: TIntegerField;
+    QueryPesqPadraoID_CLIENTE: TIntegerField;
     QueryPesqPadraoNOME: TStringField;
     QueryPesqPadraoID_FORMA_PGTO: TIntegerField;
     QueryPesqPadraoDESCRICAO: TStringField;
     QueryPesqPadraoUSUARIO: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
     QueryPesqPadraoVALOR: TFMTBCDField;
-    procedure btPesquisaClick(Sender: TObject);
     procedure cbChavePesquisaChange(Sender: TObject);
+    procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
-    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,33 +32,13 @@ type
   end;
 
 var
-  FrmPesqCompra: TFrmPesqCompra;
+  FrmPesqVenda: TFrmPesqVenda;
 
 implementation
 
 {$R *.dfm}
 
-procedure TFrmPesqCompra.btImprimirClick(Sender: TObject);
-var caminho: string;
-
-begin
-  caminho:=ExtractFilePath(Application.ExeName);
-
-  if FrmPesqCompra.RelPesqPadrao.LoadFromFile(caminho + 'RelCompra.fr3') then
-    begin
-      RelPesqPadrao.Clear;
-      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompra.fr3');
-      RelPesqPadrao.PrepareReport(true);
-      RelPesqPadrao.ShowPreparedReport;
-
-    end
-
-    else
-      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
-
-end;
-
-procedure TFrmPesqCompra.btPesquisaClick(Sender: TObject);
+procedure TFrmPesqVenda.btPesquisaClick(Sender: TObject);
 begin
   QueryPesqPadrao.Close;
 
@@ -67,22 +46,22 @@ begin
   QueryPesqPadrao.Params.Clear;
   QueryPesqPadrao.SQL.Clear;
 
-  QueryPesqPadrao.SQL.Add('SELECT A.ID_COMPRA, ' +
-                         'A.ID_FORNECEDOR, ' +
+  QueryPesqPadrao.SQL.Add('SELECT A.ID_VENDA, ' +
+                         'A.ID_CLIENTE, ' +
                          'B.NOME, ' +
                          'A.ID_FORMA_PGTO, ' +
                          'C.DESCRICAO, ' +
                          'A.USUARIO, ' +
                          'A.VALOR, ' +
                          'A.CADASTRO ' +
-                         'FROM COMPRA A ' +
-                         'INNER JOIN FORNECEDOR B ON B.ID_FORNECEDOR = A.ID_FORNECEDOR ' +
+                         'FROM VENDA A ' +
+                         'INNER JOIN CLIENTES B ON B.ID_CLIENTE = A.ID_CLIENTE ' +
                          'INNER JOIN FORMA_PGTO C ON C.ID_FORMA_PGTO = A.ID_FORMA_PGTO');
 
   case cbChavePesquisa.ItemIndex of
     0: begin // Pesquisa por ID
-      QueryPesqPadrao.SQL.Add('WHERE A.ID_COMPRA=:PID_COMPRA');
-      QueryPesqPadrao.ParamByName('PID_COMPRA').AsString:=edNome.Text;
+      QueryPesqPadrao.SQL.Add('WHERE A.ID_VENDA=:PID_VENDA');
+      QueryPesqPadrao.ParamByName('PID_VENDA').AsString:=edNome.Text;
     end;
 
     1: begin // Pesquisa por Nome
@@ -91,8 +70,8 @@ begin
     end;
 
     2: begin
-      QueryPesqPadrao.SQL.Add('WHERE A.ID_FORNECEDOR=:PID_FORNECEDOR');
-      QueryPesqPadrao.ParamByName('PID_FORNECEDOR').AsString:=edNome.Text;
+      QueryPesqPadrao.SQL.Add('WHERE A.ID_CLIENTE=:PID_CLIENTE');
+      QueryPesqPadrao.ParamByName('PID_CLIENTE').AsString:=edNome.Text;
     end;
 
     3: begin // Pesquisa por ID do pagamento
@@ -112,7 +91,7 @@ begin
     end;
 
     6: begin
-      QueryPesqPadrao.SQL.Add('ORDER BY A.ID_COMPRA');
+      QueryPesqPadrao.SQL.Add('ORDER BY A.ID_VENDA');
     end;
 
   end;
@@ -129,18 +108,18 @@ begin
 
 end;
 
-procedure TFrmPesqCompra.btTransferirClick(Sender: TObject);
+procedure TFrmPesqVenda.btTransferirClick(Sender: TObject);
 begin
   if QueryPesqPadrao.RecordCount > 0 then
     begin
-      codigo:=QueryPesqPadraoID_COMPRA.AsInteger;
+      codigo:=QueryPesqPadraoID_VENDA.AsInteger;
     end
 
   else
     abort;
 end;
 
-procedure TFrmPesqCompra.cbChavePesquisaChange(Sender: TObject);
+procedure TFrmPesqVenda.cbChavePesquisaChange(Sender: TObject);
 begin
   case cbChavePesquisa.ItemIndex of
     0: begin
@@ -157,7 +136,7 @@ begin
       edNome.Clear;
       edNome.SetFocus;
 
-      lbNomePesq.Caption:='Digite o código da compra';
+      lbNomePesq.Caption:='Digite o código da venda';
     end;
 
     1: begin
@@ -191,7 +170,7 @@ begin
       edNome.Clear;
       edNome.SetFocus;
 
-      lbNomePesq.Caption:='Digite o código do fornecedor';
+      lbNomePesq.Caption:='Digite o código do cliente';
     end;
 
     3: begin

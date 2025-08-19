@@ -22,7 +22,8 @@ uses
   UAbout in '..\Forms\UAbout.pas' {FrmAboutBox},
   ULogin in '..\Forms\ULogin.pas' {FrmLogin},
   UTrocaSenha in '..\Forms\UTrocaSenha.pas' {FrmTrocaSenha},
-  UVenda in '..\Forms\UVenda.pas' {FrmVenda};
+  UVenda in '..\Forms\UVenda.pas' {FrmVenda},
+  UPesqVenda in '..\Forms\UPesqVenda.pas' {FrmPesqVenda};
 
 {$R *.res}
 {$IFDEF DEBUG}
