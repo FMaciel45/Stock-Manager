@@ -22,7 +22,7 @@ uses
   UAbout in '..\Forms\UAbout.pas' {FrmAboutBox},
   ULogin in '..\Forms\ULogin.pas' {FrmLogin},
   UTrocaSenha in '..\Forms\UTrocaSenha.pas' {FrmTrocaSenha},
-  UVenda in '..\UVenda.pas' {FrmVenda};
+  UVenda in '..\Forms\UVenda.pas' {FrmVenda};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -35,7 +35,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmLogin, FrmLogin);
-  Application.CreateForm(TFrmTrocaSenha, FrmTrocaSenha);
-  Application.CreateForm(TFrmVenda, FrmVenda);
   Application.Run;
 end.

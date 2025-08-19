@@ -30,7 +30,6 @@ inherited FrmCompra1: TFrmCompra1
   inherited Panel3: TPanel
     Height = 155
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 76
     ExplicitHeight = 155
     object Label1: TLabel
       Left = 16

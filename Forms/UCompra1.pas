@@ -273,6 +273,9 @@ begin
           QueryContaPagar.FieldByName('STATUS').AsString:='Recebido';
 
           QueryContaPagar.Post;
+
+          MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
+
           inc(parcela);
           QueryContaPagar.Next;
         end;
@@ -313,8 +316,6 @@ begin
 
           QueryContaPagar.Refresh;
         end;
-
-      MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
 
 end;
 

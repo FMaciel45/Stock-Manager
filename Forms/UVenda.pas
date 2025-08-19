@@ -41,10 +41,10 @@ type
     QueryFormaPgtoDESCRICAO: TStringField;
     QueryPadraoCLIENTE: TStringField;
     Label7: TLabel;
-    DBEdit1: TDBEdit;
+    DBCliente: TDBEdit;
     QueryPadraoDESCRICAO: TStringField;
     Label8: TLabel;
-    DBEdit2: TDBEdit;
+    DBDescricaoPgto: TDBEdit;
     QueryPadraoPARCELA: TIntegerField;
     QueryPadraoDINHEIRO: TFMTBCDField;
     QueryPadraoTROCO: TFMTBCDField;
@@ -76,14 +76,26 @@ type
     QueryProdutoVL_VENDA: TFMTBCDField;
     QueryPadraoItemSUBTOTAL: TAggregateField;
     DBEdit3: TDBEdit;
+    QueryContaReceber: TFDQuery;
+    DSContaReceber: TDataSource;
+    QueryContaReceberID_SEQUENCIA: TIntegerField;
+    QueryContaReceberID_VENDA: TIntegerField;
+    QueryContaReceberVALOR_PARCELA: TFMTBCDField;
+    QueryContaReceberDT_VENCIMENTO: TDateField;
+    QueryContaReceberDT_PAGAMENTO: TDateField;
+    QueryContaReceberJUROS: TFMTBCDField;
+    QueryContaReceberVL_JUROS: TFMTBCDField;
+    QueryContaReceberTOTAL_PAGAR: TFMTBCDField;
+    QueryContaReceberSTATUS: TStringField;
+    QueryContaReceberATRASO: TIntegerField;
     procedure btNovoClick(Sender: TObject);
-    procedure DBEdit1Change(Sender: TObject);
     procedure DBIdClienteExit(Sender: TObject);
     procedure DBIdFormaPgtoExit(Sender: TObject);
     procedure btItemClick(Sender: TObject);
     procedure btOkClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
     procedure DBIdProdutoExit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -102,8 +114,12 @@ uses UDataM;
 procedure TFrmVenda.btNovoClick(Sender: TObject);
 begin
   inherited;
-
   DBCadastro.Text:=DateToStr(now);
+
+  QueryCliente.Open;
+  QueryProduto.Open;
+  QueryFormaPgto.Open;
+
   DBUsuario.Text:=DM.usuario;
   DBValor.Text:=IntToStr(0);
   DBParcela.Text:=IntToStr(0);
@@ -111,6 +127,9 @@ begin
 end;
 
 procedure TFrmVenda.btOkClick(Sender: TObject);
+var parcela:integer;
+var diferenca, soma:Real;
+
 begin
   QueryPadrao.Edit;
   QueryPadraoVALOR.AsFloat:=QueryPadraoItem.AggFields.FieldByName('SUBTOTAL').Value;
@@ -134,6 +153,75 @@ begin
 
   QueryProduto.Refresh;
   MessageDlg('Baixa no estoque realizada!', mtInformation, [mbOk], 0);
+
+  QueryContaReceber.Open;
+
+  parcela:=1;
+
+  if (QueryPadraoID_FORMA_PGTO.Value=1) or (QueryPadraoID_FORMA_PGTO.Value=2) then // À vista
+    begin
+      while parcela <= QueryPadraoPARCELA.AsInteger do
+        begin
+          QueryContaReceber.Insert;
+
+          QueryContaReceberID_SEQUENCIA.AsInteger:=parcela;
+
+          QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=QueryPadraoVALOR.AsFloat;
+          QueryContaReceber.FieldByName('DT_VENCIMENTO').Value:=date;
+          QueryContaReceber.FieldByName('DT_PAGAMENTO').Value:=date;
+          QueryContaReceber.FieldByName('ATRASO').AsFloat:=0;
+          QueryContaReceber.FieldByName('JUROS').AsFloat:=0;
+          QueryContaReceber.FieldByName('VL_JUROS').AsFloat:=0;
+          QueryContaReceber.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaReceber.FieldByName('VL_PARCELA').AsFloat;
+          QueryContaReceber.FieldByName('STATUS').AsString:='Recebido';
+
+          QueryContaReceber.Post;
+
+          MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
+
+          Abort;
+        end;
+
+    end
+
+    else // Parcelado
+      QueryContaReceber.First;
+
+      while parcela <= QueryPadraoPARCELA.AsInteger do
+        begin
+          QueryContaReceber.Insert;
+
+          QueryContaReceberID_SEQUENCIA.AsInteger:=parcela;
+
+          QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=
+          (QueryPadraoVALOR.AsFloat)/(QueryPadraoPARCELA.Value);
+          QueryContaReceber.FieldByName('DT_VENCIMENTO').Value:=date+(parcela*30);
+          QueryContaReceber.FieldByName('ATRASO').AsFloat:=0;
+          QueryContaReceber.FieldByName('JUROS').AsFloat:=0;
+          QueryContaReceber.FieldByName('VL_JUROS').AsFloat:=0;
+          QueryContaReceber.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat;
+          QueryContaReceber.FieldByName('STATUS').AsString:='Em aberto';
+
+          QueryContaReceber.Post;
+
+          inc(parcela);
+
+          QueryContaReceber.Next;
+        end;
+
+      // Tratamento de diferença entre valores quando pagamento é parcelado
+      soma:=soma+QueryPadraoPARCELA.Value*QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat;
+      if soma > QueryPadraoVALOR.AsFloat then
+        begin
+          diferenca:=soma-QueryPadraoVALOR.AsFloat;
+
+          QueryContaReceber.Last;
+          QueryContaReceber.Edit;
+
+          QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat-diferenca;
+
+          QueryContaReceber.Refresh;
+        end;
 
 end;
 
@@ -194,6 +282,17 @@ begin
       DBIdFormaPgto.SetFocus;
       Abort;
     end;
+
+  if (DBIdFormaPgto.Text=IntToStr(1)) or (DBIdFormaPgto.Text=IntToStr(2)) then
+    begin
+      DBParcela.Text:=IntToStr(1);
+    end
+
+  else
+    begin
+      DBParcela.SetFocus;
+    end;
+
 end;
 
 procedure TFrmVenda.DBIdProdutoExit(Sender: TObject);
@@ -218,6 +317,15 @@ begin
     QueryPadraoItem.Cancel;
     btItem.SetFocus;
 
+end;
+
+procedure TFrmVenda.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+
+  QueryCliente.Close;
+  QueryProduto.Close;
+  QueryFormaPgto.Close;
 end;
 
 end.

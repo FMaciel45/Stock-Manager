@@ -14,7 +14,7 @@ inherited FrmVenda: TFrmVenda
     Top = 559
     Height = 63
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 448
+    ExplicitTop = 559
     ExplicitHeight = 63
     inherited btItem: TBitBtn
       OnClick = btItemClick
@@ -84,7 +84,7 @@ inherited FrmVenda: TFrmVenda
       Width = 37
       Height = 15
       Caption = 'Cliente'
-      FocusControl = DBEdit1
+      FocusControl = DBCliente
     end
     object Label8: TLabel
       Left = 243
@@ -92,7 +92,7 @@ inherited FrmVenda: TFrmVenda
       Width = 151
       Height = 15
       Caption = 'Descri'#231#227'o da Forma de Pgto.'
-      FocusControl = DBEdit2
+      FocusControl = DBDescricaoPgto
     end
     object Label9: TLabel
       Left = 573
@@ -160,7 +160,7 @@ inherited FrmVenda: TFrmVenda
       Enabled = False
       TabOrder = 6
     end
-    object DBEdit1: TDBEdit
+    object DBCliente: TDBEdit
       Left = 243
       Top = 71
       Width = 300
@@ -168,9 +168,8 @@ inherited FrmVenda: TFrmVenda
       DataField = 'CLIENTE'
       DataSource = DSPadrao
       TabOrder = 4
-      OnChange = DBEdit1Change
     end
-    object DBEdit2: TDBEdit
+    object DBDescricaoPgto: TDBEdit
       Left = 243
       Top = 119
       Width = 300
@@ -202,8 +201,7 @@ inherited FrmVenda: TFrmVenda
     Top = 503
     Height = 56
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitLeft = 8
-    ExplicitTop = 505
+    ExplicitTop = 503
     ExplicitHeight = 56
     object Label10: TLabel
       Left = 15
@@ -247,7 +245,7 @@ inherited FrmVenda: TFrmVenda
     end
     object DBIdProduto: TDBEdit
       Left = 15
-      Top = 27
+      Top = 24
       Width = 120
       Height = 23
       DataField = 'ID_PRODUTO'
@@ -295,17 +293,135 @@ inherited FrmVenda: TFrmVenda
   inherited PageControl1: TPageControl
     Top = 225
     Height = 278
-    ActivePage = ItemCompra
+    ExplicitTop = 225
+    ExplicitHeight = 278
     inherited ItemCompra: TTabSheet
+      Caption = 'Item Venda'
       ExplicitHeight = 248
       inherited DBGrid1: TDBGrid
         Height = 248
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_SEQUENCIA'
+            Title.Caption = 'ID Sequ'#234'ncia'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_VENDA'
+            Title.Caption = 'ID Venda'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_PRODUTO'
+            Title.Caption = 'ID Produto'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'QTDE'
+            Title.Caption = 'Quantidade'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VL_VENDA'
+            Title.Caption = 'Valor Venda'
+            Width = 148
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCONTO'
+            Title.Caption = 'Desconto'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TOTAL_ITEM'
+            Title.Caption = 'Total Item'
+            Width = 143
+            Visible = True
+          end>
       end
     end
     inherited ContasPagar: TTabSheet
+      Caption = 'Contas Receber'
       ExplicitHeight = 248
       inherited DBGrid2: TDBGrid
         Height = 248
+        DataSource = DSContaReceber
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_SEQUENCIA'
+            Title.Caption = 'ID Sequ'#234'ncia'
+            Width = 107
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_VENDA'
+            Title.Caption = 'ID Venda'
+            Width = 81
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VALOR_PARCELA'
+            Title.Caption = 'Valor Parcela'
+            Width = 128
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DT_VENCIMENTO'
+            Title.Caption = 'Data Vencimento'
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DT_PAGAMENTO'
+            Title.Caption = 'Data Pagamento'
+            Width = 113
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ATRASO'
+            Title.Caption = 'Atraso'
+            Width = 78
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'JUROS'
+            Title.Caption = 'Juros'
+            Width = 77
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VL_JUROS'
+            Title.Caption = 'Valor Juros'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TOTAL_PAGAR'
+            Title.Caption = 'Total Pagar'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'STATUS'
+            Title.Caption = 'Status'
+            Width = 102
+            Visible = True
+          end>
       end
     end
   end
@@ -433,26 +549,30 @@ inherited FrmVenda: TFrmVenda
         Name = 'ID_VENDA'
         DataType = ftInteger
         ParamType = ptInput
-        Value = Null
+        Value = 3
       end>
     object QueryPadraoItemID_SEQUENCIA: TIntegerField
+      DisplayWidth = 17
       FieldName = 'ID_SEQUENCIA'
       Origin = 'ID_SEQUENCIA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object QueryPadraoItemID_VENDA: TIntegerField
+      DisplayWidth = 15
       FieldName = 'ID_VENDA'
       Origin = 'ID_VENDA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object QueryPadraoItemID_PRODUTO: TIntegerField
+      DisplayWidth = 16
       FieldName = 'ID_PRODUTO'
       Origin = 'ID_PRODUTO'
       Required = True
     end
     object QueryPadraoItemQTDE: TFMTBCDField
+      DisplayWidth = 19
       FieldName = 'QTDE'
       Origin = 'QTDE'
       Required = True
@@ -460,6 +580,7 @@ inherited FrmVenda: TFrmVenda
       Size = 2
     end
     object QueryPadraoItemVL_VENDA: TFMTBCDField
+      DisplayWidth = 19
       FieldName = 'VL_VENDA'
       Origin = 'VL_VENDA'
       Required = True
@@ -468,6 +589,7 @@ inherited FrmVenda: TFrmVenda
       Size = 2
     end
     object QueryPadraoItemDESCONTO: TFMTBCDField
+      DisplayWidth = 19
       FieldName = 'DESCONTO'
       Origin = 'DESCONTO'
       currency = True
@@ -475,6 +597,7 @@ inherited FrmVenda: TFrmVenda
       Size = 2
     end
     object QueryPadraoItemTOTAL_ITEM: TFMTBCDField
+      DisplayWidth = 19
       FieldName = 'TOTAL_ITEM'
       Origin = 'TOTAL_ITEM'
       Required = True
@@ -532,7 +655,7 @@ inherited FrmVenda: TFrmVenda
       '  DESCRICAO'
       'FROM FORMA_PGTO'
       'ORDER BY ID_FORMA_PGTO;')
-    Left = 932
+    Left = 934
     Top = 567
     object QueryFormaPgtoID_FORMA_PGTO: TIntegerField
       FieldName = 'ID_FORMA_PGTO'
@@ -564,7 +687,7 @@ inherited FrmVenda: TFrmVenda
       '  VL_VENDA'
       'FROM PRODUTO'
       'ORDER BY ID_PRODUTO;')
-    Left = 1020
+    Left = 942
     Top = 507
     object QueryProdutoID_PRODUTO: TIntegerField
       FieldName = 'ID_PRODUTO'
@@ -603,7 +726,101 @@ inherited FrmVenda: TFrmVenda
   end
   object DSProduto: TDataSource
     DataSet = QueryProduto
-    Left = 940
+    Left = 1020
+    Top = 507
+  end
+  object QueryContaReceber: TFDQuery
+    IndexFieldNames = 'ID_VENDA'
+    MasterSource = DSPadrao
+    MasterFields = 'ID_VENDA'
+    DetailFields = 'ID_VENDA'
+    Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT'
+      '  ID_SEQUENCIA,'
+      '  ID_VENDA,'
+      '  VALOR_PARCELA,'
+      '  DT_VENCIMENTO,'
+      '  DT_PAGAMENTO,'
+      '  ATRASO,'
+      '  JUROS,'
+      '  VL_JUROS,'
+      '  TOTAL_PAGAR,'
+      '  STATUS  '
+      'FROM CONTAS_RECEBER'
+      'WHERE ID_VENDA =:ID_VENDA'
+      'ORDER BY ID_SEQUENCIA;')
+    Left = 716
+    Top = 507
+    ParamData = <
+      item
+        Name = 'ID_VENDA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QueryContaReceberID_SEQUENCIA: TIntegerField
+      FieldName = 'ID_SEQUENCIA'
+      Origin = 'ID_SEQUENCIA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryContaReceberID_VENDA: TIntegerField
+      FieldName = 'ID_VENDA'
+      Origin = 'ID_VENDA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryContaReceberVALOR_PARCELA: TFMTBCDField
+      FieldName = 'VALOR_PARCELA'
+      Origin = 'VALOR_PARCELA'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaReceberDT_VENCIMENTO: TDateField
+      FieldName = 'DT_VENCIMENTO'
+      Origin = 'DT_VENCIMENTO'
+      Required = True
+    end
+    object QueryContaReceberDT_PAGAMENTO: TDateField
+      FieldName = 'DT_PAGAMENTO'
+      Origin = 'DT_PAGAMENTO'
+    end
+    object QueryContaReceberJUROS: TFMTBCDField
+      FieldName = 'JUROS'
+      Origin = 'JUROS'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaReceberVL_JUROS: TFMTBCDField
+      FieldName = 'VL_JUROS'
+      Origin = 'VL_JUROS'
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaReceberTOTAL_PAGAR: TFMTBCDField
+      FieldName = 'TOTAL_PAGAR'
+      Origin = 'TOTAL_PAGAR'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryContaReceberSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+      Size = 30
+    end
+    object QueryContaReceberATRASO: TIntegerField
+      FieldName = 'ATRASO'
+      Origin = 'ATRASO'
+    end
+  end
+  object DSContaReceber: TDataSource
+    DataSet = QueryContaReceber
+    Left = 825
     Top = 507
   end
 end

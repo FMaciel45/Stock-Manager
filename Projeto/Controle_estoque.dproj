@@ -208,7 +208,7 @@
             <Form>FrmTrocaSenha</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\UVenda.pas">
+        <DCCReference Include="..\Forms\UVenda.pas">
             <Form>FrmVenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
