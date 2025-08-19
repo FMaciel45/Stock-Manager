@@ -5430,6 +5430,7 @@ object FrmPrincipal: TFrmPrincipal
       end
       object ListaVenda: TMenuItem
         Caption = 'Lista de vendas'
+        OnClick = ListaVendaClick
       end
     end
     object Sobreosistema1: TMenuItem

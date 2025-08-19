@@ -192,7 +192,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
-    ReportOptions.LastChange = 45884.404560416670000000
+    ReportOptions.LastChange = 45884.404560416700000000
     Left = 40
     Top = 392
     Datasets = <

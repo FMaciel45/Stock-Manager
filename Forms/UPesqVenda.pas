@@ -25,6 +25,7 @@ type
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,17 +107,6 @@ begin
   else
     abort;
 
-end;
-
-procedure TFrmPesqVenda.btTransferirClick(Sender: TObject);
-begin
-  if QueryPesqPadrao.RecordCount > 0 then
-    begin
-      codigo:=QueryPesqPadraoID_VENDA.AsInteger;
-    end
-
-  else
-    abort;
 end;
 
 procedure TFrmPesqVenda.cbChavePesquisaChange(Sender: TObject);
@@ -240,6 +230,36 @@ begin
     end;
 
   end;
+
+end;
+
+procedure TFrmPesqVenda.btTransferirClick(Sender: TObject);
+begin
+  if QueryPesqPadrao.RecordCount > 0 then
+    begin
+      codigo:=QueryPesqPadraoID_VENDA.AsInteger;
+    end
+
+  else
+    abort;
+end;
+
+procedure TFrmPesqVenda.btImprimirClick(Sender: TObject);
+var caminho: string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqVenda.RelPesqPadrao.LoadFromFile(caminho + 'RelVenda.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelVenda.fr3');
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
 
 end;
 

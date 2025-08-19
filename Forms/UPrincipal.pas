@@ -78,6 +78,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btVendaClick(Sender: TObject);
     procedure Vendas1Click(Sender: TObject);
+    procedure ListaVendaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -93,7 +94,7 @@ implementation
 
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
-  UAbout, UDataM, ULogin, UVenda;
+  UAbout, UDataM, ULogin, UVenda, UPesqVenda;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -352,6 +353,19 @@ begin
   finally
     FrmPesqCompra.Free;
     FrmPesqCompra:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.ListaVendaClick(Sender: TObject);
+begin
+  FrmPesqVenda:= TFrmPesqVenda.Create(self);
+  FrmPesqVenda.ShowModal;
+
+  try
+
+  finally
+    FrmPesqVenda.Free;
+    FrmPesqVenda:= nil;
   end;
 end;
 
