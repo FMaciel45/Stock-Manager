@@ -109,6 +109,7 @@ type
     procedure DBIdFormaPgtoExit(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btExcluirClick(Sender: TObject);
+    procedure btDeletarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -137,6 +138,43 @@ begin
   QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
 
   DBIdProduto.SetFocus;
+end;
+
+procedure TFrmCompra1.btDeletarClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja excluir todo o registro?', mtInformation, [mbOk, mbNo], 0)=mrOk then
+    begin
+      QueryContaPagar.First;
+
+      while not QueryContaPagar.Eof do
+        begin
+          QueryContaPagar.Delete;
+          QueryContaPagar.Next;
+        end;
+
+      QueryPadraoItem.First;
+
+      while QueryPadraoItem.RecordCount > 0 do
+        begin
+          if QueryProduto.Locate('ID_PRODUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
+            begin
+              QueryProduto.Edit;
+
+              QueryProduto.FieldByName('ESTOQUE').AsFloat:=
+              QueryProduto.FieldByName('ESTOQUE').AsFloat-QueryPadraoItemQTDE.AsFloat;
+
+              QueryProduto.Refresh;
+              QueryPadraoItem.Delete;
+              QueryPadraoItem.Next;
+            end;
+
+        end;
+        inherited;
+
+    end
+  else
+    Abort;
+
 end;
 
 procedure TFrmCompra1.btExcluirClick(Sender: TObject);
