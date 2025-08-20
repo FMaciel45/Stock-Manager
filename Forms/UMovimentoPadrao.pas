@@ -25,6 +25,7 @@ type
     ContasPagar: TTabSheet;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
+
   private
     { Private declarations }
   public

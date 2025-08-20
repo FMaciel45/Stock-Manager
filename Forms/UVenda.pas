@@ -15,7 +15,6 @@ type
   TFrmVenda = class(TFrmPadraoMovimento)
     QueryPadraoID_VENDA: TIntegerField;
     QueryPadraoID_CLIENTE: TIntegerField;
-    QueryPadraoID_FORMA_PGTO: TIntegerField;
     QueryPadraoUSUARIO: TStringField;
     QueryPadraoVALOR: TFMTBCDField;
     QueryPadraoCADASTRO: TDateField;
@@ -23,8 +22,6 @@ type
     DBIdVenda: TDBEdit;
     Label2: TLabel;
     DBIdCliente: TDBEdit;
-    Label3: TLabel;
-    DBIdFormaPgto: TDBEdit;
     Label4: TLabel;
     DBUsuario: TDBEdit;
     Label5: TLabel;
@@ -43,13 +40,9 @@ type
     Label7: TLabel;
     DBCliente: TDBEdit;
     QueryPadraoDESCRICAO: TStringField;
-    Label8: TLabel;
-    DBDescricaoPgto: TDBEdit;
     QueryPadraoPARCELA: TIntegerField;
     QueryPadraoDINHEIRO: TFMTBCDField;
     QueryPadraoTROCO: TFMTBCDField;
-    Label9: TLabel;
-    DBParcela: TDBEdit;
     Label10: TLabel;
     DBIdProduto: TDBEdit;
     DBQuantidade: TDBEdit;
@@ -88,10 +81,9 @@ type
     QueryContaReceberSTATUS: TStringField;
     QueryContaReceberATRASO: TIntegerField;
     btBuscaCliente: TBitBtn;
-    btBuscaFormaPgto: TBitBtn;
+    QueryPadraoID_FORMA_PGTO: TIntegerField;
     procedure btNovoClick(Sender: TObject);
     procedure DBIdClienteExit(Sender: TObject);
-    procedure DBIdFormaPgtoExit(Sender: TObject);
     procedure btItemClick(Sender: TObject);
     procedure btOkClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
@@ -106,6 +98,7 @@ type
     procedure DBParcelaExit(Sender: TObject);
     procedure QueryPadraoItemQTDEValidate(Sender: TField);
     procedure btBuscaClienteClick(Sender: TObject);
+    //procedure btGravarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -120,7 +113,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataM, UPesqVenda, UPesqCliente;
+uses UDataM, UPesqVenda, UPesqCliente, URecebimentoVenda;
 
 procedure TFrmVenda.btNovoClick(Sender: TObject);
 begin
@@ -133,7 +126,7 @@ begin
 
   DBUsuario.Text:=DM.usuario;
   DBValor.Text:=IntToStr(0);
-  DBParcela.Text:=IntToStr(0);
+  //DBParcela.Text:=IntToStr(0);
   DBIdCliente.SetFocus;
 end;
 
@@ -173,6 +166,11 @@ begin
     Abort;
 
 end;
+
+{ procedure TFrmVenda.btGravarClick(Sender: TObject);
+begin
+  btItem.SetFocus;
+end; }
 
 procedure TFrmVenda.btPesquisarClick(Sender: TObject);
 begin
@@ -247,6 +245,8 @@ begin
   QueryProduto.Open;
   QueryPadraoItem.Last;
 
+  //ShowMessage('Insira os itens na lista');
+
   proximo:=QueryPadraoItemID_SEQUENCIA.AsInteger + 1;
   QueryPadraoItem.Append;
   QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
@@ -255,9 +255,6 @@ begin
 end;
 
 procedure TFrmVenda.btOkClick(Sender: TObject);
-var parcela:integer;
-var diferenca, soma:Real;
-
 begin
   QueryPadrao.Edit;
   QueryPadraoVALOR.AsFloat:=QueryPadraoItem.AggFields.FieldByName('SUBTOTAL').Value;
@@ -282,74 +279,16 @@ begin
   QueryProduto.Refresh;
   MessageDlg('Baixa no estoque realizada!', mtInformation, [mbOk], 0);
 
-  QueryContaReceber.Open;
+  // Abrir tela de recebimento
+  FrmRecebimentoVenda:= TFrmRecebimentoVenda.Create(self);
+  FrmRecebimentoVenda.ShowModal;
 
-  parcela:=1;
+  try
 
-  if (QueryPadraoID_FORMA_PGTO.Value=1) or (QueryPadraoID_FORMA_PGTO.Value=2) then // À vista
-    begin
-      while parcela <= QueryPadraoPARCELA.AsInteger do
-        begin
-          QueryContaReceber.Insert;
-
-          QueryContaReceberID_SEQUENCIA.AsInteger:=parcela;
-
-          QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=QueryPadraoVALOR.AsFloat;
-          QueryContaReceber.FieldByName('DT_VENCIMENTO').Value:=date;
-          QueryContaReceber.FieldByName('DT_PAGAMENTO').Value:=date;
-          QueryContaReceber.FieldByName('ATRASO').AsFloat:=0;
-          QueryContaReceber.FieldByName('JUROS').AsFloat:=0;
-          QueryContaReceber.FieldByName('VL_JUROS').AsFloat:=0;
-          QueryContaReceber.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaReceber.FieldByName('VL_PARCELA').AsFloat;
-          QueryContaReceber.FieldByName('STATUS').AsString:='Recebido';
-
-          QueryContaReceber.Post;
-
-          MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
-
-          Abort;
-        end;
-
-    end
-
-    else // Parcelado
-      QueryContaReceber.First;
-
-      while parcela <= QueryPadraoPARCELA.AsInteger do
-        begin
-          QueryContaReceber.Insert;
-
-          QueryContaReceberID_SEQUENCIA.AsInteger:=parcela;
-
-          QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=
-          (QueryPadraoVALOR.AsFloat)/(QueryPadraoPARCELA.Value);
-          QueryContaReceber.FieldByName('DT_VENCIMENTO').Value:=date+(parcela*30);
-          QueryContaReceber.FieldByName('ATRASO').AsFloat:=0;
-          QueryContaReceber.FieldByName('JUROS').AsFloat:=0;
-          QueryContaReceber.FieldByName('VL_JUROS').AsFloat:=0;
-          QueryContaReceber.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat;
-          QueryContaReceber.FieldByName('STATUS').AsString:='Em aberto';
-
-          QueryContaReceber.Post;
-
-          inc(parcela);
-
-          QueryContaReceber.Next;
-        end;
-
-      // Tratamento de diferença entre valores quando pagamento é parcelado
-      soma:=soma+QueryPadraoPARCELA.Value*QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat;
-      if soma > QueryPadraoVALOR.AsFloat then
-        begin
-          diferenca:=soma-QueryPadraoVALOR.AsFloat;
-
-          QueryContaReceber.Last;
-          QueryContaReceber.Edit;
-
-          QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat-diferenca;
-
-          QueryContaReceber.Refresh;
-        end;
+  finally
+    FrmRecebimentoVenda.Free;
+    FrmRecebimentoVenda:= nil;
+  end;
 
 end;
 
@@ -379,15 +318,22 @@ end;
 
 procedure TFrmVenda.DBIdClienteExit(Sender: TObject);
 begin
-  if not QueryCliente.Locate('ID_CLIENTE', QueryPadrao.FieldByName('ID_CLIENTE').AsInteger, []) then
+  if QueryPadrao.State in [dsEdit, dsInsert] then
     begin
-      MessageDlg('Cliente não encontrado!', mtInformation, [mbOk], 0);
-      DBIdCliente.SetFocus;
-      Abort;
+      if not QueryCliente.Locate('ID_CLIENTE', QueryPadrao.FieldByName('ID_CLIENTE').AsInteger, []) then
+        begin
+          MessageDlg('Cliente não encontrado!', mtInformation, [mbOk], 0);
+          DBIdCliente.SetFocus;
+          Abort;
+        end
+
+      else
+        btGravar.Click;
+
     end;
 end;
 
-procedure TFrmVenda.DBIdFormaPgtoExit(Sender: TObject);
+{ procedure TFrmVenda.DBIdFormaPgtoExit(Sender: TObject);
 begin
   if not QueryFormaPgto.Locate('ID_FORMA_PGTO', QueryFormaPgto.FieldByName('ID_FORMA_PGTO').AsInteger, []) then
     begin
@@ -406,7 +352,7 @@ begin
       DBParcela.SetFocus;
     end;
 
-end;
+end; }
 
 procedure TFrmVenda.DBIdProdutoExit(Sender: TObject);
 begin

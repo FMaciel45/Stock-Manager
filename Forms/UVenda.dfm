@@ -31,80 +31,56 @@ inherited FrmVenda: TFrmVenda
     StyleElements = [seFont, seClient, seBorder]
     ExplicitHeight = 155
     object Label1: TLabel
-      Left = 16
-      Top = 7
+      Left = 152
+      Top = 5
       Width = 62
       Height = 15
       Caption = 'ID da Venda'
       FocusControl = DBIdVenda
     end
     object Label2: TLabel
-      Left = 16
-      Top = 55
+      Left = 152
+      Top = 53
       Width = 68
       Height = 15
       Caption = 'ID do Cliente'
       FocusControl = DBIdCliente
     end
-    object Label3: TLabel
-      Left = 16
-      Top = 103
-      Width = 111
-      Height = 15
-      Caption = 'ID da Forma de Pgto.'
-      FocusControl = DBIdFormaPgto
-    end
     object Label4: TLabel
-      Left = 243
-      Top = 7
+      Left = 360
+      Top = 5
       Width = 40
       Height = 15
       Caption = 'Usu'#225'rio'
       FocusControl = DBUsuario
     end
     object Label5: TLabel
-      Left = 573
-      Top = 55
+      Left = 709
+      Top = 53
       Width = 77
       Height = 15
       Caption = 'Valor da Venda'
       FocusControl = DBValor
     end
     object Label6: TLabel
-      Left = 672
-      Top = 7
+      Left = 152
+      Top = 101
       Width = 47
       Height = 15
       Caption = 'Cadastro'
       FocusControl = DBCadastro
     end
     object Label7: TLabel
-      Left = 243
-      Top = 55
+      Left = 360
+      Top = 53
       Width = 37
       Height = 15
       Caption = 'Cliente'
       FocusControl = DBCliente
     end
-    object Label8: TLabel
-      Left = 243
-      Top = 103
-      Width = 151
-      Height = 15
-      Caption = 'Descri'#231#227'o da Forma de Pgto.'
-      FocusControl = DBDescricaoPgto
-    end
-    object Label9: TLabel
-      Left = 573
-      Top = 103
-      Width = 38
-      Height = 15
-      Caption = 'Parcela'
-      FocusControl = DBParcela
-    end
     object DBIdVenda: TDBEdit
-      Left = 16
-      Top = 23
+      Left = 152
+      Top = 21
       Width = 154
       Height = 23
       DataField = 'ID_VENDA'
@@ -112,8 +88,8 @@ inherited FrmVenda: TFrmVenda
       TabOrder = 0
     end
     object DBIdCliente: TDBEdit
-      Left = 16
-      Top = 71
+      Left = 152
+      Top = 69
       Width = 154
       Height = 23
       DataField = 'ID_CLIENTE'
@@ -121,89 +97,52 @@ inherited FrmVenda: TFrmVenda
       TabOrder = 1
       OnExit = DBIdClienteExit
     end
-    object DBIdFormaPgto: TDBEdit
-      Left = 16
-      Top = 119
-      Width = 154
-      Height = 23
-      DataField = 'ID_FORMA_PGTO'
-      DataSource = DSPadrao
-      TabOrder = 2
-      OnExit = DBIdFormaPgtoExit
-    end
     object DBUsuario: TDBEdit
-      Left = 243
-      Top = 23
-      Width = 398
+      Left = 360
+      Top = 21
+      Width = 570
       Height = 23
       DataField = 'USUARIO'
       DataSource = DSPadrao
       Enabled = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object DBValor: TDBEdit
-      Left = 573
-      Top = 71
-      Width = 220
+      Left = 709
+      Top = 69
+      Width = 116
       Height = 23
       DataField = 'VALOR'
       DataSource = DSPadrao
-      TabOrder = 5
+      TabOrder = 4
     end
     object DBCadastro: TDBEdit
-      Left = 672
-      Top = 23
-      Width = 121
+      Left = 152
+      Top = 117
+      Width = 154
       Height = 23
       DataField = 'CADASTRO'
       DataSource = DSPadrao
       Enabled = False
-      TabOrder = 6
+      TabOrder = 5
     end
     object DBCliente: TDBEdit
-      Left = 243
-      Top = 71
-      Width = 300
+      Left = 360
+      Top = 69
+      Width = 319
       Height = 23
       DataField = 'CLIENTE'
       DataSource = DSPadrao
-      TabOrder = 4
-    end
-    object DBDescricaoPgto: TDBEdit
-      Left = 243
-      Top = 119
-      Width = 300
-      Height = 23
-      DataField = 'DESCRICAO'
-      DataSource = DSPadrao
-      TabOrder = 7
-    end
-    object DBParcela: TDBEdit
-      Left = 573
-      Top = 119
-      Width = 220
-      Height = 23
-      DataField = 'PARCELA'
-      DataSource = DSPadrao
-      TabOrder = 8
-      OnExit = DBParcelaExit
+      TabOrder = 3
     end
     object btBuscaCliente: TBitBtn
-      Left = 799
-      Top = 71
-      Width = 66
+      Left = 855
+      Top = 69
+      Width = 75
       Height = 23
       Caption = '&Buscar'
-      TabOrder = 9
+      TabOrder = 6
       OnClick = btBuscaClienteClick
-    end
-    object btBuscaFormaPgto: TBitBtn
-      Left = 799
-      Top = 119
-      Width = 66
-      Height = 23
-      Caption = '&Buscar'
-      TabOrder = 10
     end
   end
   inherited Panel4: TPanel
@@ -463,16 +402,11 @@ inherited FrmVenda: TFrmVenda
       AutoGenerateValue = arAutoInc
       FieldName = 'ID_VENDA'
       Origin = 'ID_VENDA'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ProviderFlags = [pfInWhere, pfInKey]
     end
     object QueryPadraoID_CLIENTE: TIntegerField
       FieldName = 'ID_CLIENTE'
       Origin = 'ID_CLIENTE'
-      Required = True
-    end
-    object QueryPadraoID_FORMA_PGTO: TIntegerField
-      FieldName = 'ID_FORMA_PGTO'
-      Origin = 'ID_FORMA_PGTO'
       Required = True
     end
     object QueryPadraoUSUARIO: TStringField
@@ -530,6 +464,10 @@ inherited FrmVenda: TFrmVenda
       currency = True
       Precision = 18
       Size = 2
+    end
+    object QueryPadraoID_FORMA_PGTO: TIntegerField
+      FieldName = 'ID_FORMA_PGTO'
+      Origin = 'ID_FORMA_PGTO'
     end
   end
   inherited DSPadrao: TDataSource

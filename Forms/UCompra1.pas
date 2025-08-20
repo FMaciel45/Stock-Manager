@@ -271,7 +271,7 @@ begin
 
 end;
 
-{ procedure TFrmCompra1.DBIdFormaPgtoExit(Sender: TObject);
+{ procedure TFrmCompra1.DBIdFormaPgtoExit(Sender: TObject); // Usar esse ou a procedure acima
 begin
   if (DBIdFormaPgto.Text=IntToStr(1)) or (DBIdFormaPgto.Text=IntToStr(2)) then
     begin
@@ -343,7 +343,7 @@ begin
           QueryContaPagar.FieldByName('ATRASO').AsFloat:=0;
           QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
-          QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VL_PARCELA').AsFloat;
+          QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat;
           QueryContaPagar.FieldByName('STATUS').AsString:='Recebido';
 
           QueryContaPagar.Post;
@@ -370,7 +370,7 @@ begin
           QueryContaPagar.FieldByName('ATRASO').AsFloat:=0;
           QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
-          QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VL_PARCELA').AsFloat;
+          QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat;
           QueryContaPagar.FieldByName('STATUS').AsString:='Em aberto';
 
           QueryContaPagar.Post;

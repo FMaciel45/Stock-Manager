@@ -23,7 +23,8 @@ uses
   ULogin in '..\Forms\ULogin.pas' {FrmLogin},
   UTrocaSenha in '..\Forms\UTrocaSenha.pas' {FrmTrocaSenha},
   UVenda in '..\Forms\UVenda.pas' {FrmVenda},
-  UPesqVenda in '..\Forms\UPesqVenda.pas' {FrmPesqVenda};
+  UPesqVenda in '..\Forms\UPesqVenda.pas' {FrmPesqVenda},
+  URecebimentoVenda in '..\Forms\URecebimentoVenda.pas' {FrmRecebimentoVenda};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -36,5 +37,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.CreateForm(TFrmRecebimentoVenda, FrmRecebimentoVenda);
   Application.Run;
 end.
