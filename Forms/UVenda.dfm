@@ -71,7 +71,7 @@ inherited FrmVenda: TFrmVenda
       FocusControl = DBValor
     end
     object Label6: TLabel
-      Left = 872
+      Left = 672
       Top = 7
       Width = 47
       Height = 15
@@ -133,8 +133,8 @@ inherited FrmVenda: TFrmVenda
     end
     object DBUsuario: TDBEdit
       Left = 243
-      Top = 26
-      Width = 550
+      Top = 23
+      Width = 398
       Height = 23
       DataField = 'USUARIO'
       DataSource = DSPadrao
@@ -151,9 +151,9 @@ inherited FrmVenda: TFrmVenda
       TabOrder = 5
     end
     object DBCadastro: TDBEdit
-      Left = 872
+      Left = 672
       Top = 23
-      Width = 204
+      Width = 121
       Height = 23
       DataField = 'CADASTRO'
       DataSource = DSPadrao
@@ -188,14 +188,22 @@ inherited FrmVenda: TFrmVenda
       TabOrder = 8
       OnExit = DBParcelaExit
     end
-    object DBEdit3: TDBEdit
-      Left = 821
+    object btBuscaCliente: TBitBtn
+      Left = 799
       Top = 71
-      Width = 220
+      Width = 66
       Height = 23
-      DataField = 'SUBTOTAL'
-      DataSource = DSPadraoItem
+      Caption = '&Buscar'
       TabOrder = 9
+      OnClick = btBuscaClienteClick
+    end
+    object btBuscaFormaPgto: TBitBtn
+      Left = 799
+      Top = 119
+      Width = 66
+      Height = 23
+      Caption = '&Buscar'
+      TabOrder = 10
     end
   end
   inherited Panel4: TPanel

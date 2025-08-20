@@ -75,7 +75,6 @@ type
     QueryProdutoESTOQUE_MIN: TFMTBCDField;
     QueryProdutoVL_VENDA: TFMTBCDField;
     QueryPadraoItemSUBTOTAL: TAggregateField;
-    DBEdit3: TDBEdit;
     QueryContaReceber: TFDQuery;
     DSContaReceber: TDataSource;
     QueryContaReceberID_SEQUENCIA: TIntegerField;
@@ -88,6 +87,8 @@ type
     QueryContaReceberTOTAL_PAGAR: TFMTBCDField;
     QueryContaReceberSTATUS: TStringField;
     QueryContaReceberATRASO: TIntegerField;
+    btBuscaCliente: TBitBtn;
+    btBuscaFormaPgto: TBitBtn;
     procedure btNovoClick(Sender: TObject);
     procedure DBIdClienteExit(Sender: TObject);
     procedure DBIdFormaPgtoExit(Sender: TObject);
@@ -104,6 +105,8 @@ type
     procedure DBQuantidadeExit(Sender: TObject);
     procedure DBParcelaExit(Sender: TObject);
     procedure QueryPadraoItemQTDEValidate(Sender: TField);
+    procedure btBuscaClienteClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -117,7 +120,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataM, UPesqVenda;
+uses UDataM, UPesqVenda, UPesqCliente;
 
 procedure TFrmVenda.btNovoClick(Sender: TObject);
 begin
@@ -132,6 +135,123 @@ begin
   DBValor.Text:=IntToStr(0);
   DBParcela.Text:=IntToStr(0);
   DBIdCliente.SetFocus;
+end;
+
+procedure TFrmVenda.btDeletarClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja excluir todo o registro?', mtInformation, [mbOk, mbNo], 0)=mrOk then
+    begin
+      QueryContaReceber.First;
+
+      while not QueryContaReceber.Eof do
+        begin
+          QueryContaReceber.Delete;
+          QueryContaReceber.Next;
+        end;
+
+      QueryPadraoItem.First;
+
+      while QueryPadraoItem.RecordCount > 0 do
+        begin
+          if QueryProduto.Locate('ID_PRODUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
+            begin
+              QueryProduto.Edit;
+
+              QueryProduto.FieldByName('ESTOQUE').AsFloat:=
+              QueryProduto.FieldByName('ESTOQUE').AsFloat+QueryPadraoItemQTDE.AsFloat;
+
+              QueryProduto.Refresh;
+              QueryPadraoItem.Delete;
+              QueryPadraoItem.Next;
+            end;
+
+        end;
+        inherited;
+
+    end
+  else
+    Abort;
+
+end;
+
+procedure TFrmVenda.btPesquisarClick(Sender: TObject);
+begin
+  FrmPesqVenda:= TFrmPesqVenda.Create(self);
+  FrmPesqVenda.ShowModal;
+
+  try
+    if FrmPesqVenda.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_VENDA', FrmPesqVenda.codigo, []);
+      end;
+
+  finally
+    FrmPesqVenda.Free;
+    FrmPesqVenda:= nil;
+  end;
+
+end;
+
+procedure TFrmVenda.btBuscaClienteClick(Sender: TObject);
+begin
+  if QueryPadrao.State in [dsEdit, dsInsert] then
+    begin
+      FrmPesqCliente:= TFrmPesqCliente.Create(self);
+      FrmPesqCliente.ShowModal;
+
+      try
+        if FrmPesqCliente.codigo > 0 then
+          begin
+            QueryPadraoID_CLIENTE.AsInteger:=FrmPesqCliente.codigo;
+          end;
+
+      finally
+        FrmPesqCliente.Free;
+        FrmPesqCliente:= nil;
+      end;
+
+    end;
+
+end;
+
+ // Criar formulário de pesquisa de Formas de Pagamento depois
+
+{procedure TFrmVenda.btBuscaFormaPgtoClick(Sender: TObject);
+begin
+  if QueryPadrao.State in [dsEdit, dsInsert] then
+    begin
+      FrmPesqFormasPgto:= TFrmPesqFormasPgto.Create(self);
+      FrmPesqFormasPgto.ShowModal;
+
+      try
+        if FrmPesqFormasPgto.codigo > 0 then
+          begin
+            QueryPadraoID_FORMA_PGTO.AsInteger:=FrmPesqFormasPgto.codigo;
+          end;
+
+      finally
+        FrmPesqFormasPgto.Free;
+        FrmPesqFormasPgto:= nil;
+      end;
+
+    end;
+
+end;}
+
+procedure TFrmVenda.btItemClick(Sender: TObject);
+var proximo:integer;
+
+begin
+  QueryPadraoItem.Open;
+  QueryProduto.Open;
+  QueryPadraoItem.Last;
+
+  proximo:=QueryPadraoItemID_SEQUENCIA.AsInteger + 1;
+  QueryPadraoItem.Append;
+  QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
+
+  DBIdProduto.SetFocus;
 end;
 
 procedure TFrmVenda.btOkClick(Sender: TObject);
@@ -230,77 +350,6 @@ begin
 
           QueryContaReceber.Refresh;
         end;
-
-end;
-
-procedure TFrmVenda.btPesquisarClick(Sender: TObject);
-begin
-  FrmPesqVenda:= TFrmPesqVenda.Create(self);
-  FrmPesqVenda.ShowModal;
-
-  try
-    if FrmPesqVenda.codigo > 0 then
-      begin
-        QueryPadrao.Open;
-        QueryPadrao.Locate('ID_VENDA', FrmPesqVenda.codigo, []);
-      end;
-
-  finally
-    FrmPesqVenda.Free;
-    FrmPesqVenda:= nil;
-  end;
-
-end;
-
-procedure TFrmVenda.btItemClick(Sender: TObject);
-var proximo:integer;
-
-begin
-  QueryPadraoItem.Open;
-  QueryProduto.Open;
-  QueryPadraoItem.Last;
-
-  proximo:=QueryPadraoItemID_SEQUENCIA.AsInteger + 1;
-  QueryPadraoItem.Append;
-  QueryPadraoItemID_SEQUENCIA.AsInteger:=proximo;
-
-  DBIdProduto.SetFocus;
-end;
-
-procedure TFrmVenda.btDeletarClick(Sender: TObject);
-begin
-  if MessageDlg('Deseja excluir todo o registro?', mtInformation, [mbOk, mbNo], 0)=mrOk then
-    begin
-      QueryContaReceber.First;
-
-      while not QueryContaReceber.Eof do
-        begin
-          QueryContaReceber.Delete;
-          QueryContaReceber.Next;
-        end;
-
-      QueryPadraoItem.First;
-
-      while QueryPadraoItem.RecordCount > 0 do
-        begin
-          if QueryProduto.Locate('ID_PRODUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
-            begin
-              QueryProduto.Edit;
-
-              QueryProduto.FieldByName('ESTOQUE').AsFloat:=
-              QueryProduto.FieldByName('ESTOQUE').AsFloat+QueryPadraoItemQTDE.AsFloat;
-
-              QueryProduto.Refresh;
-              QueryPadraoItem.Delete;
-              QueryPadraoItem.Next;
-            end;
-
-        end;
-        inherited;
-
-    end
-  else
-    Abort;
 
 end;
 

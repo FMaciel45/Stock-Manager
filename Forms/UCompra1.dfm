@@ -30,6 +30,7 @@ inherited FrmCompra1: TFrmCompra1
   inherited Panel3: TPanel
     Height = 155
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 64
     ExplicitHeight = 155
     object Label1: TLabel
       Left = 16
@@ -64,7 +65,7 @@ inherited FrmCompra1: TFrmCompra1
       FocusControl = DBUsuario
     end
     object Label5: TLabel
-      Left = 826
+      Left = 656
       Top = 11
       Width = 47
       Height = 15
@@ -132,7 +133,7 @@ inherited FrmCompra1: TFrmCompra1
     object DBUsuario: TDBEdit
       Left = 228
       Top = 27
-      Width = 549
+      Width = 397
       Height = 23
       DataField = 'USUARIO'
       DataSource = DSPadrao
@@ -140,12 +141,13 @@ inherited FrmCompra1: TFrmCompra1
       TabOrder = 3
     end
     object DBCadastro: TDBEdit
-      Left = 826
+      Left = 656
       Top = 27
-      Width = 250
+      Width = 121
       Height = 23
       DataField = 'CADASTRO'
       DataSource = DSPadrao
+      Enabled = False
       TabOrder = 5
     end
     object DBValorCompra: TDBEdit
@@ -183,6 +185,23 @@ inherited FrmCompra1: TFrmCompra1
       DataField = 'COND_PGTO'
       DataSource = DSPadrao
       TabOrder = 8
+    end
+    object btBuscaCliente: TBitBtn
+      Left = 783
+      Top = 69
+      Width = 66
+      Height = 23
+      Caption = '&Buscar'
+      TabOrder = 9
+      OnClick = btBuscaClienteClick
+    end
+    object btBuscaFormaPgto: TBitBtn
+      Left = 783
+      Top = 115
+      Width = 66
+      Height = 23
+      Caption = '&Buscar'
+      TabOrder = 10
     end
   end
   inherited Panel4: TPanel
@@ -285,7 +304,8 @@ inherited FrmCompra1: TFrmCompra1
   inherited PageControl1: TPageControl
     Top = 225
     Height = 273
-    ExplicitTop = 225
+    ActivePage = ItemCompra
+    ExplicitTop = 227
     ExplicitHeight = 273
     inherited ItemCompra: TTabSheet
       ExplicitHeight = 243
@@ -699,8 +719,8 @@ inherited FrmCompra1: TFrmCompra1
       'begin'
       ''
       'end.')
-    Left = 816
-    Top = 179
+    Left = 760
+    Top = 456
     Datasets = <
       item
         DataSet = frxDBQueryPadrao
@@ -1573,8 +1593,8 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryPadrao
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 1011
-    Top = 126
+    Left = 1027
+    Top = 454
   end
   object QueryFdEmpresa: TFDQuery
     Active = True
@@ -1690,8 +1710,8 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryFdEmpresa
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 912
-    Top = 126
+    Left = 952
+    Top = 454
   end
   object frxDBPadraoItem: TfrxDBDataset
     UserName = 'frxDBPadraoItem'
@@ -1699,8 +1719,8 @@ inherited FrmCompra1: TFrmCompra1
     DataSet = QueryPadraoItem
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 816
-    Top = 126
+    Left = 856
+    Top = 454
   end
   object QueryContaPagar: TFDQuery
     Active = True
