@@ -245,6 +245,7 @@ inherited FrmVenda: TFrmVenda
   inherited PageControl1: TPageControl
     Top = 225
     Height = 278
+    ActivePage = ItemCompra
     ExplicitTop = 225
     ExplicitHeight = 278
     inherited ItemCompra: TTabSheet
@@ -475,7 +476,6 @@ inherited FrmVenda: TFrmVenda
     Top = 568
   end
   inherited QueryPadraoItem: TFDQuery
-    Active = True
     IndexFieldNames = 'ID_VENDA'
     AggregatesActive = True
     MasterFields = 'ID_VENDA'

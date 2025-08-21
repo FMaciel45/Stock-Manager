@@ -45,26 +45,26 @@ uses UVenda;
 
 procedure TFrmRecebimentoVenda.RGFormaPgtoClick(Sender: TObject);
 begin
-  FrmVenda.QueryPadrao.Edit; // testar fechado
-  FrmVenda.QueryFormaPgto.Edit;
+  FrmVenda.QueryPadrao.Edit;
+  //FrmVenda.QueryFormaPgto.Edit;
 
   case RGFormaPgto.ItemIndex of
     0:begin // Venda à vista (id = 1)
-      FrmVenda.QueryFormaPgtoID_FORMA_PGTO.AsInteger:=1;
+      FrmVenda.QueryPadraoID_FORMA_PGTO.AsInteger:=1;
       FrmVenda.QueryPadraoPARCELA.AsInteger:=1;
 
       DBValorPago.SetFocus;
     end;
 
     1:begin // Débito (id = 2)
-      FrmVenda.QueryFormaPgtoID_FORMA_PGTO.AsInteger:=2;
+      FrmVenda.QueryPadraoID_FORMA_PGTO.AsInteger:=2;
       FrmVenda.QueryPadraoPARCELA.AsInteger:=1;
       FrmVenda.QueryPadraoDINHEIRO.AsFloat:=FrmVenda.QueryPadraoVALOR.AsFloat;
       FrmVenda.QueryPadraoTROCO.AsFloat:=0;
     end;
 
     2:begin // Crédito (id = 3)
-      FrmVenda.QueryFormaPgtoID_FORMA_PGTO.AsInteger:=3;
+      FrmVenda.QueryPadraoID_FORMA_PGTO.AsInteger:=3;
 
       DBParcela.SetFocus;
 
@@ -73,7 +73,7 @@ begin
     end;
 
     3:begin // Nota Promissória (id = 4)
-      FrmVenda.QueryFormaPgtoID_FORMA_PGTO.AsInteger:=4;
+      FrmVenda.QueryPadraoID_FORMA_PGTO.AsInteger:=4;
 
       DBParcela.SetFocus;
 
@@ -101,7 +101,7 @@ begin
 
   parcela:=1;
 
-  if (FrmVenda.QueryPadraoID_FORMA_PGTO.Value=1) or (FrmVenda.QueryPadraoID_FORMA_PGTO.Value=2) then // À vista
+  if (DBIdFormaPgto.Text=IntToStr(1)) or (DBIdFormaPgto.Text=IntToStr(2)) then // À vista
     begin
       while parcela <= FrmVenda.QueryPadraoPARCELA.AsInteger do
         begin
@@ -126,13 +126,14 @@ begin
 
           MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
 
+          FrmRecebimentoVenda.Close;
           Abort;
         end;
 
     end
 
   else // Cartão de Crédito
-    if FrmVenda.QueryPadraoID_FORMA_PGTO.Value=3 then
+    if DBIdFormaPgto.Text=IntToStr(3) then
       begin
         FrmVenda.QueryContaReceber.First;
 
@@ -152,7 +153,8 @@ begin
             FrmVenda.QueryContaReceber.FieldByName('JUROS').AsFloat:=0;
             FrmVenda.QueryContaReceber.FieldByName('VL_JUROS').AsFloat:=0;
 
-            FrmVenda.QueryContaReceber.FieldByName('TOTAL_PAGAR').AsFloat:=FrmVenda.QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat;
+            FrmVenda.QueryContaReceber.FieldByName('TOTAL_PAGAR').AsFloat:=
+            FrmVenda.QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat;
 
             FrmVenda.QueryContaReceber.FieldByName('STATUS').AsString:='Recebido';
 
@@ -161,6 +163,10 @@ begin
             inc(parcela);
 
             FrmVenda.QueryContaReceber.Next;
+
+            MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
+
+            FrmRecebimentoVenda.Close;
           end;
       end
 
@@ -192,6 +198,10 @@ begin
         inc(parcela);
 
         FrmVenda.QueryContaReceber.Next;
+
+        MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
+
+        FrmRecebimentoVenda.Close;
       end;
 
 

@@ -126,7 +126,6 @@ begin
 
   DBUsuario.Text:=DM.usuario;
   DBValor.Text:=IntToStr(0);
-  //DBParcela.Text:=IntToStr(0);
   DBIdCliente.SetFocus;
 end;
 
@@ -213,30 +212,6 @@ begin
 
 end;
 
- // Criar formulário de pesquisa de Formas de Pagamento depois
-
-{procedure TFrmVenda.btBuscaFormaPgtoClick(Sender: TObject);
-begin
-  if QueryPadrao.State in [dsEdit, dsInsert] then
-    begin
-      FrmPesqFormasPgto:= TFrmPesqFormasPgto.Create(self);
-      FrmPesqFormasPgto.ShowModal;
-
-      try
-        if FrmPesqFormasPgto.codigo > 0 then
-          begin
-            QueryPadraoID_FORMA_PGTO.AsInteger:=FrmPesqFormasPgto.codigo;
-          end;
-
-      finally
-        FrmPesqFormasPgto.Free;
-        FrmPesqFormasPgto:= nil;
-      end;
-
-    end;
-
-end;}
-
 procedure TFrmVenda.btItemClick(Sender: TObject);
 var proximo:integer;
 
@@ -244,8 +219,6 @@ begin
   QueryPadraoItem.Open;
   QueryProduto.Open;
   QueryPadraoItem.Last;
-
-  //ShowMessage('Insira os itens na lista');
 
   proximo:=QueryPadraoItemID_SEQUENCIA.AsInteger + 1;
   QueryPadraoItem.Append;
@@ -332,27 +305,6 @@ begin
 
     end;
 end;
-
-{ procedure TFrmVenda.DBIdFormaPgtoExit(Sender: TObject);
-begin
-  if not QueryFormaPgto.Locate('ID_FORMA_PGTO', QueryFormaPgto.FieldByName('ID_FORMA_PGTO').AsInteger, []) then
-    begin
-      MessageDlg('Forma de pagamento não encontrada!', mtInformation, [mbOk], 0);
-      DBIdFormaPgto.SetFocus;
-      Abort;
-    end;
-
-  if (DBIdFormaPgto.Text=IntToStr(1)) or (DBIdFormaPgto.Text=IntToStr(2)) then
-    begin
-      DBParcela.Text:=IntToStr(1);
-    end
-
-  else
-    begin
-      DBParcela.SetFocus;
-    end;
-
-end; }
 
 procedure TFrmVenda.DBIdProdutoExit(Sender: TObject);
 begin
