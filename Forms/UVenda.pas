@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, Vcl.DBCtrls, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Vcl.Mask;
+  Vcl.ExtCtrls, Vcl.Mask, frxSmartMemo, frxClass, frxDBSet, frCoreClasses;
 
 type
   TFrmVenda = class(TFrmPadraoMovimento)
@@ -82,6 +82,26 @@ type
     QueryContaReceberATRASO: TIntegerField;
     btBuscaCliente: TBitBtn;
     QueryPadraoID_FORMA_PGTO: TIntegerField;
+    QueryEmpresa: TFDQuery;
+    DSEmpresa: TDataSource;
+    QueryEmpresaID_EMPRESA: TIntegerField;
+    QueryEmpresaRAZAO_SOCIAL: TStringField;
+    QueryEmpresaN_FANTASIA: TStringField;
+    QueryEmpresaENDERECO: TStringField;
+    QueryEmpresaNUMERO: TIntegerField;
+    QueryEmpresaBAIRRO: TStringField;
+    QueryEmpresaCIDADE: TStringField;
+    QueryEmpresaUF: TStringField;
+    QueryEmpresaCEP: TStringField;
+    QueryEmpresaTELEFONE: TStringField;
+    QueryEmpresaCNPJ: TStringField;
+    QueryEmpresaEMAIL: TStringField;
+    QueryEmpresaLOGO: TBlobField;
+    QueryEmpresaCADASTRO: TDateField;
+    RelReciboVenda: TfrxReport;
+    frxPadrao: TfrxDBDataset;
+    frxPadraoItem: TfrxDBDataset;
+    frxEmpresa: TfrxDBDataset;
     procedure btNovoClick(Sender: TObject);
     procedure DBIdClienteExit(Sender: TObject);
     procedure btItemClick(Sender: TObject);
