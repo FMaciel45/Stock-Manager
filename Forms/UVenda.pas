@@ -271,13 +271,6 @@ begin
     begin
       if QueryProduto.Locate('ID_PRODUTO', QueryPadraoItemID_PRODUTO.AsInteger, []) then
         begin
-          QueryProduto.Edit;
-
-          QueryProduto.FieldByName('ESTOQUE').AsFloat:=
-          QueryProduto.FieldByName('ESTOQUE').AsFloat +
-          QueryPadraoItemQTDE.AsFloat;
-
-          QueryProduto.Refresh;
           QueryPadraoItem.Delete;
 
           MessageDlg('Item excluido com sucesso!', mtInformation, [mbOk], 0);

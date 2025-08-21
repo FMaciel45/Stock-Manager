@@ -64,7 +64,7 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
     Align = alBottom
     Color = clGradientInactiveCaption
     ParentBackground = False
-    TabOrder = 0
+    TabOrder = 7
     object btOk: TBitBtn
       Left = 14
       Top = 14
@@ -100,12 +100,12 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
       'Cart'#227'o de cr'#233'dito'
       'Nota promiss'#243'ria')
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     OnClick = RGFormaPgtoClick
   end
   object DBDescricaoPgto: TDBEdit
     Left = 376
-    Top = 31
+    Top = 36
     Width = 225
     Height = 23
     DataField = 'DESCRICAO'
@@ -119,7 +119,7 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
     Height = 23
     DataField = 'PARCELA'
     DataSource = FrmVenda.DSPadrao
-    TabOrder = 3
+    TabOrder = 4
   end
   object DBIdFormaPgto: TDBEdit
     Left = 232
@@ -128,16 +128,16 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
     Height = 23
     DataField = 'ID_FORMA_PGTO'
     DataSource = FrmVenda.DSPadrao
-    TabOrder = 4
+    TabOrder = 1
   end
   object DBValor: TDBEdit
     Left = 376
-    Top = 90
+    Top = 96
     Width = 225
     Height = 23
     DataField = 'VALOR'
     DataSource = FrmVenda.DSPadrao
-    TabOrder = 5
+    TabOrder = 3
   end
   object DBTroco: TDBEdit
     Left = 376
@@ -155,7 +155,7 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
     Height = 23
     DataField = 'DINHEIRO'
     DataSource = FrmVenda.DSPadrao
-    TabOrder = 7
+    TabOrder = 5
     OnExit = DBValorPagoExit
   end
 end

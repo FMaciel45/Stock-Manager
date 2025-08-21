@@ -118,6 +118,7 @@ type
     procedure DBQuantidadeExit(Sender: TObject);
     procedure btBuscaClienteClick(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
+    procedure btGravarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -178,6 +179,12 @@ begin
   else
     Abort;
 
+end;
+
+procedure TFrmCompra1.btGravarClick(Sender: TObject); // Verificar
+begin
+  QueryPadrao.Refresh;
+  //btItem.Click;
 end;
 
 procedure TFrmCompra1.btPesquisarClick(Sender: TObject);
@@ -344,7 +351,7 @@ begin
           QueryContaPagar.FieldByName('JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('VL_JUROS').AsFloat:=0;
           QueryContaPagar.FieldByName('TOTAL_PAGAR').AsFloat:=QueryContaPagar.FieldByName('VALOR_PARCELA').AsFloat;
-          QueryContaPagar.FieldByName('STATUS').AsString:='Recebido';
+          QueryContaPagar.FieldByName('STATUS').AsString:='Pago';
 
           QueryContaPagar.Post;
 

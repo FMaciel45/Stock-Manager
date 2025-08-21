@@ -146,7 +146,7 @@ begin
             FrmVenda.QueryContaReceber.FieldByName('VALOR_PARCELA').AsFloat:=
             (FrmVenda.QueryPadraoVALOR.AsFloat)/(FrmVenda.QueryPadraoPARCELA.Value);
 
-            FrmVenda.QueryContaReceber.FieldByName('DT_VENCIMENTO').Value:=date+(parcela*1);
+            FrmVenda.QueryContaReceber.FieldByName('DT_VENCIMENTO').Value:=date+(parcela*30);
             FrmVenda.QueryContaReceber.FieldByName('DT_PAGAMENTO').Value:=date+1;
 
             FrmVenda.QueryContaReceber.FieldByName('ATRASO').AsFloat:=0;
