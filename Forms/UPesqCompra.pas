@@ -10,7 +10,7 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, frxSmartMemo, frxClass, frxExportBaseDialog,
   frxExportPDF, frxDBSet, frCoreClasses, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Mask, Vcl.ExtCtrls;
+  Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls;
 
 type
   TFrmPesqCompra = class(TFrmPesquisaPadrao)
@@ -98,6 +98,9 @@ begin
   end;
 
   QueryPesqPadrao.Open; // Mostrar o resultado da consulta
+
+  lbResultado.Caption:='Total de registros: ' +
+  IntToStr(QueryPesqPadrao.RecordCount); // Mostra quantos resultados foram encontrados
 
   if QueryPesqPadrao.isEmpty then
     begin

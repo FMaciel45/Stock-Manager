@@ -107,6 +107,12 @@ inherited FrmPesqVenda: TFrmPesqVenda
   end
   inherited Panel2: TPanel
     StyleElements = [seFont, seClient, seBorder]
+    inherited lbResultado: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited DBNavigator1: TDBNavigator
+    Hints.Strings = ()
   end
   inherited QueryPesqPadrao: TFDQuery
     Active = True

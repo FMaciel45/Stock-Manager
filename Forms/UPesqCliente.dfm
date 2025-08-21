@@ -113,6 +113,12 @@ inherited FrmPesqCliente: TFrmPesqCliente
   end
   inherited Panel2: TPanel
     StyleElements = [seFont, seClient, seBorder]
+    inherited lbResultado: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited DBNavigator1: TDBNavigator
+    Hints.Strings = ()
   end
   inherited QueryPesqPadrao: TFDQuery
     Active = True
@@ -133,7 +139,6 @@ inherited FrmPesqCliente: TFrmPesqCliente
       'ORDER BY ID_CLIENTE;'
       '')
     Left = 424
-    Top = 360
     object QueryPesqPadraoID_CLIENTE: TIntegerField
       DisplayWidth = 11
       FieldName = 'ID_CLIENTE'
@@ -213,13 +218,11 @@ inherited FrmPesqCliente: TFrmPesqCliente
   end
   inherited dsPesqPadrao: TDataSource
     Left = 520
-    Top = 360
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
     ReportOptions.LastChange = 45881.704703020800000000
     Left = 32
-    Top = 360
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -572,6 +575,5 @@ inherited FrmPesqCliente: TFrmPesqCliente
   end
   inherited frxPDFExport1: TfrxPDFExport
     Left = 256
-    Top = 360
   end
 end

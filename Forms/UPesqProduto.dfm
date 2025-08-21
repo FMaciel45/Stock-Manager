@@ -4,12 +4,12 @@ inherited FrmPesqProduto: TFrmPesqProduto
   Color = clWindow
   Ctl3D = False
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitLeft = -141
   ExplicitWidth = 1294
   TextHeight = 15
   inherited Panel1: TPanel
     Width = 1278
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 1278
     inherited Label1: TLabel
       StyleElements = [seFont, seClient, seBorder]
     end
@@ -128,6 +128,10 @@ inherited FrmPesqProduto: TFrmPesqProduto
   inherited Panel2: TPanel
     Width = 1278
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 1278
+    inherited lbResultado: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
   end
   object btEtiqueta: TBitBtn [3]
     Left = 1186
@@ -135,8 +139,11 @@ inherited FrmPesqProduto: TFrmPesqProduto
     Width = 75
     Height = 40
     Caption = 'C'#243'd. Barras'
-    TabOrder = 3
+    TabOrder = 4
     OnClick = btEtiquetaClick
+  end
+  inherited DBNavigator1: TDBNavigator
+    Hints.Strings = ()
   end
   inherited QueryPesqPadrao: TFDQuery
     Active = True
@@ -172,6 +179,7 @@ inherited FrmPesqProduto: TFrmPesqProduto
       FieldName = 'VL_CUSTO'
       Origin = 'VL_CUSTO'
       Required = True
+      currency = True
       Precision = 18
       Size = 2
     end
@@ -179,6 +187,7 @@ inherited FrmPesqProduto: TFrmPesqProduto
       FieldName = 'VL_VENDA'
       Origin = 'VL_VENDA'
       Required = True
+      currency = True
       Precision = 18
       Size = 2
     end
@@ -348,7 +357,7 @@ inherited FrmPesqProduto: TFrmPesqProduto
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 128.504020000000000000
+        Height = 143.622140000000000000
         Top = 177.637910000000000000
         Width = 1046.929810000000000000
         Columns = 5

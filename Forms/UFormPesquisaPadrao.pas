@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, frxSmartMemo, frxClass, frxDBSet,
-  frCoreClasses, frxExportBaseDialog, frxExportPDF;
+  frCoreClasses, frxExportBaseDialog, frxExportPDF, Vcl.DBCtrls;
 
 type
   TFrmPesquisaPadrao = class(TForm)
@@ -32,6 +32,8 @@ type
     RelPesqPadrao: TfrxReport;
     DataSetPesqPadrao: TfrxDBDataset;
     frxPDFExport1: TfrxPDFExport;
+    DBNavigator1: TDBNavigator;
+    lbResultado: TLabel;
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -147,7 +147,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     Left = 0
     Top = 90
     Width = 1197
-    Height = 364
+    Height = 350
     Align = alClient
     DataSource = dsPesqPadrao
     TabOrder = 1
@@ -160,23 +160,47 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
   end
   object Panel2: TPanel
     Left = 0
-    Top = 454
+    Top = 440
     Width = 1197
-    Height = 41
+    Height = 55
     Align = alBottom
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 2
+    ExplicitLeft = -17
+    ExplicitTop = 474
+    object lbResultado: TLabel
+      Left = 16
+      Top = 6
+      Width = 87
+      Height = 21
+      Caption = 'lbResultado'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 880
+    Top = 453
+    Width = 300
+    Height = 29
+    DataSource = dsPesqPadrao
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+    TabOrder = 3
   end
   object QueryPesqPadrao: TFDQuery
     Connection = DM.Conexao
-    Left = 688
-    Top = 144
+    Left = 64
+    Top = 360
   end
   object dsPesqPadrao: TDataSource
     DataSet = QueryPesqPadrao
-    Left = 688
-    Top = 208
+    Left = 160
+    Top = 360
   end
   object RelPesqPadrao: TfrxReport
     Version = '2025.2.5'
@@ -193,8 +217,8 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       'begin'
       ''
       'end.')
-    Left = 472
-    Top = 144
+    Left = 264
+    Top = 360
     Datasets = <>
     Variables = <>
     Style = <>
@@ -206,8 +230,8 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     DataSet = QueryPesqPadrao
     BCDToCurrency = False
     DataSetOptions = []
-    Left = 472
-    Top = 208
+    Left = 368
+    Top = 360
   end
   object frxPDFExport1: TfrxPDFExport
     UseFileCache = True
@@ -234,7 +258,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     PDFStandard = psNone
     PDFVersion = pv17
     PDFColorSpace = csDeviceRGB
-    Left = 472
-    Top = 288
+    Left = 471
+    Top = 360
   end
 end

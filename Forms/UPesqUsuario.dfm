@@ -81,6 +81,15 @@ inherited FrmPesqUsuario: TFrmPesqUsuario
   end
   inherited Panel2: TPanel
     StyleElements = [seFont, seClient, seBorder]
+    inherited lbResultado: TLabel
+      Width = 87
+      Caption = 'lbResultado'
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 87
+    end
+  end
+  inherited DBNavigator1: TDBNavigator
+    Hints.Strings = ()
   end
   inherited QueryPesqPadrao: TFDQuery
     Active = True
