@@ -25,6 +25,9 @@ inherited FrmVenda: TFrmVenda
     inherited btExcluir: TBitBtn
       OnClick = btExcluirClick
     end
+    inherited btImprimir: TBitBtn
+      OnClick = btImprimirClick
+    end
   end
   inherited Panel3: TPanel
     Height = 155
@@ -1968,6 +1971,8 @@ inherited FrmVenda: TFrmVenda
     end
   end
   object frxPadrao: TfrxDBDataset
+    RangeBegin = rbCurrent
+    RangeEnd = reCurrent
     UserName = 'frxPadrao'
     CloseDataSource = False
     DataSet = QueryPadrao

@@ -118,6 +118,7 @@ type
     procedure DBParcelaExit(Sender: TObject);
     procedure QueryPadraoItemQTDEValidate(Sender: TField);
     procedure btBuscaClienteClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
     //procedure btGravarClick(Sender: TObject);
 
   private
@@ -230,6 +231,24 @@ begin
 
     end;
 
+end;
+
+procedure TFrmVenda.btImprimirClick(Sender: TObject);
+var caminho:string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmVenda.RelReciboVenda.LoadFromFile(caminho + 'RelReciboVenda.fr3') then
+    begin
+      RelReciboVenda.Clear;
+      RelReciboVenda.LoadFromFile(extractfilepath(application.ExeName) + 'RelReciboVenda.fr3');
+      RelReciboVenda.PrepareReport(true);
+      RelReciboVenda.ShowPreparedReport;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
 end;
 
 procedure TFrmVenda.btItemClick(Sender: TObject);

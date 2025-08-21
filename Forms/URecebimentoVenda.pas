@@ -24,7 +24,6 @@ type
     Label5: TLabel;
     Label6: TLabel;
     btOk: TBitBtn;
-    btImprimir: TBitBtn;
     procedure RGFormaPgtoClick(Sender: TObject);
     procedure DBValorPagoExit(Sender: TObject);
     procedure btOkClick(Sender: TObject);
@@ -126,6 +125,8 @@ begin
 
           MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
 
+          FrmVenda.btImprimir.Click;
+
           FrmRecebimentoVenda.Close;
           Abort;
         end;
@@ -166,8 +167,18 @@ begin
 
             MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0);
 
-            FrmRecebimentoVenda.Close;
+            FrmVenda.btImprimir.Click;
+
+
           end;
+
+        MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0); // teste
+
+        FrmVenda.btImprimir.Click; // teste
+
+        FrmRecebimentoVenda.Close; // teste
+
+        Abort;
       end
 
 
@@ -219,6 +230,11 @@ begin
 
       FrmVenda.QueryContaReceber.Refresh;
     end;
+
+  MessageDlg('Parcelas geradas!', mtInformation, [mbOk], 0); // teste
+
+  FrmVenda.btImprimir.Click; // teste
+
 end;
 
 end.

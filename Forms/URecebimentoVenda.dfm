@@ -16,7 +16,7 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
   TextHeight = 15
   object Label1: TLabel
     Left = 232
-    Top = 14
+    Top = 15
     Width = 79
     Height = 15
     Caption = 'ID Forma Pgto.'
@@ -74,14 +74,6 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
       TabOrder = 0
       OnClick = btOkClick
     end
-    object btImprimir: TBitBtn
-      Left = 108
-      Top = 14
-      Width = 80
-      Height = 30
-      Caption = '&Imprimir'
-      TabOrder = 1
-    end
   end
   object RGFormaPgto: TRadioGroup
     Left = 0
@@ -123,7 +115,7 @@ object FrmRecebimentoVenda: TFrmRecebimentoVenda
   end
   object DBIdFormaPgto: TDBEdit
     Left = 232
-    Top = 31
+    Top = 36
     Width = 113
     Height = 23
     DataField = 'ID_FORMA_PGTO'
