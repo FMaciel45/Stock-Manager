@@ -24,9 +24,11 @@ type
     QueryPesqPadraoID_FORNECEDOR: TIntegerField;
     QueryPesqPadraoNOME: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
+    btEtiqueta: TBitBtn;
     procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+    procedure btEtiquetaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +59,26 @@ begin
 
     else
       MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
+end;
+
+procedure TFrmPesqProduto.btEtiquetaClick(Sender: TObject);
+var caminho: string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqProduto.RelPesqPadrao.LoadFromFile(caminho + 'Etiqueta.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'Etiqueta.fr3');
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+
+    end
+
+    else
+      MessageDlg('Etiqueta não encontrada!', mtError, [mbOk], 0);
 
 end;
 
