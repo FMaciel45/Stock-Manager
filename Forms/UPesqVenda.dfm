@@ -73,7 +73,7 @@ inherited FrmPesqVenda: TFrmPesqVenda
         Expanded = False
         FieldName = 'ID_FORMA_PGTO'
         Title.Caption = 'ID Forma Pgto.'
-        Width = 95
+        Width = 91
         Visible = True
       end
       item
@@ -94,7 +94,7 @@ inherited FrmPesqVenda: TFrmPesqVenda
         Expanded = False
         FieldName = 'CADASTRO'
         Title.Caption = 'Cadastro'
-        Width = 98
+        Width = 95
         Visible = True
       end
       item
@@ -109,6 +109,19 @@ inherited FrmPesqVenda: TFrmPesqVenda
     StyleElements = [seFont, seClient, seBorder]
     inherited lbResultado: TLabel
       StyleElements = [seFont, seClient, seBorder]
+    end
+    object lbValorVendas: TLabel
+      Left = 280
+      Top = 6
+      Width = 103
+      Height = 21
+      Caption = 'lbValorVendas'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   inherited DBNavigator1: TDBNavigator

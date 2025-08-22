@@ -22,10 +22,14 @@ type
     QueryPesqPadraoUSUARIO: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
     QueryPesqPadraoVALOR: TFMTBCDField;
+    lbValorCompras: TLabel;
     procedure btPesquisaClick(Sender: TObject);
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+
+    procedure somaCompra();
   private
     { Private declarations }
   public
@@ -38,6 +42,30 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmPesqCompra.FormShow(Sender: TObject);
+begin
+  inherited;
+  lbResultado.Hide;
+  lbValorCompras.Hide;
+end;
+
+procedure TFrmPesqCompra.somaCompra;
+var soma:Currency;
+
+begin
+  soma:=0;
+  QueryPesqPadrao.First;
+
+  while not QueryPesqPadrao.Eof do
+    begin
+      soma:=soma + QueryPesqPadraoVALOR.AsCurrency;
+      QueryPesqPadrao.Next;
+    end;
+
+  lbValorCompras.Show;
+  lbValorCompras.Caption:='Total em compras: R$' + FormatFloat('##,##0.00',(soma));
+end;
 
 procedure TFrmPesqCompra.btPesquisaClick(Sender: TObject);
 begin
@@ -99,8 +127,11 @@ begin
 
   QueryPesqPadrao.Open; // Mostrar o resultado da consulta
 
+  lbResultado.Show;
   lbResultado.Caption:='Total de registros: ' +
   IntToStr(QueryPesqPadrao.RecordCount); // Mostra quantos resultados foram encontrados
+
+  somaCompra; // procedure que soma os valores das compras
 
   if QueryPesqPadrao.isEmpty then
     begin

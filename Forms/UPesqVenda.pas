@@ -22,10 +22,14 @@ type
     QueryPesqPadraoUSUARIO: TStringField;
     QueryPesqPadraoCADASTRO: TDateField;
     QueryPesqPadraoVALOR: TFMTBCDField;
+    lbValorVendas: TLabel;
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+
+    procedure somaVenda();
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +42,30 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmPesqVenda.FormShow(Sender: TObject);
+begin
+  inherited;
+  lbResultado.Hide;
+  lbValorVendas.Hide;
+end;
+
+procedure TFrmPesqVenda.somaVenda;
+var soma:Currency;
+
+begin
+  soma:=0;
+  QueryPesqPadrao.First;
+
+  while not QueryPesqPadrao.Eof do
+    begin
+      soma:=soma + QueryPesqPadraoVALOR.AsCurrency;
+      QueryPesqPadrao.Next;
+    end;
+
+  lbValorVendas.Show;
+  lbValorVendas.Caption:='Total em vendas: R$' + FormatFloat('##,##0.00',(soma));
+end;
 
 procedure TFrmPesqVenda.btPesquisaClick(Sender: TObject);
 begin
@@ -99,8 +127,11 @@ begin
 
   QueryPesqPadrao.Open; // Mostrar o resultado da consulta
 
+  lbResultado.Show;
   lbResultado.Caption:='Total de registros: ' +
-  IntToStr(QueryPesqPadrao.RecordCount); // Mostra quantos resultados foram encontrados
+  IntToStr(QueryPesqPadrao.RecordCount); // Mostra quantos resultados foram encontrados - transformar em procedure (futuro)
+
+  somaVenda; // procedure que soma os valores das vendas
 
   if QueryPesqPadrao.isEmpty then
     begin

@@ -120,7 +120,6 @@ type
     procedure btBuscaClienteClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
     //procedure btGravarClick(Sender: TObject);
-
   private
     { Private declarations }
   public

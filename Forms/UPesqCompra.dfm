@@ -3,6 +3,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
   Color = clWindow
   Ctl3D = False
   StyleElements = [seFont, seClient, seBorder]
+  ExplicitLeft = -46
   TextHeight = 15
   inherited Panel1: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -81,7 +82,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
         Expanded = False
         FieldName = 'ID_FORMA_PGTO'
         Title.Caption = 'ID Forma Pgto.'
-        Width = 95
+        Width = 76
         Visible = True
       end
       item
@@ -102,14 +103,14 @@ inherited FrmPesqCompra: TFrmPesqCompra
         Expanded = False
         FieldName = 'CADASTRO'
         Title.Caption = 'Cadastro'
-        Width = 98
+        Width = 90
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VALOR'
         Title.Caption = 'Valor'
-        Width = 68
+        Width = 82
         Visible = True
       end>
   end
@@ -117,6 +118,19 @@ inherited FrmPesqCompra: TFrmPesqCompra
     StyleElements = [seFont, seClient, seBorder]
     inherited lbResultado: TLabel
       StyleElements = [seFont, seClient, seBorder]
+    end
+    object lbValorCompras: TLabel
+      Left = 280
+      Top = 6
+      Width = 116
+      Height = 21
+      Caption = 'lbValorCompras'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   inherited DBNavigator1: TDBNavigator
@@ -141,7 +155,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
       '  '
       '  ')
     Left = 344
-    Top = 392
+    Top = 384
     object QueryPesqPadraoID_COMPRA: TIntegerField
       FieldName = 'ID_COMPRA'
       Origin = 'ID_COMPRA'
@@ -194,13 +208,13 @@ inherited FrmPesqCompra: TFrmPesqCompra
   end
   inherited dsPesqPadrao: TDataSource
     Left = 440
-    Top = 392
+    Top = 384
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
     ReportOptions.LastChange = 45884.404560416700000000
     Left = 40
-    Top = 392
+    Top = 384
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -591,7 +605,7 @@ inherited FrmPesqCompra: TFrmPesqCompra
   inherited DataSetPesqPadrao: TfrxDBDataset
     UserName = 'frxDB_compra'
     Left = 144
-    Top = 392
+    Top = 384
     FieldDefs = <
       item
         FieldName = 'ID_COMPRA'
@@ -627,6 +641,6 @@ inherited FrmPesqCompra: TFrmPesqCompra
   end
   inherited frxPDFExport1: TfrxPDFExport
     Left = 248
-    Top = 392
+    Top = 384
   end
 end

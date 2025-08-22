@@ -504,7 +504,7 @@ inherited FrmVenda: TFrmVenda
         Name = 'ID_VENDA'
         DataType = ftInteger
         ParamType = ptInput
-        Value = 44
+        Value = 3
       end>
     object QueryPadraoItemID_SEQUENCIA: TIntegerField
       DisplayWidth = 17
@@ -1980,47 +1980,6 @@ inherited FrmVenda: TFrmVenda
     DataSetOptions = []
     Left = 1036
     Top = 74
-    FieldDefs = <
-      item
-        FieldName = 'ID_VENDA'
-      end
-      item
-        FieldName = 'ID_CLIENTE'
-      end
-      item
-        FieldName = 'USUARIO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'VALOR'
-      end
-      item
-        FieldName = 'CADASTRO'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'CLIENTE'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'DESCRICAO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'PARCELA'
-      end
-      item
-        FieldName = 'DINHEIRO'
-      end
-      item
-        FieldName = 'TROCO'
-      end
-      item
-        FieldName = 'ID_FORMA_PGTO'
-      end>
   end
   object frxPadraoItem: TfrxDBDataset
     UserName = 'frxPadraoItem'
@@ -2030,31 +1989,6 @@ inherited FrmVenda: TFrmVenda
     DataSetOptions = []
     Left = 956
     Top = 131
-    FieldDefs = <
-      item
-        FieldName = 'ID_SEQUENCIA'
-      end
-      item
-        FieldName = 'ID_VENDA'
-      end
-      item
-        FieldName = 'ID_PRODUTO'
-      end
-      item
-        FieldName = 'QTDE'
-      end
-      item
-        FieldName = 'VL_VENDA'
-      end
-      item
-        FieldName = 'DESCONTO'
-      end
-      item
-        FieldName = 'TOTAL_ITEM'
-      end
-      item
-        FieldName = 'SUBTOTAL'
-      end>
   end
   object frxEmpresa: TfrxDBDataset
     UserName = 'frxEmpresa'
@@ -2064,68 +1998,5 @@ inherited FrmVenda: TFrmVenda
     DataSetOptions = []
     Left = 1036
     Top = 131
-    FieldDefs = <
-      item
-        FieldName = 'ID_EMPRESA'
-      end
-      item
-        FieldName = 'RAZAO_SOCIAL'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'N_FANTASIA'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'ENDERECO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'NUMERO'
-      end
-      item
-        FieldName = 'BAIRRO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'CIDADE'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'UF'
-        FieldType = fftString
-      end
-      item
-        FieldName = 'CEP'
-        FieldType = fftString
-        Size = 14
-      end
-      item
-        FieldName = 'TELEFONE'
-        FieldType = fftString
-        Size = 15
-      end
-      item
-        FieldName = 'CNPJ'
-        FieldType = fftString
-        Size = 20
-      end
-      item
-        FieldName = 'EMAIL'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'LOGO'
-      end
-      item
-        FieldName = 'CADASTRO'
-        FieldType = fftDateTime
-      end>
   end
 end
