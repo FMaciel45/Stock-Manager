@@ -42,6 +42,7 @@ type
     ListaVenda: TMenuItem;
     Sobreosistema1: TMenuItem;
     Fechar1: TMenuItem;
+    C1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
@@ -81,6 +82,7 @@ type
     procedure Vendas1Click(Sender: TObject);
     procedure ListaVendaClick(Sender: TObject);
     procedure Fechar1Click(Sender: TObject);
+    procedure C1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,7 +98,7 @@ implementation
 
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
-  UAbout, UDataM, ULogin, UVenda, UPesqVenda;
+  UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -266,6 +268,19 @@ end;
 procedure TFrmPrincipal.btCompraClick(Sender: TObject);
 begin
   AbreTelaCompra1;
+end;
+
+procedure TFrmPrincipal.C1Click(Sender: TObject); // Relatórios -> Compras/Formas de Pgto.
+begin
+  FrmPesqCompraFormaPgto:= TFrmPesqCompraFormaPgto.Create(self);
+  FrmPesqCompraFormaPgto.ShowModal;
+
+  try
+
+  finally
+    FrmPesqCompraFormaPgto.Free;
+    FrmPesqCompraFormaPgto:= nil;
+  end;
 end;
 
 procedure TFrmPrincipal.Compras1Click(Sender: TObject);

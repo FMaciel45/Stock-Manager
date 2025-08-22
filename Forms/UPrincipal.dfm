@@ -5451,6 +5451,10 @@ object FrmPrincipal: TFrmPrincipal
         ShortCut = 16463
         OnClick = ListaVendaClick
       end
+      object C1: TMenuItem
+        Caption = 'Compras/Formas de Pgto.'
+        OnClick = C1Click
+      end
     end
     object Sobreosistema1: TMenuItem
       Caption = 'Sobre o sistema'
