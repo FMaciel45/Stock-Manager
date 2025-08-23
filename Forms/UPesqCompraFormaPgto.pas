@@ -22,6 +22,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btPesquisaClick(Sender: TObject);
     procedure somaCompra();
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,6 +35,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UDataM;
 
 procedure TFrmPesqCompraFormaPgto.FormShow(Sender: TObject);
 begin
@@ -59,6 +62,8 @@ begin
   lbValorCompras.Show;
   lbValorCompras.Caption:='Total em compras: R$' + FormatFloat('##,##0.00',(soma));
 end;
+
+
 
 procedure TFrmPesqCompraFormaPgto.btPesquisaClick(Sender: TObject);
 begin
@@ -92,6 +97,30 @@ begin
     begin
       MessageDlg('Nenhum registro encontrado!', mtInformation, [mbOk], 0);
     end;
+
+end;
+
+procedure TFrmPesqCompraFormaPgto.btImprimirClick(Sender: TObject);
+var caminho: string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqCompraFormaPgto.RelPesqPadrao.LoadFromFile(caminho + 'RelCompraFormaPgto.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraFormaPgto.fr3');
+      RelPesqPadrao.Variables['DataIni']:=QuotedStr(mkInicio.Text);
+      RelPesqPadrao.Variables['DataFim']:=QuotedStr(mkFim.Text);
+      RelPesqPadrao.Variables['Qtde.']:=QuotedStr(lbResultado.Caption);
+      RelPesqPadrao.Variables['ValorCompra']:=QuotedStr(lbValorCompras.Caption);
+      RelPesqPadrao.Variables['Nome']:=QuotedStr(DM.Usuario);
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
 
 end;
 
