@@ -226,6 +226,10 @@
             <Form>FrmPesqCompraFormaPgto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\UPesqVendaFormaPgto.pas">
+            <Form>FrmPesqVendaFormaPgto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

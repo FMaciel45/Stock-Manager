@@ -1,4 +1,4 @@
-unit UPesqCompraFormaPgto;
+unit UPesqVendaFormaPgto;
 
 interface
 
@@ -13,15 +13,15 @@ uses
   Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls;
 
 type
-  TFrmPesqCompraFormaPgto = class(TFrmPesquisaPadrao)
+  TFrmPesqVendaFormaPgto = class(TFrmPesquisaPadrao)
     QueryPesqPadraoID_FORMA_PGTO: TIntegerField;
     QueryPesqPadraoDESCRICAO: TStringField;
-    QueryPesqPadraoQTDE_COMPRA: TIntegerField;
-    QueryPesqPadraoVALOR_COMPRA: TFMTBCDField;
-    lbValorCompras: TLabel;
-    procedure FormShow(Sender: TObject);
+    QueryPesqPadraoQTDE_VENDA: TIntegerField;
+    QueryPesqPadraoVALOR_VENDA: TFMTBCDField;
+    lbValorVendas: TLabel;
     procedure btPesquisaClick(Sender: TObject);
-    procedure somaCompra();
+    procedure FormShow(Sender: TObject);
+    procedure somaVenda();
     procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
@@ -30,7 +30,7 @@ type
   end;
 
 var
-  FrmPesqCompraFormaPgto: TFrmPesqCompraFormaPgto;
+  FrmPesqVendaFormaPgto: TFrmPesqVendaFormaPgto;
 
 implementation
 
@@ -38,15 +38,15 @@ implementation
 
 uses UDataM;
 
-procedure TFrmPesqCompraFormaPgto.FormShow(Sender: TObject);
+procedure TFrmPesqVendaFormaPgto.FormShow(Sender: TObject);
 begin
   mkInicio.SetFocus;
 
   lbResultado.Hide;
-  lbValorCompras.Hide;
+  lbValorVendas.Hide;
 end;
 
-procedure TFrmPesqCompraFormaPgto.somaCompra;
+procedure TFrmPesqVendaFormaPgto.somaVenda;
 var soma:Currency;
 
 begin
@@ -55,15 +55,15 @@ begin
 
   while not QueryPesqPadrao.Eof do
     begin
-      soma:=soma + QueryPesqPadraoVALOR_COMPRA.AsCurrency;
+      soma:=soma + QueryPesqPadraoVALOR_VENDA.AsCurrency;
       QueryPesqPadrao.Next;
     end;
 
-  lbValorCompras.Show;
-  lbValorCompras.Caption:='Total em compras: R$' + FormatFloat('##,##0.00',(soma));
+  lbValorVendas.Show;
+  lbValorVendas.Caption:='Total em vendas: R$' + FormatFloat('##,##0.00',(soma));
 end;
 
-procedure TFrmPesqCompraFormaPgto.btPesquisaClick(Sender: TObject);
+procedure TFrmPesqVendaFormaPgto.btPesquisaClick(Sender: TObject);
 begin
   QueryPesqPadrao.Close;
 
@@ -73,9 +73,9 @@ begin
 
   QueryPesqPadrao.SQL.Add('SELECT A.ID_FORMA_PGTO, '
                           +'B.DESCRICAO, '
-                          +'COUNT(A.ID_COMPRA) AS QTDE_COMPRA, '
+                          +'COUNT(A.ID_VENDA) AS QTDE_VENDA, '
                           +'SUM(A.VALOR) AS VALOR_TOTAL '
-                        +'FROM COMPRA A');
+                        +'FROM VENDA A');
   QueryPesqPadrao.SQL.Add('INNER JOIN FORMA_PGTO B ON B.ID_FORMA_PGTO=A.ID_FORMA_PGTO');
   QueryPesqPadrao.SQL.Add('WHERE A.CADASTRO BETWEEN :PDATA_INI AND :PDATA_FIM');
   QueryPesqPadrao.ParamByName('PDATA_INI').AsDate:=StrToDate(mkInicio.Text);
@@ -89,7 +89,7 @@ begin
   lbResultado.Caption:='Total de registros: ' +
   IntToStr(QueryPesqPadrao.RecordCount); // Mostra quantos resultados foram encontrados
 
-  somaCompra; // procedure que soma os valores das compras
+  somaVenda; // procedure que soma os valores das vendas
 
   if QueryPesqPadrao.IsEmpty then
     begin
@@ -98,20 +98,20 @@ begin
 
 end;
 
-procedure TFrmPesqCompraFormaPgto.btImprimirClick(Sender: TObject);
+procedure TFrmPesqVendaFormaPgto.btImprimirClick(Sender: TObject);
 var caminho: string;
 
 begin
   caminho:=ExtractFilePath(Application.ExeName);
 
-  if FrmPesqCompraFormaPgto.RelPesqPadrao.LoadFromFile(caminho + 'RelCompraFormaPgto.fr3') then
+  if FrmPesqVendaFormaPgto.RelPesqPadrao.LoadFromFile(caminho + 'RelVendaFormaPgto.fr3') then
     begin
       RelPesqPadrao.Clear;
-      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraFormaPgto.fr3');
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelVendaFormaPgto.fr3');
       RelPesqPadrao.Variables['DataIni']:=QuotedStr(mkInicio.Text);
       RelPesqPadrao.Variables['DataFim']:=QuotedStr(mkFim.Text);
       RelPesqPadrao.Variables['Qtde.']:=QuotedStr(lbResultado.Caption);
-      RelPesqPadrao.Variables['ValorCompra']:=QuotedStr(lbValorCompras.Caption);
+      RelPesqPadrao.Variables['ValorVenda']:=QuotedStr(lbValorVendas.Caption);
       RelPesqPadrao.Variables['Nome']:=QuotedStr(DM.Usuario);
       RelPesqPadrao.PrepareReport(true);
       RelPesqPadrao.ShowPreparedReport;

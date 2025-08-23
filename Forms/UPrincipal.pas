@@ -43,6 +43,7 @@ type
     Sobreosistema1: TMenuItem;
     Fechar1: TMenuItem;
     C1: TMenuItem;
+    VendasFormasdePgto1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
@@ -83,6 +84,7 @@ type
     procedure ListaVendaClick(Sender: TObject);
     procedure Fechar1Click(Sender: TObject);
     procedure C1Click(Sender: TObject);
+    procedure VendasFormasdePgto1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -98,7 +100,8 @@ implementation
 
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
-  UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto;
+  UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto,
+  UPesqVendaFormaPgto;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -270,19 +273,6 @@ begin
   AbreTelaCompra1;
 end;
 
-procedure TFrmPrincipal.C1Click(Sender: TObject); // Relatórios -> Compras/Formas de Pgto.
-begin
-  FrmPesqCompraFormaPgto:= TFrmPesqCompraFormaPgto.Create(self);
-  FrmPesqCompraFormaPgto.ShowModal;
-
-  try
-
-  finally
-    FrmPesqCompraFormaPgto.Free;
-    FrmPesqCompraFormaPgto:= nil;
-  end;
-end;
-
 procedure TFrmPrincipal.Compras1Click(Sender: TObject);
 begin
   AbreTelaCompra1;
@@ -383,6 +373,32 @@ begin
   finally
     FrmPesqVenda.Free;
     FrmPesqVenda:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.C1Click(Sender: TObject); // Relatórios -> Compras/Formas de Pgto.
+begin
+  FrmPesqCompraFormaPgto:= TFrmPesqCompraFormaPgto.Create(self);
+  FrmPesqCompraFormaPgto.ShowModal;
+
+  try
+
+  finally
+    FrmPesqCompraFormaPgto.Free;
+    FrmPesqCompraFormaPgto:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.VendasFormasdePgto1Click(Sender: TObject); // Relatórios -> Vendas/Formas de Pgto.
+begin
+  FrmPesqVendaFormaPgto:= TFrmPesqVendaFormaPgto.Create(self);
+  FrmPesqVendaFormaPgto.ShowModal;
+
+  try
+
+  finally
+    FrmPesqVendaFormaPgto.Free;
+    FrmPesqVendaFormaPgto:= nil;
   end;
 end;
 

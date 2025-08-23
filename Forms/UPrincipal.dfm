@@ -5455,6 +5455,10 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Compras/Formas de Pgto.'
         OnClick = C1Click
       end
+      object VendasFormasdePgto1: TMenuItem
+        Caption = 'Vendas/Formas de Pgto.'
+        OnClick = VendasFormasdePgto1Click
+      end
     end
     object Sobreosistema1: TMenuItem
       Caption = 'Sobre o sistema'
