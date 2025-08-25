@@ -40,7 +40,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmLogin, FrmLogin);
-  Application.CreateForm(TFrmPesqVendaFormaPgto, FrmPesqVendaFormaPgto);
-  Application.CreateForm(TFrmPesqGeralMes, FrmPesqGeralMes);
   Application.Run;
 end.

@@ -93,8 +93,9 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
       Height = 40
       Caption = '&Pesquisar'
       TabOrder = 4
+      OnClick = btPesquisaClick
     end
-    object RadioGroup1: TRadioGroup
+    object RGOpcao: TRadioGroup
       Left = 16
       Top = 13
       Width = 241
@@ -129,23 +130,207 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   end
   object QueryCompra: TFDQuery
     Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT (MONTH FROM A.CADASTRO) AS MES,'
+      '  EXTRACT (YEAR FROM A.CADASTRO) AS ANO,'
+      '  SUM (A.VALOR) AS VALOR_COMPRA'
+      'FROM COMPRA A'
+      'WHERE A.CADASTRO BETWEEN :PDATAINI AND :PDATAFIM'
+      
+        'GROUP BY EXTRACT (MONTH FROM A.CADASTRO), EXTRACT (YEAR FROM A.C' +
+        'ADASTRO)'
+      'ORDER BY EXTRACT (MONTH FROM A.CADASTRO);')
     Left = 32
     Top = 248
+    ParamData = <
+      item
+        Name = 'PDATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PDATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object QueryCompraMES: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MES'
+      Origin = 'MES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryCompraANO: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'ANO'
+      Origin = 'ANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryCompraVALOR_COMPRA: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_COMPRA'
+      Origin = 'VALOR_COMPRA'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
   end
   object QueryVenda: TFDQuery
     Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT (MONTH FROM A.CADASTRO) AS MES,'
+      '  EXTRACT (YEAR FROM A.CADASTRO) AS ANO,'
+      '  SUM (A.VALOR) AS VALOR_VENDA'
+      'FROM VENDA A'
+      'WHERE A.CADASTRO BETWEEN :PDATAINI AND :PDATAFIM'
+      
+        'GROUP BY EXTRACT (MONTH FROM A.CADASTRO), EXTRACT (YEAR FROM A.C' +
+        'ADASTRO)'
+      'ORDER BY EXTRACT (MONTH FROM A.CADASTRO);')
     Left = 120
     Top = 248
+    ParamData = <
+      item
+        Name = 'PDATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PDATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object QueryVendaMES: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MES'
+      Origin = 'MES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryVendaANO: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'ANO'
+      Origin = 'ANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryVendaVALOR_VENDA: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_VENDA'
+      Origin = 'VALOR_VENDA'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
   end
   object QueryContasPagar: TFDQuery
     Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT (MONTH FROM A.DT_PAGAMENTO) AS MES,'
+      '  EXTRACT (YEAR FROM A.DT_PAGAMENTO) AS ANO,'
+      '  SUM (A.TOTAL_PAGAR) AS TOTAL_PAGO'
+      'FROM CONTAS_PAGAR A'
+      'WHERE A.DT_PAGAMENTO BETWEEN :PDATAINI AND :PDATAFIM'
+      
+        'GROUP BY EXTRACT (MONTH FROM A.DT_PAGAMENTO), EXTRACT (YEAR FROM' +
+        ' A.DT_PAGAMENTO)'
+      'ORDER BY EXTRACT (MONTH FROM A.DT_PAGAMENTO);')
     Left = 225
     Top = 248
+    ParamData = <
+      item
+        Name = 'PDATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PDATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object QueryContasPagarMES: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MES'
+      Origin = 'MES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasPagarANO: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'ANO'
+      Origin = 'ANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasPagarTOTAL_PAGO: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'TOTAL_PAGO'
+      Origin = 'TOTAL_PAGO'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
   end
   object QueryContasReceber: TFDQuery
     Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT (MONTH FROM A.DT_PAGAMENTO) AS MES,'
+      '  EXTRACT (YEAR FROM A.DT_PAGAMENTO) AS ANO,'
+      '  SUM (A.TOTAL_PAGAR) AS TOTAL_RECEBIDO'
+      'FROM CONTAS_RECEBER A'
+      'WHERE A.DT_PAGAMENTO BETWEEN :PDATAINI AND :PDATAFIM'
+      
+        'GROUP BY EXTRACT (MONTH FROM A.DT_PAGAMENTO), EXTRACT (YEAR FROM' +
+        ' A.DT_PAGAMENTO)'
+      'ORDER BY EXTRACT (MONTH FROM A.DT_PAGAMENTO);')
     Left = 352
     Top = 248
+    ParamData = <
+      item
+        Name = 'PDATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PDATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object QueryContasReceberMES: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MES'
+      Origin = 'MES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasReceberANO: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'ANO'
+      Origin = 'ANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasReceberTOTAL_RECEBIDO: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'TOTAL_RECEBIDO'
+      Origin = 'TOTAL_RECEBIDO'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
   end
   object DSCompra: TDataSource
     DataSet = QueryCompra
@@ -169,8 +354,55 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   end
   object QueryContasPagarAPagar: TFDQuery
     Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT (MONTH FROM A.DT_VENCIMENTO) AS MES,'
+      '  EXTRACT (YEAR FROM A.DT_VENCIMENTO) AS ANO,'
+      '  SUM (A.VALOR_PARCELA) AS VALOR_A_PAGAR'
+      'FROM CONTAS_PAGAR A'
+      'WHERE A.DT_VENCIMENTO BETWEEN :PDATAINI AND :PDATAFIM'
+      'AND A.STATUS='#39'Em aberto'#39
+      
+        'GROUP BY EXTRACT (MONTH FROM A.DT_VENCIMENTO), EXTRACT (YEAR FRO' +
+        'M A.DT_VENCIMENTO)'
+      'ORDER BY EXTRACT (MONTH FROM A.DT_VENCIMENTO);')
     Left = 504
     Top = 248
+    ParamData = <
+      item
+        Name = 'PDATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PDATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object QueryContasPagarAPagarMES: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MES'
+      Origin = 'MES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasPagarAPagarANO: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'ANO'
+      Origin = 'ANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasPagarAPagarVALOR_A_PAGAR: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_A_PAGAR'
+      Origin = 'VALOR_A_PAGAR'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
   end
   object DSContasPagarAPagar: TDataSource
     DataSet = QueryContasPagarAPagar
@@ -179,8 +411,55 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   end
   object QueryContasReceberAReceber: TFDQuery
     Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  EXTRACT (MONTH FROM A.DT_VENCIMENTO) AS MES,'
+      '  EXTRACT (YEAR FROM A.DT_VENCIMENTO) AS ANO,'
+      '  SUM (A.VALOR_PARCELA) AS VALOR_A_RECEBER'
+      'FROM CONTAS_RECEBER A'
+      'WHERE A.DT_VENCIMENTO BETWEEN :PDATAINI AND :PDATAFIM'
+      'AND A.STATUS='#39'Em aberto'#39
+      
+        'GROUP BY EXTRACT (MONTH FROM A.DT_VENCIMENTO), EXTRACT (YEAR FRO' +
+        'M A.DT_VENCIMENTO)'
+      'ORDER BY EXTRACT (MONTH FROM A.DT_VENCIMENTO);')
     Left = 675
     Top = 248
+    ParamData = <
+      item
+        Name = 'PDATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'PDATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
+    object QueryContasReceberAReceberMES: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'MES'
+      Origin = 'MES'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasReceberAReceberANO: TSmallintField
+      AutoGenerateValue = arDefault
+      FieldName = 'ANO'
+      Origin = 'ANO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object QueryContasReceberAReceberVALOR_A_RECEBER: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_A_RECEBER'
+      Origin = 'VALOR_A_RECEBER'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 2
+    end
   end
   object DSContasReceberAReceber: TDataSource
     Left = 676
