@@ -153,7 +153,7 @@ inherited FrmPesqCompraFormaPgto: TFrmPesqCompraFormaPgto
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
-    ReportOptions.LastChange = 45892.372895983800000000
+    ReportOptions.LastChange = 45894.407150428240000000
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -303,7 +303,7 @@ inherited FrmPesqCompraFormaPgto: TFrmPesqCompraFormaPgto
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = []
+          Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
             'Per'#237'odo:')

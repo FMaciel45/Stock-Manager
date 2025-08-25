@@ -26,7 +26,8 @@ uses
   UPesqVenda in '..\Forms\UPesqVenda.pas' {FrmPesqVenda},
   URecebimentoVenda in '..\Forms\URecebimentoVenda.pas' {FrmRecebimentoVenda},
   UPesqCompraFormaPgto in '..\Forms\UPesqCompraFormaPgto.pas' {FrmPesqCompraFormaPgto},
-  UPesqVendaFormaPgto in '..\Forms\UPesqVendaFormaPgto.pas' {FrmPesqVendaFormaPgto};
+  UPesqVendaFormaPgto in '..\Forms\UPesqVendaFormaPgto.pas' {FrmPesqVendaFormaPgto},
+  UPesqGeralMes in '..\Forms\UPesqGeralMes.pas' {FrmPesqGeralMes};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -40,5 +41,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TFrmPesqVendaFormaPgto, FrmPesqVendaFormaPgto);
+  Application.CreateForm(TFrmPesqGeralMes, FrmPesqGeralMes);
   Application.Run;
 end.

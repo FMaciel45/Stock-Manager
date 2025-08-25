@@ -23,6 +23,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure somaVenda();
     procedure btImprimirClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -37,6 +38,13 @@ implementation
 {$R *.dfm}
 
 uses UDataM;
+
+procedure TFrmPesqVendaFormaPgto.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  QueryPesqPadrao.Close;
+end;
 
 procedure TFrmPesqVendaFormaPgto.FormShow(Sender: TObject);
 begin

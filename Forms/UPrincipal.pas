@@ -44,6 +44,7 @@ type
     Fechar1: TMenuItem;
     C1: TMenuItem;
     VendasFormasdePgto1: TMenuItem;
+    RelatrioGeralporMs1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
@@ -85,6 +86,7 @@ type
     procedure Fechar1Click(Sender: TObject);
     procedure C1Click(Sender: TObject);
     procedure VendasFormasdePgto1Click(Sender: TObject);
+    procedure RelatrioGeralporMs1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,7 +103,7 @@ implementation
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
   UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto,
-  UPesqVendaFormaPgto;
+  UPesqVendaFormaPgto, UPesqGeralMes;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -399,6 +401,19 @@ begin
   finally
     FrmPesqVendaFormaPgto.Free;
     FrmPesqVendaFormaPgto:= nil;
+  end;
+end;
+
+procedure TFrmPrincipal.RelatrioGeralporMs1Click(Sender: TObject);
+begin
+  FrmPesqGeralMes:= TFrmPesqGeralMes.Create(self);
+  FrmPesqGeralMes.ShowModal;
+
+  try
+
+  finally
+    FrmPesqGeralMes.Free;
+    FrmPesqGeralMes:= nil;
   end;
 end;
 

@@ -5459,6 +5459,10 @@ object FrmPrincipal: TFrmPrincipal
         Caption = 'Vendas/Formas de Pgto.'
         OnClick = VendasFormasdePgto1Click
       end
+      object RelatrioGeralporMs1: TMenuItem
+        Caption = 'Relat'#243'rio Geral por M'#234's'
+        OnClick = RelatrioGeralporMs1Click
+      end
     end
     object Sobreosistema1: TMenuItem
       Caption = 'Sobre o sistema'
