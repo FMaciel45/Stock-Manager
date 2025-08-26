@@ -469,7 +469,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45894.430263032400000000
-    ReportOptions.LastChange = 45895.448209143520000000
+    ReportOptions.LastChange = 45895.459864930560000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -479,12 +479,12 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
     Top = 312
     Datasets = <
       item
-        DataSet = frxContasPagar
-        DataSetName = 'frxContasPagar'
+        DataSet = frxContasPagarAPagar
+        DataSetName = 'frxContasPagarAPagar'
       end
       item
-        DataSet = frxContasReceber
-        DataSetName = 'frxContasReceber'
+        DataSet = frxContasReceberAReceber
+        DataSetName = 'frxContasReceberAReceber'
       end>
     Variables = <
       item
@@ -547,7 +547,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Relat'#243'rio de Contas Pagas e Recebidas por Per'#237'odo')
+            'Relat'#243'rio de Contas a Pagar e a Receber por Per'#237'odo')
           ParentFont = False
         end
         object MemoDataInicial: TfrxMemoView
@@ -654,7 +654,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Dados de compras')
+            'Dados de Contas a Pagar')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
@@ -708,7 +708,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            'Valor Compra')
+            'Valor a Pagar')
           ParentFont = False
         end
       end
@@ -722,8 +722,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
         Height = 26.456710000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
-        DataSet = frxContasPagar
-        DataSetName = 'frxContasPagar'
+        DataSet = frxContasPagarAPagar
+        DataSetName = 'frxContasPagarAPagar'
         RowCount = 0
         object MemofrxCompraMES: TfrxMemoView
           IndexTag = 1
@@ -734,8 +734,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'MES'
-          DataSet = frxContasPagar
-          DataSetName = 'frxContasPagar'
+          DataSet = frxContasPagarAPagar
+          DataSetName = 'frxContasPagarAPagar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -743,7 +743,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxContasPagar."MES"]')
+            '[frxContasPagarAPagar."MES"]')
           ParentFont = False
         end
         object MemofrxCompraANO: TfrxMemoView
@@ -756,8 +756,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'ANO'
-          DataSet = frxContasPagar
-          DataSetName = 'frxContasPagar'
+          DataSet = frxContasReceberAReceber
+          DataSetName = 'frxContasReceberAReceber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -765,7 +765,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxContasPagar."ANO"]')
+            '[frxContasReceberAReceber."ANO"]')
           ParentFont = False
         end
         object MemofrxCompraVALOR_COMPRA: TfrxMemoView
@@ -777,9 +777,9 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'TOTAL_PAGO'
-          DataSet = frxContasPagar
-          DataSetName = 'frxContasPagar'
+          DataField = 'VALOR_A_PAGAR'
+          DataSet = frxContasPagarAPagar
+          DataSetName = 'frxContasPagarAPagar'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -789,7 +789,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxContasPagar."TOTAL_PAGO"]')
+            '[frxContasPagarAPagar."VALOR_A_PAGAR"]')
           ParentFont = False
         end
       end
@@ -803,8 +803,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
         Height = 26.456710000000000000
         Top = 381.732530000000000000
         Width = 718.110700000000000000
-        DataSet = frxContasReceber
-        DataSetName = 'frxContasReceber'
+        DataSet = frxContasReceberAReceber
+        DataSetName = 'frxContasReceberAReceber'
         RowCount = 0
         object MemofrxVendaMES: TfrxMemoView
           IndexTag = 1
@@ -815,8 +815,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'MES'
-          DataSet = frxContasReceber
-          DataSetName = 'frxContasReceber'
+          DataSet = frxContasReceberAReceber
+          DataSetName = 'frxContasReceberAReceber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -824,7 +824,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxContasReceber."MES"]')
+            '[frxContasReceberAReceber."MES"]')
           ParentFont = False
         end
         object MemofrxVendaANO: TfrxMemoView
@@ -837,8 +837,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'ANO'
-          DataSet = frxContasReceber
-          DataSetName = 'frxContasReceber'
+          DataSet = frxContasReceberAReceber
+          DataSetName = 'frxContasReceberAReceber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -846,7 +846,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxContasReceber."ANO"]')
+            '[frxContasReceberAReceber."ANO"]')
           ParentFont = False
         end
         object MemofrxVendaVALOR_VENDA: TfrxMemoView
@@ -858,9 +858,9 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'TOTAL_RECEBIDO'
-          DataSet = frxContasReceber
-          DataSetName = 'frxContasReceber'
+          DataField = 'VALOR_A_RECEBER'
+          DataSet = frxContasReceberAReceber
+          DataSetName = 'frxContasReceberAReceber'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -870,7 +870,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxContasReceber."TOTAL_RECEBIDO"]')
+            '[frxContasReceberAReceber."VALOR_A_RECEBER"]')
           ParentFont = False
         end
       end
@@ -987,7 +987,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Dados de Vendas')
+            'Dados de Contas a Receber')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
@@ -1040,7 +1040,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = [fsBold]
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            'Valor Venda')
+            'Valor a Receber')
           ParentFont = False
         end
       end
@@ -1130,6 +1130,16 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
     DataSetOptions = []
     Left = 504
     Top = 376
+    FieldDefs = <
+      item
+        FieldName = 'MES'
+      end
+      item
+        FieldName = 'ANO'
+      end
+      item
+        FieldName = 'VALOR_A_PAGAR'
+      end>
   end
   object frxContasReceberAReceber: TfrxDBDataset
     UserName = 'frxContasReceberAReceber'
@@ -1139,6 +1149,16 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
     DataSetOptions = []
     Left = 680
     Top = 376
+    FieldDefs = <
+      item
+        FieldName = 'MES'
+      end
+      item
+        FieldName = 'ANO'
+      end
+      item
+        FieldName = 'VALOR_A_RECEBER'
+      end>
   end
   object frxPDFExport1: TfrxPDFExport
     UseFileCache = True

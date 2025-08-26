@@ -236,6 +236,7 @@ begin
 
         else
           MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
     end;
 
     1: begin
@@ -254,9 +255,25 @@ begin
 
         else
           MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
     end;
 
     2: begin
+      caminho:=ExtractFilePath(Application.ExeName);
+
+      if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelContasAPagarAReceberMes.fr3') then
+        begin
+          RelatorioGeral.Clear;
+          RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelContasAPagarAReceberMes.fr3');
+          RelatorioGeral.Variables['DataInicial']:=QuotedStr(mkInicio.Text);
+          RelatorioGeral.Variables['DataFinal']:=QuotedStr(mkFim.Text);
+          RelatorioGeral.Variables['Usuario']:=QuotedStr(DM.usuario);
+          RelatorioGeral.PrepareReport(true);
+          RelatorioGeral.ShowPreparedReport;
+        end
+
+        else
+          MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
 
     end;
 
