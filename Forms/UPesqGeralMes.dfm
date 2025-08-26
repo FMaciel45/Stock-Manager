@@ -4,7 +4,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   BorderStyle = bsDialog
   Caption = 'Formul'#225'rio de Pesquisa Geral por Per'#237'odo'
   ClientHeight = 519
-  ClientWidth = 1121
+  ClientWidth = 975
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,12 +13,13 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   Font.Style = []
   KeyPreview = True
   Position = poScreenCenter
+  OnClose = FormClose
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1121
-    Height = 121
+    Width = 975
+    Height = 123
     Align = alTop
     Color = clInactiveCaption
     ParentBackground = False
@@ -69,22 +70,13 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
       TabOrder = 1
       Text = '  /  /    '
     end
-    object btTransferir: TBitBtn
-      Left = 783
-      Top = 42
-      Width = 75
-      Height = 40
-      Caption = '&Transferir'
-      ModalResult = 1
-      TabOrder = 2
-    end
     object btImprimir: TBitBtn
-      Left = 870
+      Left = 782
       Top = 42
       Width = 75
       Height = 40
       Caption = '&Imprimir'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btImprimirClick
     end
     object btPesquisa: TBitBtn
@@ -93,7 +85,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
       Width = 75
       Height = 40
       Caption = '&Pesquisar'
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btPesquisaClick
     end
     object RGOpcao: TRadioGroup
@@ -106,28 +98,30 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
         'Compras e Vendas por M'#234's'
         'Contas Pagas e Recebidas por M'#234's'
         'Contas a Pagar e a Receber por M'#234's')
-      TabOrder = 5
+      TabOrder = 4
+      OnClick = RGOpcaoClick
     end
     object btSair: TBitBtn
-      Left = 962
+      Left = 874
       Top = 42
       Width = 80
       Height = 40
       Caption = '&Sair'
       Layout = blGlyphRight
-      TabOrder = 6
+      TabOrder = 5
       OnClick = btSairClick
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 464
-    Width = 1121
+    Width = 975
     Height = 55
     Align = alBottom
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 1121
   end
   object QueryCompra: TFDQuery
     Connection = DM.Conexao
@@ -475,7 +469,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45894.430263032400000000
-    ReportOptions.LastChange = 45895.432644236110000000
+    ReportOptions.LastChange = 45895.448209143520000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -485,12 +479,12 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
     Top = 312
     Datasets = <
       item
-        DataSet = frxCompra
-        DataSetName = 'frxCompra'
+        DataSet = frxContasPagar
+        DataSetName = 'frxContasPagar'
       end
       item
-        DataSet = frxVenda
-        DataSetName = 'frxVenda'
+        DataSet = frxContasReceber
+        DataSetName = 'frxContasReceber'
       end>
     Variables = <
       item
@@ -523,6 +517,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      DataSet = frxContasPagar
+      DataSetName = 'frxContasPagar'
       Frame.Typ = []
       MirrorMode = []
       object ReportTitle1: TfrxReportTitle
@@ -551,7 +547,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Relat'#243'rio de Compras e Vendas por Per'#237'odo')
+            'Relat'#243'rio de Contas Pagas e Recebidas por Per'#237'odo')
           ParentFont = False
         end
         object MemoDataInicial: TfrxMemoView
@@ -726,8 +722,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
         Height = 26.456710000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
-        DataSet = frxCompra
-        DataSetName = 'frxCompra'
+        DataSet = frxContasPagar
+        DataSetName = 'frxContasPagar'
         RowCount = 0
         object MemofrxCompraMES: TfrxMemoView
           IndexTag = 1
@@ -738,8 +734,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'MES'
-          DataSet = frxCompra
-          DataSetName = 'frxCompra'
+          DataSet = frxContasPagar
+          DataSetName = 'frxContasPagar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -747,7 +743,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxCompra."MES"]')
+            '[frxContasPagar."MES"]')
           ParentFont = False
         end
         object MemofrxCompraANO: TfrxMemoView
@@ -760,8 +756,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'ANO'
-          DataSet = frxCompra
-          DataSetName = 'frxCompra'
+          DataSet = frxContasPagar
+          DataSetName = 'frxContasPagar'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -769,7 +765,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxCompra."ANO"]')
+            '[frxContasPagar."ANO"]')
           ParentFont = False
         end
         object MemofrxCompraVALOR_COMPRA: TfrxMemoView
@@ -781,9 +777,9 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'VALOR_COMPRA'
-          DataSet = frxCompra
-          DataSetName = 'frxCompra'
+          DataField = 'TOTAL_PAGO'
+          DataSet = frxContasPagar
+          DataSetName = 'frxContasPagar'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -793,7 +789,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxCompra."VALOR_COMPRA"]')
+            '[frxContasPagar."TOTAL_PAGO"]')
           ParentFont = False
         end
       end
@@ -807,8 +803,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
         Height = 26.456710000000000000
         Top = 381.732530000000000000
         Width = 718.110700000000000000
-        DataSet = frxVenda
-        DataSetName = 'frxVenda'
+        DataSet = frxContasReceber
+        DataSetName = 'frxContasReceber'
         RowCount = 0
         object MemofrxVendaMES: TfrxMemoView
           IndexTag = 1
@@ -819,8 +815,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'MES'
-          DataSet = frxVenda
-          DataSetName = 'frxVenda'
+          DataSet = frxContasReceber
+          DataSetName = 'frxContasReceber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -828,7 +824,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxVenda."MES"]')
+            '[frxContasReceber."MES"]')
           ParentFont = False
         end
         object MemofrxVendaANO: TfrxMemoView
@@ -841,8 +837,8 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
           DataField = 'ANO'
-          DataSet = frxVenda
-          DataSetName = 'frxVenda'
+          DataSet = frxContasReceber
+          DataSetName = 'frxContasReceber'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -850,7 +846,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxVenda."ANO"]')
+            '[frxContasReceber."ANO"]')
           ParentFont = False
         end
         object MemofrxVendaVALOR_VENDA: TfrxMemoView
@@ -862,9 +858,9 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
-          DataField = 'VALOR_VENDA'
-          DataSet = frxVenda
-          DataSetName = 'frxVenda'
+          DataField = 'TOTAL_RECEBIDO'
+          DataSet = frxContasReceber
+          DataSetName = 'frxContasReceber'
           DisplayFormat.FormatStr = '%2.2m'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -874,7 +870,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftBottom]
           Memo.UTF8W = (
-            '[frxVenda."VALOR_VENDA"]')
+            '[frxContasReceber."TOTAL_RECEBIDO"]')
           ParentFont = False
         end
       end
@@ -1091,22 +1087,45 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   object frxContasPagar: TfrxDBDataset
     UserName = 'frxContasPagar'
     CloseDataSource = False
+    DataSet = QueryContasPagar
     BCDToCurrency = False
     DataSetOptions = []
     Left = 224
     Top = 376
+    FieldDefs = <
+      item
+        FieldName = 'MES'
+      end
+      item
+        FieldName = 'ANO'
+      end
+      item
+        FieldName = 'TOTAL_PAGO'
+      end>
   end
   object frxContasReceber: TfrxDBDataset
     UserName = 'frxContasReceber'
     CloseDataSource = False
+    DataSet = QueryContasReceber
     BCDToCurrency = False
     DataSetOptions = []
     Left = 352
     Top = 376
+    FieldDefs = <
+      item
+        FieldName = 'MES'
+      end
+      item
+        FieldName = 'ANO'
+      end
+      item
+        FieldName = 'TOTAL_RECEBIDO'
+      end>
   end
   object frxContasPagarAPagar: TfrxDBDataset
     UserName = 'frxContasPagarAPagar'
     CloseDataSource = False
+    DataSet = QueryContasPagarAPagar
     BCDToCurrency = False
     DataSetOptions = []
     Left = 504
@@ -1115,6 +1134,7 @@ object FrmPesqGeralMes: TFrmPesqGeralMes
   object frxContasReceberAReceber: TfrxDBDataset
     UserName = 'frxContasReceberAReceber'
     CloseDataSource = False
+    DataSet = QueryContasReceberAReceber
     BCDToCurrency = False
     DataSetOptions = []
     Left = 680

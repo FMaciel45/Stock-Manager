@@ -18,7 +18,6 @@ type
     lbInicioPesq: TLabel;
     mkInicio: TMaskEdit;
     mkFim: TMaskEdit;
-    btTransferir: TBitBtn;
     btImprimir: TBitBtn;
     btPesquisa: TBitBtn;
     RGOpcao: TRadioGroup;
@@ -65,6 +64,8 @@ type
     procedure btSairClick(Sender: TObject);
     procedure btPesquisaClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+    procedure RGOpcaoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -80,9 +81,12 @@ implementation
 
 uses UDataM;
 
-procedure TFrmPesqGeralMes.btPesquisaClick(Sender: TObject);
-var caminho: string;
+procedure TFrmPesqGeralMes.RGOpcaoClick(Sender: TObject);
+begin
+  mkInicio.SetFocus;
+end;
 
+procedure TFrmPesqGeralMes.btPesquisaClick(Sender: TObject);
 begin
   case RGOpcao.ItemIndex of
     0: begin // Compras e vendas por mês
@@ -122,19 +126,7 @@ begin
 
       QueryVenda.Open;
 
-      caminho:=ExtractFilePath(Application.ExeName);
-
-      if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelCompraVendaMes.fr3') then
-        begin
-          RelatorioGeral.Clear;
-          RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraVendaMes.fr3');
-          RelatorioGeral.PrepareReport(true);
-          RelatorioGeral.ShowPreparedReport;
-        end
-
-        else
-          MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
-
+      btImprimir.Click;
     end;
 
     1: begin // Total pago e recebido por mês
@@ -173,6 +165,8 @@ begin
       QueryContasReceber.SQL.Add('ORDER BY EXTRACT (MONTH FROM A.DATA_PAGAMENTO)');
 
       QueryContasReceber.Open;
+
+      btImprimir.Click;
     end;
 
     2: begin // Total a ser pago e recebido por mês
@@ -213,6 +207,8 @@ begin
       QueryContasReceberAReceber.SQL.Add('ORDER BY EXTRACT (MONTH FROM A.DT_VENCIMENTO)');
 
       QueryContasReceberAReceber.Open;
+
+      btImprimir.Click;
     end;
 
   end;
@@ -223,27 +219,64 @@ procedure TFrmPesqGeralMes.btImprimirClick(Sender: TObject);
 var caminho: string;
 
 begin
-  caminho:=ExtractFilePath(Application.ExeName);
+  case RGOpcao.ItemIndex of
+    0: begin
+      caminho:=ExtractFilePath(Application.ExeName);
 
-  if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelCompraVendaMes.fr3') then
-    begin
-      RelatorioGeral.Clear;
-      RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraVendaMes.fr3');
-      RelatorioGeral.Variables['DataInicial']:=QuotedStr(mkInicio.Text);
-      RelatorioGeral.Variables['DataFinal']:=QuotedStr(mkFim.Text);
-      RelatorioGeral.Variables['Usuario']:=QuotedStr(DM.usuario);
-      RelatorioGeral.PrepareReport(true);
-      RelatorioGeral.ShowPreparedReport;
-    end
+      if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelCompraVendaMes.fr3') then
+        begin
+          RelatorioGeral.Clear;
+          RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraVendaMes.fr3');
+          RelatorioGeral.Variables['DataInicial']:=QuotedStr(mkInicio.Text);
+          RelatorioGeral.Variables['DataFinal']:=QuotedStr(mkFim.Text);
+          RelatorioGeral.Variables['Usuario']:=QuotedStr(DM.usuario);
+          RelatorioGeral.PrepareReport(true);
+          RelatorioGeral.ShowPreparedReport;
+        end
 
-    else
-      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+        else
+          MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+    end;
+
+    1: begin
+      caminho:=ExtractFilePath(Application.ExeName);
+
+      if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelContasPagasRecebidasMes.fr3') then
+        begin
+          RelatorioGeral.Clear;
+          RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelContasPagasRecebidasMes.fr3');
+          RelatorioGeral.Variables['DataInicial']:=QuotedStr(mkInicio.Text);
+          RelatorioGeral.Variables['DataFinal']:=QuotedStr(mkFim.Text);
+          RelatorioGeral.Variables['Usuario']:=QuotedStr(DM.usuario);
+          RelatorioGeral.PrepareReport(true);
+          RelatorioGeral.ShowPreparedReport;
+        end
+
+        else
+          MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+    end;
+
+    2: begin
+
+    end;
+
+  end;
 
 end;
 
 procedure TFrmPesqGeralMes.btSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmPesqGeralMes.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  QueryCompra.Close;
+  QueryVenda.Close;
+  QueryContasPagar.Close;
+  QueryContasReceber.Close;
+  QueryContasPagarAPagar.Close;
+  QueryContasReceberAReceber.Close;
 end;
 
 end.
