@@ -64,6 +64,7 @@ type
     QueryContasReceberAReceberVALOR_A_RECEBER: TFMTBCDField;
     procedure btSairClick(Sender: TObject);
     procedure btPesquisaClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,6 +81,8 @@ implementation
 uses UDataM;
 
 procedure TFrmPesqGeralMes.btPesquisaClick(Sender: TObject);
+var caminho: string;
+
 begin
   case RGOpcao.ItemIndex of
     0: begin // Compras e vendas por mês
@@ -118,6 +121,20 @@ begin
       QueryVenda.SQL.Add('ORDER BY EXTRACT (MONTH FROM A.CADASTRO)');
 
       QueryVenda.Open;
+
+      caminho:=ExtractFilePath(Application.ExeName);
+
+      if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelCompraVendaMes.fr3') then
+        begin
+          RelatorioGeral.Clear;
+          RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraVendaMes.fr3');
+          RelatorioGeral.PrepareReport(true);
+          RelatorioGeral.ShowPreparedReport;
+        end
+
+        else
+          MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
     end;
 
     1: begin // Total pago e recebido por mês
@@ -170,7 +187,7 @@ begin
                             +'SUM (A.VALOR_PARCELA) AS VALOR_A_PAGAR '
                           +'FROM CONTAS_PAGAR A');
       QueryContasPagarAPagar.SQL.Add('WHERE A.DT_VENCIMENTO BETWEEN :PDATAINI AND :PDATAFIM');
-      //QueryContasPagarAPagar.SQL.Add('AND A.STATUS=Em aberto');
+      QueryContasPagarAPagar.SQL.Add('AND A.STATUS=''Em aberto''');
       QueryContasPagarAPagar.ParamByName('PDATAINI').AsDate:=StrToDate(mkInicio.Text);
       QueryContasPagarAPagar.ParamByName('PDATAFIM').AsDate:=StrToDate(mkFim.Text);
       QueryContasPagarAPagar.SQL.Add('GROUP BY EXTRACT (MONTH FROM A.DT_VENCIMENTO), EXTRACT (YEAR FROM A.DT_VENCIMENTO)');
@@ -189,7 +206,7 @@ begin
                             +'SUM (A.VALOR_PARCELA) AS VALOR_A_RECEBER '
                           +'FROM CONTAS_RECEBER A');
       QueryContasReceberAReceber.SQL.Add('WHERE A.DT_VENCIMENTO BETWEEN :PDATAINI AND :PDATAFIM');
-      //QueryContasReceberAReceber.SQL.Add('AND A.STATUS=Em aberto');
+      QueryContasReceberAReceber.SQL.Add('AND A.STATUS=''Em aberto''');
       QueryContasReceberAReceber.ParamByName('PDATAINI').AsDate:=StrToDate(mkInicio.Text);
       QueryContasReceberAReceber.ParamByName('PDATAFIM').AsDate:=StrToDate(mkFim.Text);
       QueryContasReceberAReceber.SQL.Add('GROUP BY EXTRACT (MONTH FROM A.DT_VENCIMENTO), EXTRACT (YEAR FROM A.DT_VENCIMENTO)');
@@ -199,6 +216,28 @@ begin
     end;
 
   end;
+
+end;
+
+procedure TFrmPesqGeralMes.btImprimirClick(Sender: TObject);
+var caminho: string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqGeralMes.RelatorioGeral.LoadFromFile(caminho + 'RelCompraVendaMes.fr3') then
+    begin
+      RelatorioGeral.Clear;
+      RelatorioGeral.LoadFromFile(extractfilepath(application.ExeName) + 'RelCompraVendaMes.fr3');
+      RelatorioGeral.Variables['DataInicial']:=QuotedStr(mkInicio.Text);
+      RelatorioGeral.Variables['DataFinal']:=QuotedStr(mkFim.Text);
+      RelatorioGeral.Variables['Usuario']:=QuotedStr(DM.usuario);
+      RelatorioGeral.PrepareReport(true);
+      RelatorioGeral.ShowPreparedReport;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
 
 end;
 
