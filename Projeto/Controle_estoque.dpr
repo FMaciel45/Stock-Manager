@@ -27,7 +27,8 @@ uses
   URecebimentoVenda in '..\Forms\URecebimentoVenda.pas' {FrmRecebimentoVenda},
   UPesqCompraFormaPgto in '..\Forms\UPesqCompraFormaPgto.pas' {FrmPesqCompraFormaPgto},
   UPesqVendaFormaPgto in '..\Forms\UPesqVendaFormaPgto.pas' {FrmPesqVendaFormaPgto},
-  UPesqGeralMes in '..\Forms\UPesqGeralMes.pas' {FrmPesqGeralMes};
+  UPesqGeralMes in '..\Forms\UPesqGeralMes.pas' {FrmPesqGeralMes},
+  UContasPagar in '..\Forms\UContasPagar.pas' {FrmContasPagar};
 
 {$R *.res}
 {$IFDEF DEBUG}

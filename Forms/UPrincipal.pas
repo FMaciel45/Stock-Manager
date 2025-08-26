@@ -31,8 +31,8 @@ type
     MenuProduto: TMenuItem;
     MenuFormasPgto: TMenuItem;
     Movimentos1: TMenuItem;
-    Compras1: TMenuItem;
-    Vendas1: TMenuItem;
+    ListaCompras: TMenuItem;
+    ListaVendas: TMenuItem;
     Relatrios1: TMenuItem;
     ListaUsuario: TMenuItem;
     ListaFornecedor: TMenuItem;
@@ -41,10 +41,14 @@ type
     ListaCompra: TMenuItem;
     ListaVenda: TMenuItem;
     Sobreosistema1: TMenuItem;
-    Fechar1: TMenuItem;
+    MenuFechar: TMenuItem;
     C1: TMenuItem;
     VendasFormasdePgto1: TMenuItem;
     RelatrioGeralporMs1: TMenuItem;
+    btContasPagar: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    ListaContasPagar: TMenuItem;
+    ListaContasReceber: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
@@ -57,6 +61,7 @@ type
     procedure AbreTelaFormasPgto();
     procedure AbreTelaCompra1();
     procedure AbreTelaVenda();
+    procedure AbreTelaContasPagar();
 
     procedure btEmpresaClick(Sender: TObject);
     procedure MenuEmpresaClick(Sender: TObject);
@@ -71,7 +76,7 @@ type
     procedure MenuFormasPgtoClick(Sender: TObject);
 
     procedure btCompraClick(Sender: TObject);
-    procedure Compras1Click(Sender: TObject);
+    procedure ListaComprasClick(Sender: TObject);
     procedure ListaUsuarioClick(Sender: TObject);
     procedure ListaFornecedorClick(Sender: TObject);
     procedure ListaClienteClick(Sender: TObject);
@@ -81,12 +86,14 @@ type
     procedure btTrocarUsuarioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btVendaClick(Sender: TObject);
-    procedure Vendas1Click(Sender: TObject);
+    procedure ListaVendasClick(Sender: TObject);
     procedure ListaVendaClick(Sender: TObject);
-    procedure Fechar1Click(Sender: TObject);
+    procedure MenuFecharClick(Sender: TObject);
     procedure C1Click(Sender: TObject);
     procedure VendasFormasdePgto1Click(Sender: TObject);
     procedure RelatrioGeralporMs1Click(Sender: TObject);
+    procedure btContasPagarClick(Sender: TObject);
+    procedure ListaContasPagarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,7 +110,7 @@ implementation
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
   UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto,
-  UPesqVendaFormaPgto, UPesqGeralMes;
+  UPesqVendaFormaPgto, UPesqGeralMes, UContasPagar;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -210,6 +217,19 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.AbreTelaContasPagar;
+begin
+  FrmContasPagar:= TFrmContasPagar.Create(self);
+  FrmContasPagar.ShowModal;
+
+  try
+
+  finally
+    FrmContasPagar.Free;
+    FrmContasPagar:= nil;
+  end;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
@@ -275,7 +295,7 @@ begin
   AbreTelaCompra1;
 end;
 
-procedure TFrmPrincipal.Compras1Click(Sender: TObject);
+procedure TFrmPrincipal.ListaComprasClick(Sender: TObject);
 begin
   AbreTelaCompra1;
 end;
@@ -285,9 +305,19 @@ begin
   AbreTelaVenda;
 end;
 
-procedure TFrmPrincipal.Vendas1Click(Sender: TObject);
+procedure TFrmPrincipal.ListaVendasClick(Sender: TObject);
 begin
   AbreTelaVenda;
+end;
+
+procedure TFrmPrincipal.btContasPagarClick(Sender: TObject);
+begin
+  AbreTelaContasPagar;
+end;
+
+procedure TFrmPrincipal.ListaContasPagarClick(Sender: TObject);
+begin
+  AbreTelaContasPagar;
 end;
 
 procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);
@@ -435,7 +465,7 @@ begin
   application.Terminate;
 end;
 
-procedure TFrmPrincipal.Fechar1Click(Sender: TObject);
+procedure TFrmPrincipal.MenuFecharClick(Sender: TObject);
 begin
   btSair.Click;
 end;

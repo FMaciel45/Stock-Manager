@@ -3,7 +3,7 @@ object FrmPrincipal: TFrmPrincipal
   Top = 0
   Caption = 'Controle de Estoque'
   ClientHeight = 561
-  ClientWidth = 1184
+  ClientWidth = 1434
   Color = clWhite
   Ctl3D = False
   ParentFont = True
@@ -14,7 +14,7 @@ object FrmPrincipal: TFrmPrincipal
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1184
+    Width = 1434
     Height = 90
     Align = alTop
     Color = clGradientInactiveCaption
@@ -3745,7 +3745,7 @@ object FrmPrincipal: TFrmPrincipal
       OnClick = btVendaClick
     end
     object btTrocarUsuario: TSpeedButton
-      Left = 945
+      Left = 1165
       Top = 0
       Width = 100
       Height = 90
@@ -4277,7 +4277,7 @@ object FrmPrincipal: TFrmPrincipal
       OnClick = btTrocarUsuarioClick
     end
     object btSair: TSpeedButton
-      Left = 1064
+      Left = 1271
       Top = 0
       Width = 100
       Height = 90
@@ -5340,11 +5340,40 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
       OnClick = btUsuarioClick
     end
+    object btContasPagar: TSpeedButton
+      Left = 933
+      Top = 0
+      Width = 100
+      Height = 90
+      Caption = 'Con&tas a Pagar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      Layout = blGlyphTop
+      ParentFont = False
+      OnClick = btContasPagarClick
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 1048
+      Top = 0
+      Width = 100
+      Height = 90
+      Caption = 'Contas a Rece&ber'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      Layout = blGlyphTop
+      ParentFont = False
+    end
   end
   object StatusBar1: TStatusBar
     Left = 0
     Top = 542
-    Width = 1184
+    Width = 1434
     Height = 19
     Panels = <
       item
@@ -5400,23 +5429,30 @@ object FrmPrincipal: TFrmPrincipal
         ShortCut = 16454
         OnClick = MenuFormasPgtoClick
       end
-      object Fechar1: TMenuItem
+      object MenuFechar: TMenuItem
         Caption = '&Fechar'
         ShortCut = 16455
-        OnClick = Fechar1Click
+        OnClick = MenuFecharClick
       end
     end
     object Movimentos1: TMenuItem
       Caption = 'Movimentos'
-      object Compras1: TMenuItem
+      object ListaCompras: TMenuItem
         Caption = 'C&ompras'
         ShortCut = 16456
-        OnClick = Compras1Click
+        OnClick = ListaComprasClick
       end
-      object Vendas1: TMenuItem
+      object ListaVendas: TMenuItem
         Caption = '&Vendas'
         ShortCut = 16457
-        OnClick = Vendas1Click
+        OnClick = ListaVendasClick
+      end
+      object ListaContasPagar: TMenuItem
+        Caption = 'Contas a Pagar'
+        OnClick = ListaContasPagarClick
+      end
+      object ListaContasReceber: TMenuItem
+        Caption = 'Contas a Receber'
       end
     end
     object Relatrios1: TMenuItem
