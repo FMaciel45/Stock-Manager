@@ -238,6 +238,10 @@
             <Form>FrmContasPagar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\UPesqParcelaPagar.pas">
+            <Form>FrmPesqParcelaPagar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

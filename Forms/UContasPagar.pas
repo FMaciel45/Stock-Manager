@@ -38,7 +38,7 @@ type
     Label6: TLabel;
     DBEdit6: TDBEdit;
     Label7: TLabel;
-    DBEdit7: TDBEdit;
+    DBDTPagamento: TDBEdit;
     Label8: TLabel;
     DBEdit8: TDBEdit;
     Label9: TLabel;
@@ -51,6 +51,8 @@ type
     DBEdit12: TDBEdit;
     Label13: TLabel;
     DBEdit13: TDBEdit;
+    procedure btPesquisarClick(Sender: TObject);
+    procedure btEditarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,5 +65,34 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UPesqParcelaPagar;
+
+procedure TFrmContasPagar.btEditarClick(Sender: TObject);
+begin
+  inherited;
+
+  QueryPadrao.Edit;
+  DBDTPagamento.SetFocus;
+end;
+
+procedure TFrmContasPagar.btPesquisarClick(Sender: TObject);
+begin
+  FrmPesqParcelaPagar:= TFrmPesqParcelaPagar.Create(self);
+  FrmPesqParcelaPagar.ShowModal;
+
+  try
+    if FrmPesqParcelaPagar.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryPadrao.Locate('ID_SEQUENCIA', FrmPesqParcelaPagar.codigo, []);
+        QueryPadrao.Locate('DT_VENCIMENTO', FrmPesqParcelaPagar.data, []);
+      end;
+
+  finally
+    FrmPesqParcelaPagar.Free;
+    FrmPesqParcelaPagar:= nil;
+  end;
+end;
 
 end.

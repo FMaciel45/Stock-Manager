@@ -130,6 +130,8 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
   end
   inherited Panel2: TPanel
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitLeft = 0
+    ExplicitTop = 440
     inherited lbResultado: TLabel
       StyleElements = [seFont, seClient, seBorder]
     end
@@ -156,8 +158,7 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
       'FROM FORNECEDOR'
       'ORDER BY ID_FORNECEDOR;'
       '')
-    Left = 384
-    Top = 296
+    Left = 48
     object QueryPesqPadraoID_FORNECEDOR: TIntegerField
       FieldName = 'ID_FORNECEDOR'
       Origin = 'ID_FORNECEDOR'
@@ -230,12 +231,12 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
     end
   end
   inherited dsPesqPadrao: TDataSource
-    Left = 512
-    Top = 296
+    Left = 152
   end
   inherited RelPesqPadrao: TfrxReport
     ReportOptions.CreateDate = 45881.704703020800000000
     ReportOptions.LastChange = 45882.431260937500000000
+    Left = 360
     Datasets = <
       item
         DataSet = DataSetPesqPadrao
@@ -580,8 +581,8 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
   end
   inherited DataSetPesqPadrao: TfrxDBDataset
     UserName = 'frxDB_fornecedores'
-    Left = 472
-    Top = 208
+    Left = 256
+    Top = 360
     FieldDefs = <
       item
         FieldName = 'ID_FORNECEDOR'
@@ -637,5 +638,8 @@ inherited FrmPesqFornecedor: TFrmPesqFornecedor
         FieldName = 'CADASTRO'
         FieldType = fftDateTime
       end>
+  end
+  inherited frxPDFExport1: TfrxPDFExport
+    Left = 449
   end
 end

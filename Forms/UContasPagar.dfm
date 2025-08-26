@@ -58,7 +58,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 88
     Height = 15
     Caption = 'Data Pagamento'
-    FocusControl = DBEdit7
+    FocusControl = DBDTPagamento
   end
   object Label8: TLabel [7]
     Left = 876
@@ -120,6 +120,7 @@ inherited FrmContasPagar: TFrmContasPagar
   inherited Panel2: TPanel
     Top = 366
     StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 366
   end
   object DBEdit1: TDBEdit [15]
     Left = 16
@@ -175,7 +176,7 @@ inherited FrmContasPagar: TFrmContasPagar
     DataSource = DSPadrao
     TabOrder = 7
   end
-  object DBEdit7: TDBEdit [21]
+  object DBDTPagamento: TDBEdit [21]
     Left = 619
     Top = 235
     Width = 230
@@ -257,6 +258,7 @@ inherited FrmContasPagar: TFrmContasPagar
       'FROM COMPRA A'
       'INNER JOIN FORNECEDOR B ON B.ID_FORNECEDOR=A.ID_FORNECEDOR'
       'INNER JOIN CONTAS_PAGAR C ON C.ID_COMPRA=A.ID_COMPRA'
+      'WHERE STATUS='#39'Em aberto'#39
       'ORDER BY A.ID_COMPRA;')
     Left = 392
     Top = 96

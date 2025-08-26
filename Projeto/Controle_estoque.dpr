@@ -28,7 +28,8 @@ uses
   UPesqCompraFormaPgto in '..\Forms\UPesqCompraFormaPgto.pas' {FrmPesqCompraFormaPgto},
   UPesqVendaFormaPgto in '..\Forms\UPesqVendaFormaPgto.pas' {FrmPesqVendaFormaPgto},
   UPesqGeralMes in '..\Forms\UPesqGeralMes.pas' {FrmPesqGeralMes},
-  UContasPagar in '..\Forms\UContasPagar.pas' {FrmContasPagar};
+  UContasPagar in '..\Forms\UContasPagar.pas' {FrmContasPagar},
+  UPesqParcelaPagar in '..\Forms\UPesqParcelaPagar.pas' {FrmPesqParcelaPagar};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -41,5 +42,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.CreateForm(TFrmPesqParcelaPagar, FrmPesqParcelaPagar);
   Application.Run;
 end.
