@@ -36,6 +36,7 @@ type
     { Public declarations }
 
     data:Tdate;
+    sequencia:integer;
   end;
 
 var
@@ -130,8 +131,9 @@ begin
 
   if QueryPesqPadrao.RecordCount > 0 then
     begin
-      codigo:=QueryPesqPadraoID_SEQUENCIA.AsInteger;
+      codigo:=QueryPesqPadraoID_COMPRA.AsInteger;
       data:=QueryPesqPadraoDT_VENCIMENTO.AsDateTime;
+      sequencia:=QueryPesqPadraoID_SEQUENCIA.AsInteger;
     end
 
   else

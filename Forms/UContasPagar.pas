@@ -8,51 +8,56 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons, Vcl.DBCtrls,
-  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, DateUtils;
 
 type
   TFrmContasPagar = class(TFrmPadraoCadastro)
+    Label1: TLabel;
+    DBIdFornecedor: TDBEdit;
+    Label2: TLabel;
+    DBNome: TDBEdit;
+    Label3: TLabel;
+    DBCNPJ: TDBEdit;
+    Label4: TLabel;
+    DBIdSequencia: TDBEdit;
+    Label5: TLabel;
+    DBValorParcela: TDBEdit;
+    Label6: TLabel;
+    DBDtVencimento: TDBEdit;
+    Label7: TLabel;
+    DBDtPagamento: TDBEdit;
+    Label8: TLabel;
+    DBAtraso: TDBEdit;
+    Label9: TLabel;
+    DBJuros: TDBEdit;
+    Label10: TLabel;
+    DBVlJuros: TDBEdit;
+    Label11: TLabel;
+    DBTotalPagar: TDBEdit;
+    Label12: TLabel;
+    DBStatus: TDBEdit;
+    Label13: TLabel;
+    DBIdCompra: TDBEdit;
+    QueryPagar: TFDQuery;
+    DSPagar: TDataSource;
+    QueryPagarID_SEQUENCIA: TIntegerField;
+    QueryPagarID_COMPRA: TIntegerField;
+    QueryPagarVALOR_PARCELA: TFMTBCDField;
+    QueryPagarDT_VENCIMENTO: TDateField;
+    QueryPagarDT_PAGAMENTO: TDateField;
+    QueryPagarATRASO: TIntegerField;
+    QueryPagarJUROS: TFMTBCDField;
+    QueryPagarVL_JUROS: TFMTBCDField;
+    QueryPagarTOTAL_PAGAR: TFMTBCDField;
+    QueryPagarSTATUS: TStringField;
     QueryPadraoID_COMPRA: TIntegerField;
     QueryPadraoID_FORNECEDOR: TIntegerField;
     QueryPadraoNOME: TStringField;
     QueryPadraoCNPJ: TStringField;
-    QueryPadraoID_SEQUENCIA: TIntegerField;
-    QueryPadraoVALOR_PARCELA: TFMTBCDField;
-    QueryPadraoDT_VENCIMENTO: TDateField;
-    QueryPadraoDT_PAGAMENTO: TDateField;
-    QueryPadraoATRASO: TIntegerField;
-    QueryPadraoJUROS: TFMTBCDField;
-    QueryPadraoVL_JUROS: TFMTBCDField;
-    QueryPadraoTOTAL_PAGAR: TFMTBCDField;
-    QueryPadraoSTATUS: TStringField;
-    Label1: TLabel;
-    DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
-    Label3: TLabel;
-    DBEdit3: TDBEdit;
-    Label4: TLabel;
-    DBEdit4: TDBEdit;
-    Label5: TLabel;
-    DBEdit5: TDBEdit;
-    Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBDTPagamento: TDBEdit;
-    Label8: TLabel;
-    DBEdit8: TDBEdit;
-    Label9: TLabel;
-    DBEdit9: TDBEdit;
-    Label10: TLabel;
-    DBEdit10: TDBEdit;
-    Label11: TLabel;
-    DBEdit11: TDBEdit;
-    Label12: TLabel;
-    DBEdit12: TDBEdit;
-    Label13: TLabel;
-    DBEdit13: TDBEdit;
     procedure btPesquisarClick(Sender: TObject);
     procedure btEditarClick(Sender: TObject);
+    procedure DBDtPagamentoExit(Sender: TObject);
+    procedure btAtualizarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,18 +71,29 @@ implementation
 
 {$R *.dfm}
 
-uses UPesqParcelaPagar;
+uses UPesqParcelaPagar, UDataM;
+
+procedure TFrmContasPagar.btAtualizarClick(Sender: TObject);
+begin
+  QueryPagar.Refresh;
+
+  inherited;
+end;
 
 procedure TFrmContasPagar.btEditarClick(Sender: TObject);
 begin
   inherited;
 
-  QueryPadrao.Edit;
-  DBDTPagamento.SetFocus;
+  QueryPagar.Edit;
+  DBDtPagamento.SetFocus;
+
+  FrmPesqParcelaPagar.QueryPesqPadrao.Close;
 end;
 
 procedure TFrmContasPagar.btPesquisarClick(Sender: TObject);
 begin
+  QueryPadrao.Close;
+
   FrmPesqParcelaPagar:= TFrmPesqParcelaPagar.Create(self);
   FrmPesqParcelaPagar.ShowModal;
 
@@ -85,14 +101,32 @@ begin
     if FrmPesqParcelaPagar.codigo > 0 then
       begin
         QueryPadrao.Open;
-        QueryPadrao.Locate('ID_SEQUENCIA', FrmPesqParcelaPagar.codigo, []);
-        QueryPadrao.Locate('DT_VENCIMENTO', FrmPesqParcelaPagar.data, []);
+        QueryPagar.Open;
+        QueryPadrao.Locate('ID_COMPRA', FrmPesqParcelaPagar.codigo, []);
+        QueryPagar.Locate('DT_VENCIMENTO', FrmPesqParcelaPagar.data, []);
+        QueryPagar.Locate('ID_SEQUENCIA', FrmPesqParcelaPagar.sequencia, []);
       end;
 
   finally
     FrmPesqParcelaPagar.Free;
     FrmPesqParcelaPagar:= nil;
   end;
+end;
+
+procedure TFrmContasPagar.DBDtPagamentoExit(Sender: TObject);
+begin
+  if QueryPagarDT_PAGAMENTO.AsDateTime > QueryPagarDT_VENCIMENTO.AsDateTime then
+    begin
+      QueryPagarATRASO.Value:=DaysBetween(QueryPagarDT_PAGAMENTO.AsDateTime, QueryPagarDT_VENCIMENTO.AsDateTime);
+    end
+
+  else
+    begin
+      QueryPagarATRASO.AsInteger:=0;
+      QueryPagarSTATUS.AsString:='Pago';
+      QueryPagarTOTAL_PAGAR.AsFloat:=QueryPagarVALOR_PARCELA.AsFloat;
+    end;
+
 end;
 
 end.

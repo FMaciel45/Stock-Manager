@@ -10,7 +10,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 74
     Height = 15
     Caption = 'ID Fornecedor'
-    FocusControl = DBEdit1
+    FocusControl = DBIdFornecedor
   end
   object Label2: TLabel [1]
     Left = 188
@@ -18,7 +18,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 33
     Height = 15
     Caption = 'Nome'
-    FocusControl = DBEdit2
+    FocusControl = DBNome
   end
   object Label3: TLabel [2]
     Left = 876
@@ -26,7 +26,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 27
     Height = 15
     Caption = 'CNPJ'
-    FocusControl = DBEdit3
+    FocusControl = DBCNPJ
   end
   object Label4: TLabel [3]
     Left = 16
@@ -34,7 +34,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 68
     Height = 15
     Caption = 'ID Sequ'#234'ncia'
-    FocusControl = DBEdit4
+    FocusControl = DBIdSequencia
   end
   object Label5: TLabel [4]
     Left = 188
@@ -42,7 +42,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 67
     Height = 15
     Caption = 'Valor Parcela'
-    FocusControl = DBEdit5
+    FocusControl = DBValorParcela
   end
   object Label6: TLabel [5]
     Left = 365
@@ -50,7 +50,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 90
     Height = 15
     Caption = 'Data Vencimento'
-    FocusControl = DBEdit6
+    FocusControl = DBDtVencimento
   end
   object Label7: TLabel [6]
     Left = 619
@@ -58,7 +58,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 88
     Height = 15
     Caption = 'Data Pagamento'
-    FocusControl = DBDTPagamento
+    FocusControl = DBDtPagamento
   end
   object Label8: TLabel [7]
     Left = 876
@@ -66,7 +66,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 34
     Height = 15
     Caption = 'Atraso'
-    FocusControl = DBEdit8
+    FocusControl = DBAtraso
   end
   object Label9: TLabel [8]
     Left = 16
@@ -74,7 +74,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 27
     Height = 15
     Caption = 'Juros'
-    FocusControl = DBEdit9
+    FocusControl = DBJuros
   end
   object Label10: TLabel [9]
     Left = 188
@@ -82,7 +82,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 56
     Height = 15
     Caption = 'Valor Juros'
-    FocusControl = DBEdit10
+    FocusControl = DBVlJuros
   end
   object Label11: TLabel [10]
     Left = 365
@@ -90,7 +90,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 68
     Height = 15
     Caption = 'Total a Pagar'
-    FocusControl = DBEdit11
+    FocusControl = DBTotalPagar
   end
   object Label12: TLabel [11]
     Left = 188
@@ -98,7 +98,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 32
     Height = 15
     Caption = 'Status'
-    FocusControl = DBEdit12
+    FocusControl = DBStatus
   end
   object Label13: TLabel [12]
     Left = 16
@@ -106,7 +106,7 @@ inherited FrmContasPagar: TFrmContasPagar
     Width = 57
     Height = 15
     Caption = 'ID Compra'
-    FocusControl = DBEdit13
+    FocusControl = DBIdCompra
   end
   inherited Panel1: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -122,7 +122,7 @@ inherited FrmContasPagar: TFrmContasPagar
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 366
   end
-  object DBEdit1: TDBEdit [15]
+  object DBIdFornecedor: TDBEdit [15]
     Left = 16
     Top = 179
     Width = 150
@@ -131,7 +131,7 @@ inherited FrmContasPagar: TFrmContasPagar
     DataSource = DSPadrao
     TabOrder = 2
   end
-  object DBEdit2: TDBEdit [16]
+  object DBNome: TDBEdit [16]
     Left = 188
     Top = 179
     Width = 661
@@ -140,7 +140,7 @@ inherited FrmContasPagar: TFrmContasPagar
     DataSource = DSPadrao
     TabOrder = 3
   end
-  object DBEdit3: TDBEdit [17]
+  object DBCNPJ: TDBEdit [17]
     Left = 876
     Top = 179
     Width = 200
@@ -149,88 +149,89 @@ inherited FrmContasPagar: TFrmContasPagar
     DataSource = DSPadrao
     TabOrder = 4
   end
-  object DBEdit4: TDBEdit [18]
+  object DBIdSequencia: TDBEdit [18]
     Left = 16
     Top = 235
     Width = 150
     Height = 23
     DataField = 'ID_SEQUENCIA'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 5
   end
-  object DBEdit5: TDBEdit [19]
+  object DBValorParcela: TDBEdit [19]
     Left = 188
     Top = 235
     Width = 150
     Height = 23
     DataField = 'VALOR_PARCELA'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 6
   end
-  object DBEdit6: TDBEdit [20]
+  object DBDtVencimento: TDBEdit [20]
     Left = 365
     Top = 235
     Width = 230
     Height = 23
     DataField = 'DT_VENCIMENTO'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 7
   end
-  object DBDTPagamento: TDBEdit [21]
+  object DBDtPagamento: TDBEdit [21]
     Left = 619
     Top = 235
     Width = 230
     Height = 23
     DataField = 'DT_PAGAMENTO'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 8
+    OnExit = DBDtPagamentoExit
   end
-  object DBEdit8: TDBEdit [22]
+  object DBAtraso: TDBEdit [22]
     Left = 876
     Top = 235
     Width = 200
     Height = 23
     DataField = 'ATRASO'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 9
   end
-  object DBEdit9: TDBEdit [23]
+  object DBJuros: TDBEdit [23]
     Left = 16
     Top = 292
     Width = 150
     Height = 23
     DataField = 'JUROS'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 10
   end
-  object DBEdit10: TDBEdit [24]
+  object DBVlJuros: TDBEdit [24]
     Left = 188
     Top = 292
     Width = 150
     Height = 23
     DataField = 'VL_JUROS'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 11
   end
-  object DBEdit11: TDBEdit [25]
+  object DBTotalPagar: TDBEdit [25]
     Left = 365
     Top = 292
     Width = 230
     Height = 23
     DataField = 'TOTAL_PAGAR'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 12
   end
-  object DBEdit12: TDBEdit [26]
+  object DBStatus: TDBEdit [26]
     Left = 188
     Top = 123
     Width = 150
     Height = 23
     DataField = 'STATUS'
-    DataSource = DSPadrao
+    DataSource = DSPagar
     TabOrder = 13
   end
-  object DBEdit13: TDBEdit [27]
+  object DBIdCompra: TDBEdit [27]
     Left = 16
     Top = 123
     Width = 150
@@ -245,20 +246,9 @@ inherited FrmContasPagar: TFrmContasPagar
       '  A.ID_COMPRA,'
       '  A.ID_FORNECEDOR,'
       '  B.NOME,'
-      '  B.CNPJ,'
-      '  C.ID_SEQUENCIA,'
-      '  C.VALOR_PARCELA,'
-      '  C.DT_VENCIMENTO,'
-      '  C.DT_PAGAMENTO,'
-      '  C.ATRASO,'
-      '  C.JUROS,'
-      '  C.VL_JUROS,'
-      '  C.TOTAL_PAGAR,'
-      '  C.STATUS'
+      '  B.CNPJ'
       'FROM COMPRA A'
       'INNER JOIN FORNECEDOR B ON B.ID_FORNECEDOR=A.ID_FORNECEDOR'
-      'INNER JOIN CONTAS_PAGAR C ON C.ID_COMPRA=A.ID_COMPRA'
-      'WHERE STATUS='#39'Em aberto'#39
       'ORDER BY A.ID_COMPRA;')
     Left = 392
     Top = 96
@@ -288,81 +278,103 @@ inherited FrmContasPagar: TFrmContasPagar
       ProviderFlags = []
       ReadOnly = True
     end
-    object QueryPadraoID_SEQUENCIA: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'ID_SEQUENCIA'
-      Origin = 'ID_SEQUENCIA'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object QueryPadraoVALOR_PARCELA: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'VALOR_PARCELA'
-      Origin = 'VALOR_PARCELA'
-      ProviderFlags = []
-      ReadOnly = True
-      Precision = 18
-      Size = 2
-    end
-    object QueryPadraoDT_VENCIMENTO: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'DT_VENCIMENTO'
-      Origin = 'DT_VENCIMENTO'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object QueryPadraoDT_PAGAMENTO: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'DT_PAGAMENTO'
-      Origin = 'DT_PAGAMENTO'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object QueryPadraoATRASO: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'ATRASO'
-      Origin = 'ATRASO'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object QueryPadraoJUROS: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'JUROS'
-      Origin = 'JUROS'
-      ProviderFlags = []
-      ReadOnly = True
-      Precision = 18
-      Size = 2
-    end
-    object QueryPadraoVL_JUROS: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'VL_JUROS'
-      Origin = 'VL_JUROS'
-      ProviderFlags = []
-      ReadOnly = True
-      Precision = 18
-      Size = 2
-    end
-    object QueryPadraoTOTAL_PAGAR: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'TOTAL_PAGAR'
-      Origin = 'TOTAL_PAGAR'
-      ProviderFlags = []
-      ReadOnly = True
-      Precision = 18
-      Size = 2
-    end
-    object QueryPadraoSTATUS: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'STATUS'
-      Origin = 'STATUS'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 30
-    end
   end
   inherited DSPadrao: TDataSource
     Left = 472
+    Top = 96
+  end
+  object QueryPagar: TFDQuery
+    IndexFieldNames = 'ID_COMPRA'
+    MasterSource = DSPadrao
+    MasterFields = 'ID_COMPRA'
+    DetailFields = 'ID_COMPRA'
+    Connection = DM.Conexao
+    SQL.Strings = (
+      'SELECT'
+      '  ID_SEQUENCIA,'
+      '  ID_COMPRA,'
+      '  VALOR_PARCELA,'
+      '  DT_VENCIMENTO,'
+      '  DT_PAGAMENTO,'
+      '  ATRASO,'
+      '  JUROS,'
+      '  VL_JUROS,'
+      '  TOTAL_PAGAR,'
+      '  STATUS'
+      'FROM CONTAS_PAGAR'
+      'WHERE ID_COMPRA=:ID_COMPRA'
+      'ORDER BY ID_COMPRA;')
+    Left = 560
+    Top = 96
+    ParamData = <
+      item
+        Name = 'ID_COMPRA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QueryPagarID_SEQUENCIA: TIntegerField
+      FieldName = 'ID_SEQUENCIA'
+      Origin = 'ID_SEQUENCIA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryPagarID_COMPRA: TIntegerField
+      FieldName = 'ID_COMPRA'
+      Origin = 'ID_COMPRA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QueryPagarVALOR_PARCELA: TFMTBCDField
+      FieldName = 'VALOR_PARCELA'
+      Origin = 'VALOR_PARCELA'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryPagarDT_VENCIMENTO: TDateField
+      FieldName = 'DT_VENCIMENTO'
+      Origin = 'DT_VENCIMENTO'
+      Required = True
+    end
+    object QueryPagarDT_PAGAMENTO: TDateField
+      FieldName = 'DT_PAGAMENTO'
+      Origin = 'DT_PAGAMENTO'
+    end
+    object QueryPagarATRASO: TIntegerField
+      FieldName = 'ATRASO'
+      Origin = 'ATRASO'
+    end
+    object QueryPagarJUROS: TFMTBCDField
+      FieldName = 'JUROS'
+      Origin = 'JUROS'
+      Precision = 18
+      Size = 2
+    end
+    object QueryPagarVL_JUROS: TFMTBCDField
+      FieldName = 'VL_JUROS'
+      Origin = 'VL_JUROS'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryPagarTOTAL_PAGAR: TFMTBCDField
+      FieldName = 'TOTAL_PAGAR'
+      Origin = 'TOTAL_PAGAR'
+      currency = True
+      Precision = 18
+      Size = 2
+    end
+    object QueryPagarSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+      Size = 30
+    end
+  end
+  object DSPagar: TDataSource
+    DataSet = QueryPagar
+    Left = 632
     Top = 96
   end
 end
