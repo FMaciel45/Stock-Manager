@@ -104,7 +104,7 @@ begin
         QueryPadrao.Open;
         QueryPagar.Open;
         QueryPadrao.Locate('ID_COMPRA', FrmPesqParcelaPagar.codigo, []);
-        QueryPagar.Locate('DT_VENCIMENTO', FrmPesqParcelaPagar.data, []);
+        //QueryPagar.Locate('DT_VENCIMENTO', FrmPesqParcelaPagar.data, []);
         QueryPagar.Locate('ID_SEQUENCIA', FrmPesqParcelaPagar.sequencia, []);
       end;
 

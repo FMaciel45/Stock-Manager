@@ -56,7 +56,7 @@ procedure TFrmPadraoCadastro.btAtualizarClick(Sender: TObject); // Refresh nos r
 begin
   TratarBotoes;
 
-  QueryPadrao.Refresh;
+  QueryPadrao.Post;
   messageDlg('Formulário atualizado com sucesso!', mtInformation, [mbOk], 0);
 end;
 

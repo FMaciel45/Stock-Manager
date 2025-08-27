@@ -120,7 +120,11 @@ inherited FrmContasReceber: TFrmContasReceber
       Visible = False
     end
     inherited DBNavigator1: TDBNavigator
+      Left = 792
+      Width = 284
       Hints.Strings = ()
+      ExplicitLeft = 792
+      ExplicitWidth = 284
     end
   end
   inherited Panel2: TPanel
@@ -190,6 +194,7 @@ inherited FrmContasReceber: TFrmContasReceber
     DataField = 'DT_PAGAMENTO'
     DataSource = DSReceber
     TabOrder = 8
+    OnExit = DBDtPagamentoExit
   end
   object DBAtraso: TDBEdit [22]
     Left = 876
@@ -208,6 +213,7 @@ inherited FrmContasReceber: TFrmContasReceber
     DataField = 'JUROS'
     DataSource = DSReceber
     TabOrder = 10
+    OnExit = DBJurosExit
   end
   object DBVlJuros: TDBEdit [24]
     Left = 188
@@ -245,6 +251,14 @@ inherited FrmContasReceber: TFrmContasReceber
     DataSource = DSPadrao
     TabOrder = 14
   end
+  object btImprimir: TBitBtn [28]
+    Left = 704
+    Top = 16
+    Width = 75
+    Height = 40
+    Caption = '&Imprimir'
+    TabOrder = 15
+  end
   inherited QueryPadrao: TFDQuery
     SQL.Strings = (
       'SELECT'
@@ -255,7 +269,7 @@ inherited FrmContasReceber: TFrmContasReceber
       'FROM VENDA A'
       'INNER JOIN CLIENTES B ON B.ID_CLIENTE=A.ID_CLIENTE'
       'ORDER BY A.ID_VENDA;')
-    Left = 752
+    Left = 800
     Top = 16
     object QueryPadraoID_VENDA: TIntegerField
       FieldName = 'ID_VENDA'
@@ -286,7 +300,7 @@ inherited FrmContasReceber: TFrmContasReceber
     end
   end
   inherited DSPadrao: TDataSource
-    Left = 824
+    Left = 872
     Top = 16
   end
   object QueryReceber: TFDQuery
@@ -310,7 +324,7 @@ inherited FrmContasReceber: TFrmContasReceber
       'FROM CONTAS_RECEBER'
       'WHERE ID_VENDA=:ID_VENDA'
       'ORDER BY ID_VENDA;')
-    Left = 907
+    Left = 955
     Top = 16
     ParamData = <
       item
@@ -335,6 +349,7 @@ inherited FrmContasReceber: TFrmContasReceber
       FieldName = 'VALOR_PARCELA'
       Origin = 'VALOR_PARCELA'
       Required = True
+      currency = True
       Precision = 18
       Size = 2
     end
@@ -360,12 +375,14 @@ inherited FrmContasReceber: TFrmContasReceber
     object QueryReceberVL_JUROS: TFMTBCDField
       FieldName = 'VL_JUROS'
       Origin = 'VL_JUROS'
+      currency = True
       Precision = 18
       Size = 2
     end
     object QueryReceberTOTAL_PAGAR: TFMTBCDField
       FieldName = 'TOTAL_PAGAR'
       Origin = 'TOTAL_PAGAR'
+      currency = True
       Precision = 18
       Size = 2
     end
@@ -377,7 +394,7 @@ inherited FrmContasReceber: TFrmContasReceber
   end
   object DSReceber: TDataSource
     DataSet = QueryReceber
-    Left = 984
+    Left = 1032
     Top = 16
   end
 end

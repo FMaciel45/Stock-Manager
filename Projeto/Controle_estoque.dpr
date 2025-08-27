@@ -30,7 +30,8 @@ uses
   UPesqGeralMes in '..\Forms\UPesqGeralMes.pas' {FrmPesqGeralMes},
   UContasPagar in '..\Forms\UContasPagar.pas' {FrmContasPagar},
   UPesqParcelaPagar in '..\Forms\UPesqParcelaPagar.pas' {FrmPesqParcelaPagar},
-  UContasReceber in '..\Forms\UContasReceber.pas' {FrmContasReceber};
+  UContasReceber in '..\Forms\UContasReceber.pas' {FrmContasReceber},
+  UPesqContasReceber in '..\Forms\UPesqContasReceber.pas' {FrmPesqParcelasReceber};
 
 {$R *.res}
 {$IFDEF DEBUG}
@@ -45,5 +46,6 @@ begin
   Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TFrmPesqParcelaPagar, FrmPesqParcelaPagar);
   Application.CreateForm(TFrmContasReceber, FrmContasReceber);
+  Application.CreateForm(TFrmPesqParcelasReceber, FrmPesqParcelasReceber);
   Application.Run;
 end.

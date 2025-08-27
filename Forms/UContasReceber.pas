@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons, Vcl.DBCtrls,
-  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, DateUtils;
 
 type
   TFrmContasReceber = class(TFrmPadraoCadastro)
@@ -54,6 +54,13 @@ type
     QueryReceberVL_JUROS: TFMTBCDField;
     QueryReceberTOTAL_PAGAR: TFMTBCDField;
     QueryReceberSTATUS: TStringField;
+    btImprimir: TBitBtn;
+    procedure btPesquisarClick(Sender: TObject);
+    procedure btEditarClick(Sender: TObject);
+    procedure btCancelarClick(Sender: TObject);
+    procedure btAtualizarClick(Sender: TObject);
+    procedure DBDtPagamentoExit(Sender: TObject);
+    procedure DBJurosExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,6 +74,89 @@ implementation
 
 {$R *.dfm}
 
-uses UDataM;
+uses UDataM, UPesqContasReceber;
+
+procedure TFrmContasReceber.btAtualizarClick(Sender: TObject);
+begin
+  QueryReceber.Post;
+
+  inherited;
+end;
+
+procedure TFrmContasReceber.btCancelarClick(Sender: TObject);
+begin
+  inherited;
+
+  QueryReceber.CancelUpdates;
+end;
+
+procedure TFrmContasReceber.btEditarClick(Sender: TObject);
+begin
+  QueryReceber.Edit;
+  DBDtPagamento.SetFocus;
+
+  inherited;
+end;
+
+procedure TFrmContasReceber.btPesquisarClick(Sender: TObject);
+begin
+  QueryPadrao.Close;
+
+  FrmPesqParcelasReceber:= TFrmPesqParcelasReceber.Create(self); // UPesqContasReceber
+  FrmPesqParcelasReceber.ShowModal;
+
+  try
+    if FrmPesqParcelasReceber.codigo > 0 then
+      begin
+        QueryPadrao.Open;
+        QueryReceber.Open;
+        QueryReceber.Locate('ID_VENDA', FrmPesqParcelasReceber.codigo, []);
+        QueryReceber.Locate('DT_VENCIMENTO', FrmPesqParcelasReceber.data, []);
+        QueryReceber.Locate('ID_SEQUENCIA', FrmPesqParcelasReceber.sequencia, []);
+
+      end;
+
+  finally
+    FrmPesqParcelasReceber.Free;
+    FrmPesqParcelasReceber:= nil;
+
+  end;
+
+end;
+
+procedure TFrmContasReceber.DBDtPagamentoExit(Sender: TObject);
+begin
+  if QueryReceberDT_PAGAMENTO.AsDateTime > QueryReceberDT_VENCIMENTO.AsDateTime then
+    begin
+      QueryReceberATRASO.Value:=DaysBetween(QueryReceberDT_PAGAMENTO.AsDateTime, QueryReceberDT_VENCIMENTO.AsDateTime);
+      DBJuros.SetFocus;
+    end
+
+  else
+    begin
+      QueryReceberATRASO.AsInteger:=0;
+      QueryReceberSTATUS.AsString:='Pago';
+      QueryReceberTOTAL_PAGAR.AsFloat:=QueryReceberVALOR_PARCELA.AsFloat;
+    end;
+
+end;
+
+procedure TFrmContasReceber.DBJurosExit(Sender: TObject);
+begin
+  if QueryReceberATRASO.AsInteger > 0 then
+    begin
+      QueryReceberVL_JUROS.AsFloat:=
+      (QueryReceberATRASO.AsInteger *
+      QueryReceberJUROS.AsFloat *
+      QueryReceberVALOR_PARCELA.AsFloat/100);
+
+      QueryReceberTOTAL_PAGAR.AsFloat:=
+      QueryReceberVL_JUROS.AsFloat +
+      QueryReceberVALOR_PARCELA.AsFloat;
+
+      QueryReceberSTATUS.AsString:='Pago';
+    end;
+
+end;
 
 end.
