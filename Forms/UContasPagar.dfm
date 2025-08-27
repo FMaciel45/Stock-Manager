@@ -203,6 +203,7 @@ inherited FrmContasPagar: TFrmContasPagar
     DataField = 'JUROS'
     DataSource = DSPagar
     TabOrder = 10
+    OnExit = DBJurosExit
   end
   object DBVlJuros: TDBEdit [24]
     Left = 188

@@ -58,6 +58,7 @@ type
     procedure btEditarClick(Sender: TObject);
     procedure DBDtPagamentoExit(Sender: TObject);
     procedure btAtualizarClick(Sender: TObject);
+    procedure DBJurosExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -111,6 +112,7 @@ begin
     FrmPesqParcelaPagar.Free;
     FrmPesqParcelaPagar:= nil;
   end;
+
 end;
 
 procedure TFrmContasPagar.DBDtPagamentoExit(Sender: TObject);
@@ -118,6 +120,7 @@ begin
   if QueryPagarDT_PAGAMENTO.AsDateTime > QueryPagarDT_VENCIMENTO.AsDateTime then
     begin
       QueryPagarATRASO.Value:=DaysBetween(QueryPagarDT_PAGAMENTO.AsDateTime, QueryPagarDT_VENCIMENTO.AsDateTime);
+      DBJuros.SetFocus;
     end
 
   else
@@ -126,6 +129,32 @@ begin
       QueryPagarSTATUS.AsString:='Pago';
       QueryPagarTOTAL_PAGAR.AsFloat:=QueryPagarVALOR_PARCELA.AsFloat;
     end;
+
+end;
+
+procedure TFrmContasPagar.DBJurosExit(Sender: TObject);
+begin
+  if QueryPagarATRASO.AsInteger > 0 then
+    begin
+      QueryPagarVL_JUROS.AsFloat:=
+      (QueryPagarATRASO.AsInteger *
+      QueryPagarJUROS.AsFloat *
+      QueryPagarVALOR_PARCELA.AsFloat/100);
+
+      QueryPagarTOTAL_PAGAR.AsFloat:=
+      QueryPagarVL_JUROS.AsFloat +
+      QueryPagarVALOR_PARCELA.AsFloat;
+
+      QueryPagarSTATUS.AsString:='Pago';
+    end;
+
+  { else
+    begin
+      QueryPagarJUROS.AsFloat:=0;
+      QueryPagarVL_JUROS.AsFloat:=0;
+      QueryPagarTOTAL_PAGAR.AsFloat:=QueryPagarVALOR_PARCELA.AsFloat;
+      QueryPagarSTATUS.AsString:='Pago';
+    end; }
 
 end;
 
