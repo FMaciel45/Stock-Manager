@@ -46,7 +46,7 @@ type
     VendasFormasdePgto1: TMenuItem;
     RelatrioGeralporMs1: TMenuItem;
     btContasPagar: TSpeedButton;
-    SpeedButton2: TSpeedButton;
+    btContasReceber: TSpeedButton;
     ListaContasPagar: TMenuItem;
     ListaContasReceber: TMenuItem;
     ListaContasPagarMenu: TMenuItem;
@@ -64,6 +64,7 @@ type
     procedure AbreTelaCompra1();
     procedure AbreTelaVenda();
     procedure AbreTelaContasPagar();
+    procedure AbreTelaContasReceber();
 
     procedure btEmpresaClick(Sender: TObject);
     procedure MenuEmpresaClick(Sender: TObject);
@@ -97,6 +98,8 @@ type
     procedure btContasPagarClick(Sender: TObject);
     procedure ListaContasPagarClick(Sender: TObject);
     procedure ListaContasPagarMenuClick(Sender: TObject);
+    procedure btContasReceberClick(Sender: TObject);
+    procedure ListaContasReceberClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,7 +116,8 @@ implementation
 uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
   UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto,
-  UPesqVendaFormaPgto, UPesqGeralMes, UContasPagar, UPesqParcelaPagar;
+  UPesqVendaFormaPgto, UPesqGeralMes, UContasPagar, UPesqParcelaPagar,
+  UContasReceber;
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -233,6 +237,19 @@ begin
   end;
 end;
 
+procedure TFrmPrincipal.AbreTelaContasReceber;
+begin
+  FrmContasReceber:= TFrmContasReceber.Create(self);
+  FrmContasReceber.ShowModal;
+
+  try
+
+  finally
+    FrmContasReceber.Free;
+    FrmContasReceber:= nil;
+  end;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
@@ -321,6 +338,16 @@ end;
 procedure TFrmPrincipal.ListaContasPagarClick(Sender: TObject);
 begin
   AbreTelaContasPagar;
+end;
+
+procedure TFrmPrincipal.btContasReceberClick(Sender: TObject);
+begin
+  AbreTelaContasReceber;
+end;
+
+procedure TFrmPrincipal.ListaContasReceberClick(Sender: TObject);
+begin
+  AbreTelaContasReceber;
 end;
 
 procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);

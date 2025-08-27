@@ -21,12 +21,11 @@ object FrmPrincipal: TFrmPrincipal
     ParentBackground = False
     TabOrder = 0
     object btEmpresa: TSpeedButton
-      Left = 118
+      Left = 120
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = '&Empresa'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -550,15 +549,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btEmpresaClick
     end
     object btClientes: TSpeedButton
-      Left = 224
+      Left = 240
       Top = 0
-      Width = 90
+      Width = 110
       Height = 90
       Caption = '&Clientes'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -1082,15 +1082,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btClientesClick
     end
     object btFornecedor: TSpeedButton
-      Left = 354
+      Left = 361
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = '&Fornecedores'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -1614,15 +1615,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btFornecedorClick
     end
     object btProduto: TSpeedButton
-      Left = 472
+      Left = 481
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = '&Produtos'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -2146,15 +2148,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btProdutoClick
     end
     object btFormaPgto: TSpeedButton
-      Left = 591
+      Left = 601
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = 'Fo&rma Pgto.'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -2678,15 +2681,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btFormaPgtoClick
     end
     object btCompra: TSpeedButton
-      Left = 709
+      Left = 722
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = 'C&ompras'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -3210,15 +3214,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btCompraClick
     end
     object btVenda: TSpeedButton
-      Left = 827
+      Left = 842
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = '&Vendas'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -3742,15 +3747,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btVendaClick
     end
     object btTrocarUsuario: TSpeedButton
-      Left = 1165
+      Left = 1203
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = '&Trocar Usu'#225'rio'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -4274,15 +4280,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btTrocarUsuarioClick
     end
     object btSair: TSpeedButton
-      Left = 1271
+      Left = 1324
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = '&Fechar'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -4806,15 +4813,16 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btSairClick
     end
     object btUsuario: TSpeedButton
       Left = 0
       Top = 0
-      Width = 90
+      Width = 110
       Height = 90
       Caption = '&Usu'#225'rio'
-      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -5338,12 +5346,14 @@ object FrmPrincipal: TFrmPrincipal
         000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btUsuarioClick
     end
     object btContasPagar: TSpeedButton
-      Left = 933
+      Left = 962
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = 'Con&tas a Pagar'
       Font.Charset = DEFAULT_CHARSET
@@ -5353,12 +5363,14 @@ object FrmPrincipal: TFrmPrincipal
       Font.Style = [fsBold]
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btContasPagarClick
     end
-    object SpeedButton2: TSpeedButton
-      Left = 1048
+    object btContasReceber: TSpeedButton
+      Left = 1083
       Top = 0
-      Width = 100
+      Width = 110
       Height = 90
       Caption = 'Contas a Rece&ber'
       Font.Charset = DEFAULT_CHARSET
@@ -5368,6 +5380,9 @@ object FrmPrincipal: TFrmPrincipal
       Font.Style = [fsBold]
       Layout = blGlyphTop
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btContasReceberClick
     end
   end
   object StatusBar1: TStatusBar
@@ -5391,12 +5406,12 @@ object FrmPrincipal: TFrmPrincipal
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 48
-    Top = 104
+    Left = 600
+    Top = 144
   end
   object MainMenu1: TMainMenu
-    Left = 48
-    Top = 168
+    Left = 488
+    Top = 144
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'
       object MenuUsuario: TMenuItem
@@ -5453,6 +5468,7 @@ object FrmPrincipal: TFrmPrincipal
       end
       object ListaContasReceber: TMenuItem
         Caption = 'Contas a Receber'
+        OnClick = ListaContasReceberClick
       end
     end
     object Relatrios1: TMenuItem
