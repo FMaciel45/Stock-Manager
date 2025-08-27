@@ -30,6 +30,7 @@ type
     procedure cbChavePesquisaChange(Sender: TObject);
     procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +46,28 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UDataM;
+
+procedure TFrmPesqParcelaPagar.btImprimirClick(Sender: TObject);
+var caminho:string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqParcelaPagar.RelPesqPadrao.LoadFromFile(caminho + 'RelListaPagar.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelListaPagar.fr3');
+      RelPesqPadrao.Variables['Nome']:=QuotedStr(DM.usuario);
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+      FrmPesqParcelaPagar.Close;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+end;
 
 procedure TFrmPesqParcelaPagar.btPesquisaClick(Sender: TObject);
 begin

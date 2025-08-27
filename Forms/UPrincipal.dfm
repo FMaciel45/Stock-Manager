@@ -5487,16 +5487,28 @@ object FrmPrincipal: TFrmPrincipal
         ShortCut = 16463
         OnClick = ListaVendaClick
       end
+      object ListaContasPagarMenu: TMenuItem
+        Caption = 'Lista de Contas a Pagar'
+        ShortCut = 16464
+        OnClick = ListaContasPagarMenuClick
+      end
+      object ListadeContasaReceber1: TMenuItem
+        Caption = 'Lista  de Contas a Receber'
+        ShortCut = 16465
+      end
       object C1: TMenuItem
         Caption = 'Compras/Formas de Pgto.'
+        ShortCut = 16466
         OnClick = C1Click
       end
       object VendasFormasdePgto1: TMenuItem
         Caption = 'Vendas/Formas de Pgto.'
+        ShortCut = 16467
         OnClick = VendasFormasdePgto1Click
       end
       object RelatrioGeralporMs1: TMenuItem
         Caption = 'Relat'#243'rio Geral por M'#234's'
+        ShortCut = 16468
         OnClick = RelatrioGeralporMs1Click
       end
     end
