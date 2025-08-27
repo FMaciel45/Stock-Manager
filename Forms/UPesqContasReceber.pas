@@ -72,23 +72,23 @@ begin
   QueryPesqPadrao.SQL.Add('INNER JOIN CLIENTES B ON B.ID_CLIENTE=A.ID_CLIENTE');
   QueryPesqPadrao.SQL.Add('INNER JOIN CONTAS_RECEBER C ON C.ID_VENDA=A.ID_VENDA ');
 
-  case cbChavePesquisa.ItemIndex of
+  case cbChavePesquisa.ItemIndex of // RETIRAR COMENTÁRIOS DEPOIS
     0: begin
       QueryPesqPadrao.SQL.Add('WHERE A.ID_CLIENTE =:PID_CLIENTE');
       QueryPesqPadrao.ParamByName('PID_CLIENTE').AsString:=edNome.Text;
-      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      //QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
     end;
 
     1: begin
       QueryPesqPadrao.SQL.Add('WHERE B.NOME LIKE :PNOME');
       QueryPesqPadrao.ParamByName('PNOME').AsString:='%' + edNome.Text + '%';
-      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      //QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
     end;
 
     2: begin
       QueryPesqPadrao.SQL.Add('WHERE B.CPF =:PCPF');
       QueryPesqPadrao.ParamByName('PCPF').AsString:=edNome.Text;
-      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      //QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
     end;
 
   end;

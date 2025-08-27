@@ -135,7 +135,7 @@ begin
   else
     begin
       QueryReceberATRASO.AsInteger:=0;
-      QueryReceberSTATUS.AsString:='Pago';
+      QueryReceberSTATUS.AsString:='Recebido';
       QueryReceberTOTAL_PAGAR.AsFloat:=QueryReceberVALOR_PARCELA.AsFloat;
     end;
 
@@ -154,7 +154,7 @@ begin
       QueryReceberVL_JUROS.AsFloat +
       QueryReceberVALOR_PARCELA.AsFloat;
 
-      QueryReceberSTATUS.AsString:='Pago';
+      QueryReceberSTATUS.AsString:='Recebido';
     end;
 
 end;

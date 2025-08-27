@@ -22,7 +22,7 @@ inherited FrmPesqParcelasReceber: TFrmPesqParcelasReceber
       StyleElements = [seFont, seClient, seBorder]
       OnClick = cbChavePesquisaClick
       Items.Strings = (
-        'Cliente'
+        'C'#243'digo do Cliente'
         'Nome'
         'CPF')
     end

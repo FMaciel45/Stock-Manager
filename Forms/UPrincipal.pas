@@ -119,6 +119,12 @@ uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqVendaFormaPgto, UPesqGeralMes, UContasPagar, UPesqParcelaPagar,
   UContasReceber;
 
+
+
+  //PROCURAR IMAGENS MELHORES E ORGANIZAR CÓDIGO
+
+
+
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
   FrmUsuario:= TFrmUsuario.Create(self);
