@@ -258,9 +258,9 @@ inherited FrmContasReceber: TFrmContasReceber
     Height = 40
     Caption = '&Imprimir'
     TabOrder = 15
+    OnClick = btImprimirClick
   end
   inherited QueryPadrao: TFDQuery
-    Active = True
     SQL.Strings = (
       'SELECT'
       '  A.ID_VENDA,'
@@ -305,7 +305,6 @@ inherited FrmContasReceber: TFrmContasReceber
     Top = 16
   end
   object QueryReceber: TFDQuery
-    Active = True
     IndexFieldNames = 'ID_VENDA'
     MasterSource = DSPadrao
     MasterFields = 'ID_VENDA'
@@ -333,7 +332,7 @@ inherited FrmContasReceber: TFrmContasReceber
         Name = 'ID_VENDA'
         DataType = ftInteger
         ParamType = ptInput
-        Value = 91
+        Value = 3
       end>
     object QueryReceberID_SEQUENCIA: TIntegerField
       FieldName = 'ID_SEQUENCIA'
@@ -408,7 +407,7 @@ inherited FrmContasReceber: TFrmContasReceber
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45897.438047129600000000
-    ReportOptions.LastChange = 45897.480211875000000000
+    ReportOptions.LastChange = 45897.647025046300000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -453,7 +452,7 @@ inherited FrmContasReceber: TFrmContasReceber
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 230.551329770000000000
+        Height = 204.094624810000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         DataSet = frxEmpresa
@@ -860,7 +859,7 @@ inherited FrmContasReceber: TFrmContasReceber
         object Memo11: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
-          Top = 185.196965510000000000
+          Top = 181.417435510000000000
           Width = 718.110717773437500000
           Height = 22.677189300000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -884,8 +883,8 @@ inherited FrmContasReceber: TFrmContasReceber
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 68.031540000000000000
-        Top = 272.126160000000000000
+        Height = 113.385900000000000000
+        Top = 245.669450000000000000
         Width = 718.110700000000000000
         DataSet = frxPadrao
         DataSetName = 'frxPadrao'
@@ -893,8 +892,8 @@ inherited FrmContasReceber: TFrmContasReceber
         object MemofrxPadraoID_VENDA: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Top = 34.015770000000000000
-          Width = 113.385900000000000000
+          Top = 79.370130000000000000
+          Width = 188.976500000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -913,8 +912,8 @@ inherited FrmContasReceber: TFrmContasReceber
         end
         object Memo12: TfrxMemoView
           AllowVectorExport = True
-          Top = 11.338586240000000000
-          Width = 113.385900730000000000
+          Top = 56.692946240000000000
+          Width = 188.976500730000000000
           Height = 18.897644040000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -931,9 +930,9 @@ inherited FrmContasReceber: TFrmContasReceber
         object MemofrxPadraoID_CLIENTE: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 113.385900000000000000
-          Top = 34.015770000000000000
-          Width = 113.385900000000000000
+          Left = 188.976500000000000000
+          Top = 79.370130000000000000
+          Width = 75.590600000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -952,9 +951,9 @@ inherited FrmContasReceber: TFrmContasReceber
         end
         object Memo13: TfrxMemoView
           AllowVectorExport = True
-          Left = 113.385900000000000000
-          Top = 11.338590000000000000
-          Width = 113.385900730000000000
+          Left = 188.976500000000000000
+          Top = 56.692950000000000000
+          Width = 75.590600730000000000
           Height = 18.897644040000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -971,8 +970,8 @@ inherited FrmContasReceber: TFrmContasReceber
         object MemofrxPadraoCPF: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 226.771800000000000000
-          Top = 34.015770000000000000
+          Left = 264.567100000000000000
+          Top = 79.370130000000000000
           Width = 151.181200000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -992,8 +991,8 @@ inherited FrmContasReceber: TFrmContasReceber
         end
         object Memo14: TfrxMemoView
           AllowVectorExport = True
-          Left = 226.771800000000000000
-          Top = 11.338590000000000000
+          Left = 264.567100000000000000
+          Top = 56.692950000000000000
           Width = 151.181200730000000000
           Height = 18.897644040000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
@@ -1011,9 +1010,9 @@ inherited FrmContasReceber: TFrmContasReceber
         object MemofrxPadraoNOME: TfrxMemoView
           IndexTag = 1
           AllowVectorExport = True
-          Left = 377.953000000000000000
-          Top = 34.015770000000000000
-          Width = 340.157700000000000000
+          Left = 415.748300000000000000
+          Top = 79.370130000000000000
+          Width = 302.362400000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -1032,9 +1031,9 @@ inherited FrmContasReceber: TFrmContasReceber
         end
         object Memo15: TfrxMemoView
           AllowVectorExport = True
-          Left = 377.953000000000000000
-          Top = 11.338590000000000000
-          Width = 340.157700730000000000
+          Left = 415.748300000000000000
+          Top = 56.692950000000000000
+          Width = 306.141930730000000000
           Height = 18.897644040000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -1056,16 +1055,414 @@ inherited FrmContasReceber: TFrmContasReceber
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 52.913420000000000000
-        Top = 362.834880000000000000
+        Height = 147.401670000000000000
+        Top = 381.732530000000000000
         Width = 718.110700000000000000
         DataSet = frxReceber
         DataSetName = 'frxReceber'
         RowCount = 0
+        object MemofrxReceberID_SEQUENCIA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Top = 26.456710000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'ID_SEQUENCIA'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."ID_SEQUENCIA"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberVALOR_PARCELA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 75.590600000000000000
+          Top = 26.456710000000000000
+          Width = 113.385900000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'VALOR_PARCELA'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."VALOR_PARCELA"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberDT_VENCIMENTO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 188.976500000000000000
+          Top = 26.456710000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'DT_VENCIMENTO'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."DT_VENCIMENTO"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberDT_PAGAMENTO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 264.567100000000000000
+          Top = 26.456710000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'DT_PAGAMENTO'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."DT_PAGAMENTO"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberATRASO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 340.157700000000000000
+          Top = 26.456710000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'ATRASO'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."ATRASO"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberVL_JUROS: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 415.748300000000000000
+          Top = 26.456710000000000000
+          Width = 94.488250000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'VL_JUROS'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."VL_JUROS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberTOTAL_PAGAR: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 510.236550000000000000
+          Top = 26.456710000000000000
+          Width = 113.385900000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'TOTAL_PAGAR'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."TOTAL_PAGAR"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo16: TfrxMemoView
+          AllowVectorExport = True
+          Left = 0.000000050000000000
+          Top = 0.000005460000000013
+          Width = 75.590596440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'ID Seq.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 75.590600000000000000
+          Width = 113.385896440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'VL Parcela')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 188.976500000000000000
+          Width = 75.590596440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'DT Venc.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 264.567100000000000000
+          Width = 75.590596440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'DT Pag.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo20: TfrxMemoView
+          AllowVectorExport = True
+          Left = 340.157700000000000000
+          Width = 75.590596440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Atraso')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo22: TfrxMemoView
+          AllowVectorExport = True
+          Left = 415.748300000000000000
+          Width = 94.488246440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Valor Juros')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo23: TfrxMemoView
+          AllowVectorExport = True
+          Left = 510.236550000000000000
+          Width = 113.385896440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Total Pagar')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxReceberSTATUS: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 623.622450000000000000
+          Top = 26.456710000000000000
+          Width = 94.488250000000000000
+          Height = 22.677180000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'STATUS'
+          DataSet = frxReceber
+          DataSetName = 'frxReceber'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            '[frxReceber."STATUS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo24: TfrxMemoView
+          AllowVectorExport = True
+          Left = 623.622450000000000000
+          Width = 94.488246440000000000
+          Height = 22.677174040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Memo.UTF8W = (
+            'Status')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object MemofrxPadraoNOME1: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 113.385900000000000000
+          Top = 90.708720000000000000
+          Width = 415.748300000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'NOME'
+          DataSet = frxPadrao
+          DataSetName = 'frxPadrao'
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxPadrao."NOME"]')
+        end
+        object Memo25: TfrxMemoView
+          AllowVectorExport = True
+          Left = 113.385902400000000000
+          Top = 120.944968720000000000
+          Width = 226.771793100000000000
+          Height = 18.897613530000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Ass.:_____________________________')
+        end
+        object MemoTime: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 449.764070000000000000
+          Top = 120.944960000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[Time]')
+          ParentFont = False
+        end
+        object MemoDate: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 370.393940000000000000
+          Top = 120.944960000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[Date]')
+          ParentFont = False
+        end
       end
     end
   end
   object frxPadrao: TfrxDBDataset
+    RangeBegin = rbCurrent
+    RangeEnd = reCurrent
     UserName = 'frxPadrao'
     CloseDataSource = False
     DataSet = QueryPadrao
@@ -1092,6 +1489,8 @@ inherited FrmContasReceber: TFrmContasReceber
       end>
   end
   object frxReceber: TfrxDBDataset
+    RangeBegin = rbCurrent
+    RangeEnd = reCurrent
     UserName = 'frxReceber'
     CloseDataSource = False
     DataSet = QueryReceber
@@ -1136,6 +1535,8 @@ inherited FrmContasReceber: TFrmContasReceber
       end>
   end
   object frxEmpresa: TfrxDBDataset
+    RangeBegin = rbCurrent
+    RangeEnd = reCurrent
     UserName = 'frxEmpresa'
     CloseDataSource = False
     DataSet = QueryEmpresa
@@ -1208,7 +1609,6 @@ inherited FrmContasReceber: TFrmContasReceber
       end>
   end
   object QueryEmpresa: TFDQuery
-    Active = True
     Connection = DM.Conexao
     SQL.Strings = (
       'SELECT '
@@ -1312,7 +1712,6 @@ inherited FrmContasReceber: TFrmContasReceber
   end
   object DSEmpresa: TDataSource
     DataSet = QueryEmpresa
-    OnDataChange = DSEmpresaDataChange
     Left = 882
     Top = 80
   end

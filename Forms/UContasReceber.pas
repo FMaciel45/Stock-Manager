@@ -82,7 +82,8 @@ type
     procedure btAtualizarClick(Sender: TObject);
     procedure DBDtPagamentoExit(Sender: TObject);
     procedure DBJurosExit(Sender: TObject);
-    procedure DSEmpresaDataChange(Sender: TObject; Field: TField);
+    procedure btImprimirClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -118,6 +119,25 @@ begin
   DBDtPagamento.SetFocus;
 
   inherited;
+end;
+
+procedure TFrmContasReceber.btImprimirClick(Sender: TObject);
+var caminho:string;
+
+begin
+caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmContasReceber.Recibo.LoadFromFile(caminho + 'RelReciboPagamento.fr3') then
+    begin
+      Recibo.Clear;
+      Recibo.LoadFromFile(extractfilepath(application.ExeName) + 'RelReciboPagamento.fr3');
+      Recibo.PrepareReport(true);
+      Recibo.ShowPreparedReport;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+
 end;
 
 procedure TFrmContasReceber.btPesquisarClick(Sender: TObject);
