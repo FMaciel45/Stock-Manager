@@ -1,7 +1,5 @@
 # Stock Manager
 
-## Sobre o Projeto
-
 Este repositório contém o projeto Stock-Manager, um sistema de gerenciamento de estoque desenvolvido em Delphi. O objetivo principal deste projeto é 
 servir como um recurso para documentar o aprendizado e a evolução no desenvolvimento com Delphi, oferecendo uma solução prática para controle de estoque, 
 vendas, compras, contas a pagar e receber, e cadastro de clientes, produtos, fornecedores e usuários.
