@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons, Vcl.DBCtrls,
-  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, DateUtils;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, DateUtils, frxSmartMemo, frxClass,
+  frxDBSet, frCoreClasses;
 
 type
   TFrmContasReceber = class(TFrmPadraoCadastro)
@@ -55,12 +56,33 @@ type
     QueryReceberTOTAL_PAGAR: TFMTBCDField;
     QueryReceberSTATUS: TStringField;
     btImprimir: TBitBtn;
+    Recibo: TfrxReport;
+    frxPadrao: TfrxDBDataset;
+    frxReceber: TfrxDBDataset;
+    frxEmpresa: TfrxDBDataset;
+    QueryEmpresa: TFDQuery;
+    DSEmpresa: TDataSource;
+    QueryEmpresaID_EMPRESA: TIntegerField;
+    QueryEmpresaRAZAO_SOCIAL: TStringField;
+    QueryEmpresaN_FANTASIA: TStringField;
+    QueryEmpresaENDERECO: TStringField;
+    QueryEmpresaNUMERO: TIntegerField;
+    QueryEmpresaBAIRRO: TStringField;
+    QueryEmpresaCIDADE: TStringField;
+    QueryEmpresaUF: TStringField;
+    QueryEmpresaCEP: TStringField;
+    QueryEmpresaTELEFONE: TStringField;
+    QueryEmpresaCNPJ: TStringField;
+    QueryEmpresaEMAIL: TStringField;
+    QueryEmpresaLOGO: TBlobField;
+    QueryEmpresaCADASTRO: TDateField;
     procedure btPesquisarClick(Sender: TObject);
     procedure btEditarClick(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
     procedure btAtualizarClick(Sender: TObject);
     procedure DBDtPagamentoExit(Sender: TObject);
     procedure DBJurosExit(Sender: TObject);
+    procedure DSEmpresaDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
