@@ -31,6 +31,7 @@ type
     procedure btPesquisaClick(Sender: TObject);
     procedure btTransferirClick(Sender: TObject);
     procedure cbChavePesquisaChange(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +47,28 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UDataM;
+
+procedure TFrmPesqParcelasReceber.btImprimirClick(Sender: TObject);
+var caminho:string;
+
+begin
+  caminho:=ExtractFilePath(Application.ExeName);
+
+  if FrmPesqParcelasReceber.RelPesqPadrao.LoadFromFile(caminho + 'RelListaReceber.fr3') then
+    begin
+      RelPesqPadrao.Clear;
+      RelPesqPadrao.LoadFromFile(extractfilepath(application.ExeName) + 'RelListaReceber.fr3');
+      RelPesqPadrao.Variables['Nome']:=QuotedStr(DM.usuario);
+      RelPesqPadrao.PrepareReport(true);
+      RelPesqPadrao.ShowPreparedReport;
+      FrmPesqParcelasReceber.Close;
+    end
+
+    else
+      MessageDlg('Relatório não encontrado!', mtError, [mbOk], 0);
+end;
 
 procedure TFrmPesqParcelasReceber.btPesquisaClick(Sender: TObject);
 begin
@@ -72,23 +95,28 @@ begin
   QueryPesqPadrao.SQL.Add('INNER JOIN CLIENTES B ON B.ID_CLIENTE=A.ID_CLIENTE');
   QueryPesqPadrao.SQL.Add('INNER JOIN CONTAS_RECEBER C ON C.ID_VENDA=A.ID_VENDA ');
 
-  case cbChavePesquisa.ItemIndex of // RETIRAR COMENTÁRIOS DEPOIS
+  case cbChavePesquisa.ItemIndex of
     0: begin
       QueryPesqPadrao.SQL.Add('WHERE A.ID_CLIENTE =:PID_CLIENTE');
       QueryPesqPadrao.ParamByName('PID_CLIENTE').AsString:=edNome.Text;
-      //QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
     end;
 
     1: begin
       QueryPesqPadrao.SQL.Add('WHERE B.NOME LIKE :PNOME');
       QueryPesqPadrao.ParamByName('PNOME').AsString:='%' + edNome.Text + '%';
-      //QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
     end;
 
     2: begin
       QueryPesqPadrao.SQL.Add('WHERE B.CPF =:PCPF');
       QueryPesqPadrao.ParamByName('PCPF').AsString:=edNome.Text;
-      //QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+    end;
+
+    3: begin
+      QueryPesqPadrao.SQL.Add('AND C.STATUS=''Em aberto''');
+      QueryPesqPadrao.SQL.Add('ORDER BY A.ID_VENDA');
     end;
 
   end;
@@ -127,8 +155,7 @@ end;
 
 procedure TFrmPesqParcelasReceber.cbChavePesquisaClick(Sender: TObject);
 begin
-  inherited;
-
+  //inherited;
   edNome.Clear;
   edNome.SetFocus
 end;

@@ -17,7 +17,7 @@ object FrmLogin: TFrmLogin
   OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel
-    Left = 56
+    Left = 40
     Top = 36
     Width = 37
     Height = 17
@@ -30,7 +30,7 @@ object FrmLogin: TFrmLogin
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 56
+    Left = 40
     Top = 164
     Width = 26
     Height = 17
@@ -43,7 +43,7 @@ object FrmLogin: TFrmLogin
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 56
+    Left = 40
     Top = 100
     Width = 37
     Height = 17
@@ -56,14 +56,14 @@ object FrmLogin: TFrmLogin
     ParentFont = False
   end
   object Image1: TImage
-    Left = 440
-    Top = 55
-    Width = 150
-    Height = 150
+    Left = 400
+    Top = 54
+    Width = 210
+    Height = 210
     Stretch = True
   end
   object EDNome: TEdit
-    Left = 56
+    Left = 40
     Top = 54
     Width = 300
     Height = 23
@@ -71,7 +71,7 @@ object FrmLogin: TFrmLogin
     TabOrder = 0
   end
   object EDSenha: TEdit
-    Left = 56
+    Left = 40
     Top = 118
     Width = 300
     Height = 23
@@ -80,7 +80,7 @@ object FrmLogin: TFrmLogin
     TabOrder = 1
   end
   object CBTipo: TComboBox
-    Left = 56
+    Left = 40
     Top = 182
     Width = 300
     Height = 23
@@ -92,7 +92,7 @@ object FrmLogin: TFrmLogin
       '')
   end
   object btLogin: TBitBtn
-    Left = 56
+    Left = 40
     Top = 229
     Width = 90
     Height = 35
@@ -101,7 +101,7 @@ object FrmLogin: TFrmLogin
     OnClick = btLoginClick
   end
   object btCancelar: TBitBtn
-    Left = 163
+    Left = 147
     Top = 229
     Width = 90
     Height = 35
@@ -118,10 +118,9 @@ object FrmLogin: TFrmLogin
       item
         Width = 50
       end>
-    ExplicitTop = 306
   end
   object btTrocarSenha: TBitBtn
-    Left = 266
+    Left = 250
     Top = 229
     Width = 90
     Height = 35
