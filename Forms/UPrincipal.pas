@@ -100,6 +100,7 @@ type
     procedure ListaContasPagarMenuClick(Sender: TObject);
     procedure btContasReceberClick(Sender: TObject);
     procedure ListaContasReceberClick(Sender: TObject);
+    procedure ListadeContasaReceber1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -117,7 +118,7 @@ uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UPesqUsuario, UPesqFornecedor, UPesqCliente, UPesqProduto, UPesqCompra,
   UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto,
   UPesqVendaFormaPgto, UPesqGeralMes, UContasPagar, UPesqParcelaPagar,
-  UContasReceber;
+  UContasReceber, UPesqContasReceber;
 
 
 
@@ -354,6 +355,19 @@ end;
 procedure TFrmPrincipal.ListaContasReceberClick(Sender: TObject);
 begin
   AbreTelaContasReceber;
+end;
+
+procedure TFrmPrincipal.ListadeContasaReceber1Click(Sender: TObject);
+begin
+  FrmPesqParcelasReceber:= TFrmPesqParcelasReceber.Create(self); // UPesqContasReceber
+  FrmPesqParcelasReceber.ShowModal;
+
+  try
+
+  finally
+    FrmPesqParcelasReceber.Free;
+    FrmPesqParcelasReceber:= nil;
+  end;
 end;
 
 procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);

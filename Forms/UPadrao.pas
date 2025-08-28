@@ -54,10 +54,15 @@ uses UDataM;
 
 procedure TFrmPadraoCadastro.btAtualizarClick(Sender: TObject); // Refresh nos registros
 begin
-  TratarBotoes;
-
-  QueryPadrao.Post;
-  messageDlg('Formulário atualizado com sucesso!', mtInformation, [mbOk], 0);
+  try
+    QueryPadrao.Post;
+    messageDlg('Formulário atualizado com sucesso!', mtInformation, [mbOk], 0);
+    TratarBotoes; 
+    
+  except
+    ShowMessage('Erro ao atualizar os dados. Verifique!');
+    
+  end;
 end;
 
 procedure TFrmPadraoCadastro.btCancelarClick(Sender: TObject); // Cancela a ação atual
@@ -109,10 +114,16 @@ end;
 
 procedure TFrmPadraoCadastro.btGravarClick(Sender: TObject); // Persiste no BD o registro atual
 begin
-  TratarBotoes;
 
-  QueryPadrao.Post;
-  messageDlg('Registro salvo com sucesso!', mtInformation, [mbOk], 0);
+  try
+    QueryPadrao.Post;
+    messageDlg('Registro salvo com sucesso!', mtInformation, [mbOk], 0);
+    TratarBotoes;
+    
+  except
+    ShowMessage('Erro na gravação dos dados. Verifique!');
+    
+  end;
 end;
 
 procedure TFrmPadraoCadastro.btNovoClick(Sender: TObject); // Cria o formulário para um novo registro

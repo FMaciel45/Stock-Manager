@@ -95,6 +95,7 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
       Top = 42
       Width = 353
       Height = 23
+      CharCase = ecUpperCase
       TabOrder = 1
     end
     object mkInicio: TMaskEdit
@@ -167,8 +168,6 @@ object FrmPesquisaPadrao: TFrmPesquisaPadrao
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = -17
-    ExplicitTop = 474
     object lbResultado: TLabel
       Left = 16
       Top = 6

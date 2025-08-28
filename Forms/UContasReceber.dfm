@@ -1470,23 +1470,6 @@ inherited FrmContasReceber: TFrmContasReceber
     DataSetOptions = []
     Left = 456
     Top = 80
-    FieldDefs = <
-      item
-        FieldName = 'ID_VENDA'
-      end
-      item
-        FieldName = 'ID_CLIENTE'
-      end
-      item
-        FieldName = 'NOME'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'CPF'
-        FieldType = fftString
-        Size = 16
-      end>
   end
   object frxReceber: TfrxDBDataset
     RangeBegin = rbCurrent
@@ -1498,41 +1481,6 @@ inherited FrmContasReceber: TFrmContasReceber
     DataSetOptions = []
     Left = 531
     Top = 80
-    FieldDefs = <
-      item
-        FieldName = 'ID_SEQUENCIA'
-      end
-      item
-        FieldName = 'ID_VENDA'
-      end
-      item
-        FieldName = 'VALOR_PARCELA'
-      end
-      item
-        FieldName = 'DT_VENCIMENTO'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'DT_PAGAMENTO'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'ATRASO'
-      end
-      item
-        FieldName = 'JUROS'
-      end
-      item
-        FieldName = 'VL_JUROS'
-      end
-      item
-        FieldName = 'TOTAL_PAGAR'
-      end
-      item
-        FieldName = 'STATUS'
-        FieldType = fftString
-        Size = 30
-      end>
   end
   object frxEmpresa: TfrxDBDataset
     RangeBegin = rbCurrent
@@ -1544,69 +1492,6 @@ inherited FrmContasReceber: TFrmContasReceber
     DataSetOptions = []
     Left = 608
     Top = 80
-    FieldDefs = <
-      item
-        FieldName = 'ID_EMPRESA'
-      end
-      item
-        FieldName = 'RAZAO_SOCIAL'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'N_FANTASIA'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'ENDERECO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'NUMERO'
-      end
-      item
-        FieldName = 'BAIRRO'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'CIDADE'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'UF'
-        FieldType = fftString
-      end
-      item
-        FieldName = 'CEP'
-        FieldType = fftString
-        Size = 14
-      end
-      item
-        FieldName = 'TELEFONE'
-        FieldType = fftString
-        Size = 15
-      end
-      item
-        FieldName = 'CNPJ'
-        FieldType = fftString
-        Size = 20
-      end
-      item
-        FieldName = 'EMAIL'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'LOGO'
-      end
-      item
-        FieldName = 'CADASTRO'
-        FieldType = fftDateTime
-      end>
   end
   object QueryEmpresa: TFDQuery
     Connection = DM.Conexao

@@ -879,6 +879,7 @@ object FrmPrincipal: TFrmPrincipal
       object ListadeContasaReceber1: TMenuItem
         Caption = 'Lista  de Contas a Receber'
         ShortCut = 16465
+        OnClick = ListadeContasaReceber1Click
       end
       object C1: TMenuItem
         Caption = 'Compras/Formas de Pgto.'
