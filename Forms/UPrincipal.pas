@@ -10,7 +10,6 @@ uses
 type
   TFrmPrincipal = class(TForm)
     Panel1: TPanel;
-    btEmpresa: TSpeedButton;
     btClientes: TSpeedButton;
     btFornecedor: TSpeedButton;
     btProduto: TSpeedButton;
@@ -51,6 +50,7 @@ type
     ListaContasReceber: TMenuItem;
     ListaContasPagarMenu: TMenuItem;
     ListadeContasaReceber1: TMenuItem;
+    btEmpresa: TSpeedButton;
     procedure Timer1Timer(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure btUsuarioClick(Sender: TObject);
@@ -119,12 +119,6 @@ uses UUsuario, UEmpresa, UCliente, UFornecedor, UProduto, UFormasPgto, UCompra1,
   UAbout, UDataM, ULogin, UVenda, UPesqVenda, UPesqCompraFormaPgto,
   UPesqVendaFormaPgto, UPesqGeralMes, UContasPagar, UPesqParcelaPagar,
   UContasReceber, UPesqContasReceber;
-
-
-
-  //PROCURAR IMAGENS MELHORES E ORGANIZAR CÓDIGO
-
-
 
 procedure TFrmPrincipal.AbreTelaUsuario;
 begin
@@ -257,6 +251,21 @@ begin
   end;
 end;
 
+
+procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);
+begin
+  FrmPrincipal.Hide;
+
+  FrmLogin.EDNome.Clear;
+  FrmLogin.EDSenha.Clear;
+  FrmLogin.EDNome.SetFocus;
+end;
+
+procedure TFrmPrincipal.btSairClick(Sender: TObject);
+begin
+  application.Terminate;
+end;
+
 procedure TFrmPrincipal.btUsuarioClick(Sender: TObject);
 begin
   AbreTelaUsuario;
@@ -369,16 +378,6 @@ begin
     FrmPesqParcelasReceber:= nil;
   end;
 end;
-
-procedure TFrmPrincipal.btTrocarUsuarioClick(Sender: TObject);
-begin
-  FrmPrincipal.Hide;
-
-  FrmLogin.EDNome.Clear;
-  FrmLogin.EDSenha.Clear;
-  FrmLogin.EDNome.SetFocus;
-end;
-
 
 procedure TFrmPrincipal.ListaUsuarioClick(Sender: TObject);
 begin
@@ -521,11 +520,6 @@ begin
     FrmAboutBox.Free;
     FrmAboutBox:= nil;
   end;
-end;
-
-procedure TFrmPrincipal.btSairClick(Sender: TObject);
-begin
-  application.Terminate;
 end;
 
 procedure TFrmPrincipal.MenuFecharClick(Sender: TObject);
