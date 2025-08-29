@@ -2,12 +2,12 @@
 
 Este repositório contém o projeto Stock-Manager, um sistema de gerenciamento de estoque desenvolvido em Delphi. O objetivo principal deste projeto é 
 servir como um recurso para documentar o aprendizado e a evolução no desenvolvimento com Delphi, oferecendo uma solução prática para controle de estoque, 
-vendas, compras, contas a pagar e receber, e cadastro de clientes, produtos, fornecedores e usuários.
+vendas, compras, contas a pagar e receber, cadastro de clientes, produtos, fornecedores e usuários.
 
 ## Tecnologias Utilizadas
 
 *   **Delphi**: Linguagem de programação e ambiente de desenvolvimento integrado (IDE) utilizado para construir a aplicação.
-*   **Banco de Dados**: Firebird (o script SQL indica a criação de tabelas, triggers e generators compatíveis com este SGBD).
+*   **Banco de Dados**: Firebird na versão 2.5 (o script SQL indica a criação de tabelas, triggers e generators compatíveis com este SGBD).
   
 ## Estrutura do Projeto
 
